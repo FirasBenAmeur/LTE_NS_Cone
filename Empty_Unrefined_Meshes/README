@@ -1,0 +1,11 @@
+_____________
+AMRI'S NOTES: 
+-------------
+
+1K   := 1000 elements 
+10K  := 10 000 elements
+500K := 500 000 elements
+
+NO CONVERTOR IN COOLFluiD FOR THE FLUENT FORMAT .MSH
+-> USE THE GAMBIT FILE WITH THE CONVERTOR "Gambit2CFmesh"
+   (don't forget to rescale !)
