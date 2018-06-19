@@ -1,6 +1,6 @@
 AMRI'S Notes: 
 
-ChoiceA12 := Ways of computing the interface sound -> andrealani/COOLFluiD/plugins/FiniteVolumeNavierStokes/AUSMFlux.ci
+ChoiceA12 := Ways of computing the interface sound speed a12.-> andrealani/COOLFluiD/plugins/FiniteVolumeNavierStokes/AUSMFlux.ci
 
 Convergence File AUSM[Number] := CHOICEA12 [Number]
 
