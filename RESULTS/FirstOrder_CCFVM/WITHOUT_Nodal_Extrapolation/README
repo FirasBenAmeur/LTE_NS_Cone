@@ -1,1 +1,9 @@
+AMRI'S Notes: 
 
+ChoiceA12 := Ways of computing the interface sound -> andrealani/COOLFluiD/plugins/FiniteVolumeNavierStokes/AUSMFlux.ci
+
+Convergence File AUSM[Number] := CHOICEA12 [Number]
+
+Constant CFL = 1
+
+Without Nodal Extrapolation in the CFcase
