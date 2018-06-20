@@ -8,6 +8,4 @@ Convergence File AUSM[Number] := CHOICEA12 [Number]
 
 interactive CFL = 1.0, 1.2, 1.4, 1.6, 1.8       
 
-NbiterAdiabatic = 3000
-
 With Nodal Extrapolation in the CFcase
