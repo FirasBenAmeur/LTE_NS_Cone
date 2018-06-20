@@ -15,7 +15,6 @@ The shock doesn't seems to detache completely.
 
 In the inter file,
 The following line seems to do nothing because we are in PUVT...
-
 >> Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
 
 We replaced it by : 
