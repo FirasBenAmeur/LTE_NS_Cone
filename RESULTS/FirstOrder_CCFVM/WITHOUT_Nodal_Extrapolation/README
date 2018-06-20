@@ -7,8 +7,7 @@ PATH: andrealani/COOLFluiD/plugins/FiniteVolumeNavierStokes/AUSMFlux.ci
 
 Convergence File AUSM[Number] := CHOICEA12 [Number]
 
-Constant CFL = 1      -    
+Constant CFL = 1       
 
-NbiterAdiabatic = 3000
 
 Without Nodal Extrapolation in the CFcase
