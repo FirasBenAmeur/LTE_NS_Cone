@@ -7,5 +7,12 @@ Simulator.SubSystem.DataProcessing3.ProcessRate = 100
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.gradientFactor = 0.
 Simulator.SubSystem.Norm.valueNorm = -5
 # to be commented out when running non adiabatic
+# >> ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+# >> AMRI: The following line seems to do nothing because we are in PUVT...
+# >>       Also in the solution the shock doesn't seems to detache completely
+# >>       We replaced it by : 
+# >>       Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.NbIterAdiabatic = 3000
+# >>       It is currently running...
+# >> ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
-# >> AMRI: This line seems to do nothing because we are in PUVT...
+
