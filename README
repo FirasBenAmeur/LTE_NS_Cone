@@ -1,0 +1,24 @@
+______________
+AMRI'S notes :
+--------------
+
+OBSERVATION : 
+After the add of the nodal extrapolation in the CFcase, we start from scratch
+with the different AUSM choiceA12 to see how it will affects the convergence of the temperature residue.
+
+--> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/WITH_Nodal_Extrapolation/
+
+But then I realized that the solutions obtained (with or without nodal extrapolation) have an issue. 
+The shock doesn't seems to detache completely
+
+--> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/Issue_sol.png
+
+In the inter file,
+The following line seems to do nothing because we are in PUVT...
+
+>> Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
+
+We replaced it by : 
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.NbIterAdiabatic = 3000
+
+It is currently running... We will see how it affects the solution.
