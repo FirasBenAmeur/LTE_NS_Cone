@@ -4,7 +4,7 @@ AMRI'S notes :
 
 OBSERVATION : 
 After the add of the nodal extrapolation in the CFcase, I start from scratch
-with the different AUSM choiceA12 to see how it will affects the convergence of the temperature residue.
+with the different AUSM choiceA12 to see how it will affects the convergence of the temperature residue (Interactive CFL).
 
 --> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/WITH_Nodal_Extrapolation/
 
