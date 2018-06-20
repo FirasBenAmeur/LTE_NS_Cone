@@ -3,13 +3,13 @@ AMRI'S notes :
 --------------
 
 OBSERVATION : 
-After the add of the nodal extrapolation in the CFcase, we start from scratch
+After the add of the nodal extrapolation in the CFcase, I start from scratch
 with the different AUSM choiceA12 to see how it will affects the convergence of the temperature residue.
 
 --> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/WITH_Nodal_Extrapolation/
 
 But then I realized that the solutions obtained (with or without nodal extrapolation) have an issue. 
-The shock doesn't seems to detache completely
+The shock doesn't seems to detache completely.
 
 --> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/Issue_sol.png
 
