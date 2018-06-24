@@ -7,4 +7,4 @@ Simulator.SubSystem.DataProcessing3.ProcessRate = 100
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.gradientFactor = 0.
 Simulator.SubSystem.Norm.valueNorm = -5
 # to be commented out when running non adiabatic
-Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
+#Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
