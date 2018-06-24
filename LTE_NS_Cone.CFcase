@@ -349,7 +349,7 @@ Simulator.SubSystem.CellCenterFVM.SOutlet.applyTRS          = Outlet
 Simulator.SubSystem.CellCenterFVM.SOutlet.ZeroGradientFlags = 1 1 1 1
 #
 #	-------------------
-#	Nodal extrapolation
+#	Nodal extrapolator
 #	-------------------
 Simulator.SubSystem.CellCenterFVM.Data.NodalExtrapolation = DistanceBasedGMove
 Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.NbIterAdiabatic = 0
