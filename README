@@ -2,22 +2,33 @@ ______________
 AMRI'S notes :
 --------------
 
-OBSERVATION : 
-After the add of the nodal extrapolation in the CFcase, I start from scratch
-with the different AUSM choiceA12 to see how it will affects the convergence of the temperature residue (Interactive CFL).
+After all the updates***, the current CFcase seems to work correctly.
 
---> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/WITH_Nodal_Extrapolation/
+We manage to converge :
 
-But then I realized that the solutions obtained (with or without nodal extrapolation) have an issue. 
-The shock doesn't seems to detache completely.
+- in 1rst order accuracy (classic CCFVM) : 
+>> Result path: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy
 
---> See: LTE_NS_Cone/RESULTS/FirstOrder_CCFVM/Issue_sol.png
 
-In the inter file,
-The following line seems to do nothing because we are in PUVT...
->> Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMoveRhoivt.NbIterAdiabatic = 3000
+- in 2nd order accuracy (with high order reconstruction)
+>> Result path: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_with_high_order_reconstruction
 
-We replaced it by : 
-Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.NbIterAdiabatic = 3000
 
-It is currently running... We will see how it affects the solution.
+(We're currently trying to run the CFcase on the bigger mesh -> 500K elements)
+
+_________________________________________________________________________________________________
+*** 
+1) we restarted  a converged solution from an old CFcase (sent by Miro Miro). The mesh had an issue. It was not refined arround the shock
+ because the shock refinement was tailored for a perfect gaz flow (we are here in LTE assumptions) where the nose shock was parabolic, 
+ and where the downstream shock statisfies the Taylor Maccoll condition.
+
+2) With unrefined meshes, with started from scratch 
+   >> Gambit files in: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/Empty_Unrefined_Meshes
+   For the convective space discretisation of the NS equations, we tried different ways to compute the speed of the sound in the interfaces
+   of each cells. To see the impact on the behaviour of the temperature residu. 
+   >> Results in: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITHOUT_Nodal_Extrapolation
+
+3) When we tried to converge in 2nd order accuracy, we encountered many issues. The reason was the missing line about the nodal 
+   extrapolation which allows to compute the pressure and the gradient pressure of the diffusion term in the NS equations [p126 Lani's thesis]
+
+
