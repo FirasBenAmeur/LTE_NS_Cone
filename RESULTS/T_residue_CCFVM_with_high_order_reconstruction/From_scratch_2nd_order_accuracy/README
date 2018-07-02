@@ -1,0 +1,1 @@
+In this CFcase, we started from scratch directly in second order accuracy. (interctive CFL + freezing the limiter after some iters)
