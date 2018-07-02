@@ -1,21 +1,23 @@
 ______________
 AMRI'S notes :
 --------------
+                                     --  N O W  --
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+We're currently trying to improve the convergence of the CFcase by building a function to 
+change the CFL in the inter file -> unrefined mesh 10K elements --> TAKES TIME...
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+
 
 After all the updates*** (for more details see down below ___), the current CFcase seems to work correctly.
 
 We manage to converge :
 
 - in 1rst order accuracy (classic CCFVM) : 
->> Result path: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy
+>> Result path: LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy
 
 
 - in 2nd order accuracy (with high order reconstruction)
->> Result path: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_with_high_order_reconstruction
-
-
-(We're currently trying to run the CFcase and try to find the best way to improve the convergence by 
-changing the CFL in the inter file on the bigger mesh -> 500K elements) --> TAKES TIME...
+>> Result path: LTE_NS_Cone/RESULTS/T_residue_CCFVM_with_high_order_reconstruction
 
 _________________________________________________________________________________________________
 *** 
@@ -47,7 +49,7 @@ ________________________________________________________________________________
     The best choice for the convective speed of sound computation seemed to be the ChoiceA12 = 2. 
     That is why we ran the cases in 2nd order of accuracy with this choice. 
  ---------------------------------------------------------------------------------------------------  
- 5) In the second order, we tried three ways to reach the convergence to compare which one was the faster.
+ 5) In the second order, we tried three different ways to reach the convergence to compare which one was the faster.
     Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_with_high_order_reconstruction/
     observation: It seems to be better to converge entirely in 1srt order accuracy before using the high order reconstruction 
     (16000 iters vs. ~= 20000 for the other attempts)
