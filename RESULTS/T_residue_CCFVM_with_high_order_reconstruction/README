@@ -1,5 +1,4 @@
-In these executions we use the high order reconstruction to the CCFVM that approximate each cells with a piecewise polynomial of degree 1
-instead of a constant (CCFVM classic). This method based on a more general class of methods called the discontinuous Galerkin method increases the accuracy of the scheme in space. 
+In these executions we use the high order reconstruction to the CCFVM that approximates each cells with a piecewise polynomial of degree 1 instead of a constant (CCFVM classic). This method based on a more general class of methods called the discontinuous Galerkin method increases the accuracy of the scheme in space. 
 
 CCFVM accuracy -> O(h)
 CCFVM with high order reconstruction -> O(h^2)
