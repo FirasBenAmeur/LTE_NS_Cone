@@ -26,7 +26,7 @@ ________________________________________________________________________________
    flow (we are here in LTE assumptions) where the nose shock was parabolic, and where the downstream 
    shock satisfies the Taylor Maccoll condition.
 ---------------------------------------------------------------------------------------------------
-2) With unrefined meshes, with starting from scratch 
+2) With unrefined meshes, we started from scratch 
    >> Gambit files in: LTE_NS_Cone/tree/master/Empty_Unrefined_Meshes
    For the convective space discretisation of the NS equations, we tried different ways to compute the
    speed of the sound in the interfaces of each cells. To see the impact on the behaviour of the temperature
