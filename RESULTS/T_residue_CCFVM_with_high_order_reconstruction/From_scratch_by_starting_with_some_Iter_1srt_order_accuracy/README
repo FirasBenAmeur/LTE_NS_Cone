@@ -1,0 +1,2 @@
+In this CFcase, we ran with 1rst order accuracy for some iters (without reaching convergence) and 
+then we added the high order reconstruction. 
