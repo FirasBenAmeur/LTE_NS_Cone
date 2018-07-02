@@ -3,14 +3,16 @@ AMRI'S notes :
 --------------
                                      --  N O W  --
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
-We're currently trying to improve the convergence of the CFcase by building a function for 
-the CFL --> unrefined mesh 10K elements --> TAKES TIME...
+- We're currently trying to improve the convergence of the CFcase by building a function for 
+  the CFL --> unrefined mesh 10K elements 
+  
+- Try to converge with the 500K mesh --> IT TAKES TIME...
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 
 After all the updates*** (for more details see down below ___), the current CFcase seems to work correctly.
 
-We manage to converge :
+We manage to converge (with the unrefined mesh of 10K elements) :
 
 - in 1rst order accuracy (classic CCFVM) : 
 >> Result path: LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy
