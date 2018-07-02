@@ -18,17 +18,35 @@ We manage to converge :
 
 _________________________________________________________________________________________________
 *** 
-1) we restarted  a converged solution from an old CFcase (sent by Miro Miro). The mesh had an issue. It was not refined arround the shock
- because the shock refinement was tailored for a perfect gaz flow (we are here in LTE assumptions) where the nose shock was parabolic, 
- and where the downstream shock statisfies the Taylor Maccoll condition.
+1) we restarted  a converged solution from an old CFcase (sent by Miro Miro). The mesh had an issue. 
+   It was not refined around the shock because the shock refinement was tailored for a perfect gas 
+   flow (we are here in LTE assumptions) where the nose shock was parabolic, and where the downstream 
+   shock satisfies the Taylor Maccoll condition.
 
-2) With unrefined meshes, with started from scratch 
-   >> Gambit files in: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/Empty_Unrefined_Meshes
-   For the convective space discretisation of the NS equations, we tried different ways to compute the speed of the sound in the interfaces
-   of each cells. To see the impact on the behaviour of the temperature residu. 
-   >> Results in: https://github.com/SanaAmri/LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITHOUT_Nodal_Extrapolation
+2) With unrefined meshes, with starting from scratch 
+   >> Gambit files in: LTE_NS_Cone/tree/master/Empty_Unrefined_Meshes
+   For the convective space discretisation of the NS equations, we tried different ways to compute the speed 
+   of the sound in the interfaces of each cells. To see the impact on the behaviour of the temperature residu. 
+   >> Results in: LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITHOUT_Nodal_Extrapolation
 
-3) When we tried to converge in 2nd order accuracy, we encountered many issues. The reason was the missing line about the nodal 
-   extrapolation which allows to compute the pressure and the gradient pressure of the diffusion term in the NS equations [p126 Lani's thesis]
+3) When we tried to converge in 2nd order accuracy, we encountered many issues. The reason was the missing lines
+   about the nodal extrapolation which allows computing the pressure and the gradient pressure of the diffusion's term
+   in the NS equations [p126 Lani's thesis]
+   We start over the number 2) step to compare the convergence by adding the nodal extrapolation
+   >> Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITH_Nodal_Extrapolation/Non_adiabatic/
+   The temperature residue seemed correct, but then by having a look at the solution, we realized that the shock wave didn't
+   detach from the nose. 
+   >> Result in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITH_Nodal_Extrapolation/Non_adiabatic/ISSUE_sol.png
+   To detach the solution, the trick is to run in an adiabatic state for some iterations and then pass to nonadiabatic. 
+   In the interfile, we were using the wrong function (DistanceBasedGMoveRhoivt instead of DistanceBasedGMove). 
+   
+ 4) After the modifications, we started over the convergence in 1rst order of accuracy. 
+    >> Results in : LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITH_Nodal_Extrapolation/NbiterAdiabatic_3000/
+    The best choice for the convective speed of sound computation seemed to be the ChoiceA12 = 2. 
+    That is why we ran the cases in 2nd order of accuracy with this choice. 
+    
+ 5) In the second order, we tried three ways to reach the convergence to compare which one was the faster.
+    Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_with_high_order_reconstruction/
+
 
 
