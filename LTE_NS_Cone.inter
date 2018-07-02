@@ -7,8 +7,8 @@ Simulator.SubSystem.NewtonIterator.Data.CFL.Interactive.CFL = 1.4
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitIter = 100000
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitRes = -4.0
 Simulator.SubSystem.DataProcessing3.ProcessRate = 100
-# >> CCFVM => gradientFactor = 0. "CCFVM 1st order"
-# >> CCFVM with high order reconstruction => gradientFactor = 1. "CCFVM 2nd order"
+# >> CCFVM => gradientFactor = 0. "CCFVM 1st order accuracy"
+# >> CCFVM with high order reconstruction => gradientFactor = 1. "CCFVM 2nd order accuracy"
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.gradientFactor = 0.
 Simulator.SubSystem.Norm.valueNorm = -5
 # >> To be commented out when running non adiabatic
