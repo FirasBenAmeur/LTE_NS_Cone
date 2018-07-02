@@ -1,1 +1,17 @@
-Nothing for now...
+In these executions we use the high order reconstruction to the CCFVM that approximate each cells with a piecewise polynomial of degree 1
+instead of a constant (CCFVM classic). This method based on a more general class of methods called the discontinuous
+Galerkin method increases the accuracy of the scheme in space. 
+
+CCFVM accuracy -> O(h)
+CCFVM with high order reconstruction -> O(h^2)
+
+This change has an impact on the solution. For the simulation of compressible flows, we tend to have oscillations near discontinuities 
+(shock waves, contact surface between each cells) -> Gibbs phenomenon
+
+In order to prevent these oscillations, in each cell, the approximate piecewise polynomial is modified [p122 Lani's thesis]
+by adding a facteur called the flux limiter. 
+
+# >> line in the inter file 
+Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitIter = 100000
+(In practice, when the convergence rate start to oscillate arround the same value, we freeze the limiter )
+
