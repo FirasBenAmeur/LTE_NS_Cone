@@ -3,8 +3,8 @@ AMRI'S notes :
 --------------
                                      --  N O W  --
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
-We're currently trying to improve the convergence of the CFcase by building a function to 
-change the CFL in the inter file -> unrefined mesh 10K elements --> TAKES TIME...
+We're currently trying to improve the convergence of the CFcase by building a function for 
+the CFL --> unrefined mesh 10K elements --> TAKES TIME...
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 
