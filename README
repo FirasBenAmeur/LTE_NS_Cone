@@ -3,10 +3,11 @@ AMRI'S notes :
 --------------
                                      --  N O W  --
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
-- We're currently trying to improve the convergence of the CFcase by building a function for 
-  the CFL --> unrefined mesh 10K elements 
+ We're currently:
+  - trying to improve the convergence of the CFcase by building a function for 
+    the CFL --> unrefined mesh 10K elements 
   
-- Try to converge with the 500K mesh --> IT TAKES TIME...
+  - running the CFcase on the  unrefined mesh of 500K elements --> IT TAKES TIME...
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 
 
