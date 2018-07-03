@@ -197,7 +197,8 @@ Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Interactive
 #	Function CFL **
 #	------------
 #Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Function
-#Simulator.SubSystem.NewtonIterator.Data.CFL.Function.Def = [TO DEFINE]
+#Simulator.SubSystem.NewtonIterator.Data.CFL.Function.Def = \
+#if(i<5000,1.0,if(i<7000,2.0,if(i<10000,4.0,if(i<12000,1.0,if(i<16000,2.0,4.0)))))
 #
 #	-------------	
 #	Newton Method
