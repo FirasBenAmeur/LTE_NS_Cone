@@ -7,7 +7,7 @@
 #  |______________________|___________________________________|
 #  |  SPACE METHOD        |   CellCenteredFVM                 |
 #  |                      |___________________________________|
-#  |                      |accuracy: 2nd order Reconstruction |
+#  |                      |accuracy: high order Reconstruction|
 #  |                      |___________________________________|
 #  |                      |convective flux: AUSMPlus2D        |
 #  |                      |___________________________________|
@@ -23,12 +23,14 @@
 # --   It is to be used for stability computations   --          #
 #                                                    # # # # # # # 
 
-# 	SECTIONS  : =====
-#	SUBSECTION: -----
-#	NOTES	  : >>
+# SECTIONS  : ctrl + f + '====='
+#	SUBSECTION: ctrl + f + '-----'
+#	NOTES	    : ctrl + f + '>>'
+# PARAMETERS TO MODIFY WHEN YOU DEFINE A FUNCTION FOR THE CFL AND THE GRADIENT
+# INSTEAD OF USING THE INTERFILE MANUALLY -> ctrl + f + '**'
 
 ##### 	=======================================
-###	E N V I R O N M E N T   O P T I O N S
+###	    E N V I R O N M E N T   O P T I O N S
 ## 
 #
 #	-------------------
@@ -50,7 +52,7 @@ Simulator.Paths.WorkingDir = ./
 Simulator.Paths.ResultsDir = ./RESULTS
 #
 # 	----------------------------
-# 	Interactive settings details (filename and reading rate)
+# 	Interactive settings details (filename and reading rate) **
 #	----------------------------
 Simulator.SubSystem.InteractiveParamReader.FileName = ./LTE_NS_Cone.inter
 Simulator.SubSystem.InteractiveParamReader.readRate = 10
@@ -70,7 +72,7 @@ Simulator.SubSystem.Norm.valueNorm = -3.0
 
 
 ##### 	=======================================
-###	P H Y S I C A L   M O D E L
+###	    P H Y S I C A L   M O D E L
 ## 
 #
 Simulator.SubSystem.Default.PhysicalModelType = NavierStokes2D
@@ -92,7 +94,7 @@ Simulator.SubSystem.NavierStokes2D.Mutation2OLD.thermCondAlgo = Direct
 
 
 ##### 	=======================================
-###	O U T P U T   F O R M A T
+###	    O U T P U T   F O R M A T
 ## 
 #
 #	------------------------------------------------
@@ -125,7 +127,7 @@ Simulator.SubSystem.Tecplot.WriteSol = ParWriteSolutionBlock
 
 
 ##### 	=======================================
-###	M E S H   C R E A T O R
+###	    M E S H   C R E A T O R
 ## 
 #
 #	-----------------------------
@@ -182,17 +184,17 @@ Simulator.SubSystem.CFmeshFileReader.Data.ScalingFactor = 1000
 
 
 ##### 	=======================================
-###	C O N V E R G E N C E   M E T H O D
+###	    C O N V E R G E N C E   M E T H O D
 ## 
 #
 #	---------------	
-#	Interactive CFL
+#	Interactive CFL **
 #	---------------
-## The CFL can be changed interactively in [file.inter]
+## The CFL can be changed interactively in [file.inter] 
 Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Interactive
 #
 #	------------
-#	Function CFL
+#	Function CFL **
 #	------------
 #Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Function
 #Simulator.SubSystem.NewtonIterator.Data.CFL.Function.Def = [TO DEFINE]
@@ -216,7 +218,7 @@ Simulator.SubSystem.NewtonIterator.Data.Max.minValues = 0. 0. 0. 0. # ??? ONLY C
 #####
 
 ##### 	=======================================
-###	L I N E A R   S Y S T E M   S O L V E R
+###	    L I N E A R   S Y S T E M   S O L V E R
 ## 
 #
 #	-----
@@ -232,7 +234,7 @@ Simulator.SubSystem.NewtonIteratorLSS.Data.RelativeTolerance = 1e-4
 
 
 ##### 	=======================================
-###	S P A C E   M E T H O D
+###	    S P A C E   M E T H O D
 ## 
 #
 #	-----------------
@@ -254,8 +256,8 @@ Simulator.SubSystem.CellCenterFVM.Restart = false
 # >> AUSM flux splitter 
 Simulator.SubSystem.CellCenterFVM.Data.FluxSplitter = AUSMPlus2D
 # >> choiceA12 := Speed of the sound through the interface of 
-# >>		  each cells (1, 2, 3, 5, 6)
-Simulator.SubSystem.CellCenterFVM.Data.AUSMPlus2D.choiceA12 = 1
+# >>		  each cells (1, 2, 3, 5)
+Simulator.SubSystem.CellCenterFVM.Data.AUSMPlus2D.choiceA12 = 2
 #
 #	---------------------
 #	Axisymmetric settings
@@ -291,13 +293,16 @@ Simulator.SubSystem.CellCenterFVM.Data.PolyRec = LinearLS2D
 # >> It can be also directly modified in the interactive file
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.gradientFactor = 0. 
 Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitRes = -4.0
+## >> Define the number of iters for which the limiter is activated **
+#Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitIter = 18000 
 Simulator.SubSystem.CellCenterFVM.Data.Limiter = Venktn2D
 Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.coeffEps = 1.0
 Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.useFullStencil = true
 Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.length = 1.0
+# >> Set the gradient automatically : 2D => 4 vars **
 #Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.Vars = i
 #Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.Def =  \
-#               		if(i<10000,0.,1.) \
+#       if(i<10000,0.,1.) \
 #				if(i<10000,0.,1.) \
 #				if(i<10000,0.,1.) \
 #				if(i<10000,0.,1.)
