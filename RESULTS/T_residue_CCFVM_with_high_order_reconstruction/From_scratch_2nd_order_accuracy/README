@@ -1,3 +1,0 @@
-In this CFcase, we started from scratch directly in second order accuracy. (interactive CFL + freezing the limiter after some iters)
-Temperature residue: conv_temp_2ndorder_from_scratch.png
-Solution: soltemp_fromscratch_2nd_order.png
