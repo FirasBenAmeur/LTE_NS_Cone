@@ -16,7 +16,7 @@
 #  |                      |source term: NavierStokes2DAxiST   |
 #  |______________________|___________________________________|
 #  |  CONVERGENCE METHOD  |  NewtonIterator                   |
-#  |  (time method)       |  (Backward Euler integration)     |                           |
+#  |  (time method)       |  (Backward Euler integration)     |                           
 #  |______________________|___________________________________|  
 #  Mach = 6.29 -  U_inf=4244m/s)  - Isothermal wall = 293K       
 #  Freestream temperature = 1192K - Pressure = 6880Pa            #
