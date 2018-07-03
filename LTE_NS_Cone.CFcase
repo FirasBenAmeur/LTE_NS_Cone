@@ -24,8 +24,8 @@
 #                                                    # # # # # # # 
 
 # SECTIONS  : ctrl + f + '====='
-#SUBSECTION: ctrl + f + '-----'
-#NOTES	    : ctrl + f + '>>'
+# SUBSECTION: ctrl + f + '-----'
+# NOTES	    : ctrl + f + '>>'
 # PARAMETERS TO MODIFY WHEN YOU DEFINE A FUNCTION FOR THE CFL AND THE GRADIENT
 # INSTEAD OF USING THE INTERFILE MANUALLY -> ctrl + f + '**'
 
