@@ -1,7 +1,7 @@
 ______________
 AMRI'S notes :
 --------------
-                                     --  N O W  --
+                             --  C U R R E N T   W O R K  --
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
  We're currently, with the unrifined mesh of 10K elements:
   - trying to improve the convergence of the CFcase by building a function for 
