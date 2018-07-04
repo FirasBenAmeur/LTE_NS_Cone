@@ -53,7 +53,7 @@ ________________________________________________________________________________
     That is why we ran the cases in 2nd order of accuracy with this choice. 
  -------------------------------------------------------------------------------------------------  
  5) In the second order, we tried three different ways to reach the convergence to compare which one was the faster.
-    Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_with_high_order_reconstruction/
+    Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_2nd_order_accuracy/
     observation: It seems to be better to converge entirely in 1srt order accuracy before using the high order reconstruction 
     (16000 iters vs. ~= 20000 for the other attempts)
 
