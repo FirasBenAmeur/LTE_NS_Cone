@@ -3,7 +3,7 @@ AMRI'S notes :
 --------------
                                      --  N O W  --
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
- We're currently:
+ We're currently, with the unrifined mesh of 10K elements:
   - trying to improve the convergence of the CFcase by building a function for 
     the CFL --> unrefined mesh 10K elements 
   
@@ -32,14 +32,14 @@ ________________________________________________________________________________
 2) With unrefined meshes, we started from scratch 
    >> Gambit files in: LTE_NS_Cone/tree/master/Empty_Unrefined_Meshes
    For the convective space discretisation of the NS equations, we tried different ways to compute the
-   speed of the sound in the interfaces of each cells. To see the impact on the behaviour of the temperature
-   residu. 
+   speed of the sound in the interfaces of each cells [COOLFluiD/plugins/FiniteVolumeMHD/AUSMFluxMHD.ci].
+   To see the impact on the behaviour of the temperature residue. 
    >> Results in: LTE_NS_Cone/tree/master/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITHOUT_Nodal_Extrapolation
 --------------------------------------------------------------------------------------------------
 3) When we tried to converge in 2nd order accuracy, we encountered many issues. The reason was the missing
-   lines about the nodal extrapolation which allows computing the pressure and the gradient pressure of the
+   lines about the nodal extrapolation which allows to compute the pressure and the gradient pressure of the
    diffusion's term in the NS equations [p126 Lani's thesis]
-   We start over the number 2) step to compare the convergence by adding the nodal extrapolation
+   We started over the number 2) step to compare the convergence by adding the nodal extrapolation
    >> Results in: LTE_NS_Cone/RESULTS/T_residue_CCFVM_1srt_order_accuracy/WITH_Nodal_Extrapolation/Non_adiabatic/
    The temperature residue seemed correct, but then by having a look at the solution, we realized that the shock
    wave didn't detach from the nose. 
