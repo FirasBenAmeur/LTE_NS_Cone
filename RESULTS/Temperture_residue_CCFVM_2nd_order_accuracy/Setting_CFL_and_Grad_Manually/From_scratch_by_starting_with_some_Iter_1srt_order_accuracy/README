@@ -1,2 +1,0 @@
-Unrefined mesh with 10K elements 
-Starting from scratch in first order accuracy (in the [.inter] file -> grad = 0.) for 8000 iterations and then changing the setting to get a second order accuracy (grad =1.)

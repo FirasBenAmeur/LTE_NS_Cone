@@ -1,3 +1,0 @@
-Unrefined mesh with 10K elements 
-Restarting from a solution that has already converged in CCFVM (First order accuracy), we change the gradient to 1. to converge in second order accuracy.
-
