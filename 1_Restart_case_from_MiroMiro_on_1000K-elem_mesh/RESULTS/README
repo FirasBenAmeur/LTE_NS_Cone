@@ -12,3 +12,5 @@ equation is solved in perfect-gas conditions, not in LTE, so the angle can
 change substantially.
 In short, the shock refinement is tailored for perfect-gas flows, where the nose shock is
 parabolic, and where the downstream shock satisfies perfect-gas taylor-maccoll.
+
+(The restart mesh is not in the github because the size of the file is > 25MB)
