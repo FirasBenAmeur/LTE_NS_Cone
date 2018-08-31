@@ -1,0 +1,474 @@
+-------------------------------------------------------------
+Creating Simulation
+-------------------------------------------------------------
+Configuration of Simulator
+-------------------------------------------------------------
+-------------------------------------------------------------
+-------------------------------------------------------------
+Loading external modules
+ModuleLoader: Module libShapeFunctions is already loaded.
+Initiating environment of loaded modules
+Initiated PETSc
+-------------------------------------------------------------
+-------------------------------------------------------------
+#
+###### STARTING SUBSYSTEM [SubSystem] ######
+#
+-------------------------------------------------------------
+Building SubSystem
+Name : SubSystem
+Type : StandardSubSystem
+-------------------------------------------------------------
+#
+###### CONFIG PHASE #################
+#
+-------------------------------------------------------------
+Setting Namespace : Default
+MeshData          : Default
+PhysicalModelName : NavierStokes2D
+PhysicalModelType : NavierStokes2D
+SubSysStatus      : SubSystemStatus
+-------------------------------------------------------------
+========================================
+MutationLibrarypp::config() => start
+Tmax   = 7000
+Tmin   = 20
+deltaT = 10
+Pmax   = 400000
+Pmin   = 1000
+deltaP = 100
+GammaN = 0
+GammaO = 0
+MutationLibrarypp::config() => end
+========================================
+-------------------------------------------------------------
+Creating MeshCreator : CFmeshFileReader
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating MeshAdapterMethod : Null1
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating CouplerMethod : Null2
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating SpaceMethod : CellCenterFVM
+CellCenterFVM: configureGeoDataComputer()
+CellCenterFVM: configureFluxSplitter()
+CellCenterFVM: configureDiffusiveFluxComputer()
+CellCenterFVM: configureVarSetTransformers()
+CellCenterFVM: configureJacobianLinearizer()
+CellCenterFVM: configurePolyReconstructor()
+CellCenterFVM: configureLimiter()
+CellCenterFVM: configureNodalStatesExtrapolator()
+CellCenterFVM: configureEquationFilters()
+CellCenterFVM: configureSourceTermComputer()
+CellCenterFVM: Using GeoDataComputer: FVMCC
+CellCenterFVM: Using FluxSplitter: AUSMPlus2D
+CellCenterFVM: Using Update VarSet: PuvtLTE
+CellCenterFVM: Using Solution VarSet: Cons
+CellCenterFVM: Using Diffusive VarSet: PuvtLTE
+CellCenterFVM: Using Linear VarSet: PuvtLTE
+CellCenterFVM: Using NodalStatesExtrapolator: DistanceBasedGMove
+SETUP type = LeastSquareP1Setup
+SETUP name = Setup1
+SETUP type = LeastSquareP1UnSetup
+SETUP name = UnSetup1
+PREPROCESS type = Null
+PREPROCESS name = PreProcess1
+CellCenterFVM: Using ComputeRHS: NumJacobFast
+INIT type = InitState
+INIT name = InField
+BC type = NoSlipWallIsothermalNSvtFVMCC
+BC name = Wall
+BC type = MirrorVelocityFVMCC
+BC name = Mirror
+BC type = SuperOutletFVMCC
+BC name = SOutlet
+BC type = SuperInletFVMCC
+BC name = SInlet
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating ErrorEstimatorMethod : Null4
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating LinearSystemSolver : NewtonIteratorLSS
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating ConvergenceMethod : NewtonIterator
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating DataProcessing : Null7
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating DataProcessing : Null8
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating OutputFormatter : Tecplot
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating OutputFormatter : CFmesh
+-------------------------------------------------------------
+WARNING : Unused User Configuration Arguments:
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.Discontinuous true
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.SolutionOrder P0
+
+#
+###### SOCKETS PLUG PHASE ###########
+#
+#
+###### BUILD PHASE ##################
+#
+-------------------------------------------------------------
+Setting up all PhysicalModel's
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+Setting up Physical Model [NavierStokes2D]
+MutationLibrarypp::setup() => start
+>> In setup: Molar mass of each species:
+>> In setup: m_shiftHO = 0
+>> In setup: _lkpVarNames.size() = 4
+>> In setup::Inside the loop IF(_lkpVarNames.size() > 0): 
+>> -----> BEFORE the call of setLookUpTables()... 
+>> In SetLookUpTables():_lkpVarNames[0] == 'a'  
+>> In SetLookUpTables():_lkpVarNames[1] == 'e' 
+>> In SetLookUpTables():_lkpVarNames[2] == 'h' 
+>> In SetLookUpTables():_lkpVarNames[3] == 'd'  
+>> In SetLookUpTables(): -------> BEFORE the call of setTables() 
+>> In setTables(): Creating and printing the mapping CFmap... 
+a => 0
+e => 1
+h => 2
+d => 3
+>> In setTables(): After sorting the mapping CFmap... 
+a => 0
+d => 3
+e => 1
+h => 2
+>> In setTables(): nbT = 699
+>> 	           __________________________________
+>> In setTables(): Linear scale for the temperature
+>> In setTables(): Tmin           = 20
+>> In setTables(): Tmax           = 7000
+>> In setTables(): deltaT         = 10
+>> In setTables(): nb subinterval = 699
+>> In setTables(): vT[0] = 20,  vT[1] = 30... vT[698] = 7000
+>> In setTables(): nbP_lin = 3991
+>> 	           __________________________________
+>> In setTables(): Linear scale for the pressure
+>> In setTables(): Pmin           = 1000
+>> In setTables(): Pmax           = 400000
+>> In setTables(): deltaP         = 100
+>> In setTables(): nb subinterval = 3991
+>> In setTables(): vP[0] = 1000,  vP[1] = 1100,  vP[2] = 1200... vP[3990] = 400000
+>> 	           ____________________________________________
+>> In setTables(): inserting the values in the _lookUpTables (Takes time...) 
+>> In SetLookUpTables(): -------> AFTER the call of setTables() 
+>> -----> AFTER the call of setLookUpTables() 
+>> -----> Boolean _useLookUpTable = 1
+>> In setup::END loop IF
+MutationLibrarypp::setup() => end
+-------------------------------------------------------------
+-------------------------------------------------------------
+Setting up all MeshCreator's
+-------------------------------------------------------------
+-------------------------------------------------------------
+Building MeshData's
+-------------------------------------------------------------
+-------------------------------------------------------------
+MeshCreator [CFmeshFileReader] Generate or Read Mesh
+
+Memory usage before building mesh: 90.2305 MB
+
+Reading Gambit2CFmesh took: 0.12018s
+Conversion Gambit2CFmesh took: 0.0248s
+Original NbEquations = 4
+Final NbEquations    = 4
+Memory Usage before assembling connectivity: 91.1445 MB
+ParCFmeshFileReader::moveElementData() => start memory usage: 91.1445 MB
+ParCFmeshFileReader::buildOverlapLayers()
+ParCFmeshFileReader::moveElementData() => end memory usage: 92.6445 MB
+Reading data from cone_mesh_10K.CFmesh took 0.048121s
+Memory Usage after mesh reading: 93.9336 MB
+Building TRS: InnerCells
+nbCells = 9522, nbStates = 9522
+FVMCC BoundaryFaces [414]
+FVMCC Max Total NbFaces [38088]
+FVMCC Total nb faces [19251]
+FVMCC Inner nb faces [18837]
+FVMCC Boundary and Partition faces [414]
+Building TRS: InnerFaces
+FVM Faces created : 19251
+Building TRS: Wall
+Built TRS named Wall
+Building TRS: Outlet
+Built TRS named Outlet
+Building TRS: Symmetry
+Built TRS named Symmetry
+Building TRS: Inlet
+Built TRS named Inlet
+Number of partition faces detected = 0
+Building TRS: PartitionFaces
+Built PartitionFaces TRS 
+Building MeshData from ./cone_mesh_10K.CFmesh took 0.065912s
+Building the mesh took: 0.066491s
+
+Memory usage after building mesh: 95.3047 MB
+-------------------------------------------------------------
+-------------------------------------------------------------
+MeshCreator [CFmeshFileReader] Building Mesh Data
+-------------------------------------------------------------
+Building TRS info for MeshData in Namespace Default
+#
+###### SETUP PHASE ##################
+#
+-------------------------------------------------------------
+Setting up DataPreProcessing's
+-------------------------------------------------------------
+Setting up MeshAdapterMethod's
+-------------------------------------------------------------
+Setting up ConvergenceMethod's
+-------------------------------------------------------------
+Setting up LinearSystemSolver's
+-------------------------------------------------------------
+Setting up SpaceMethod's
+FVMCCGeoDataComputer::computeCellVolumes() = > [0] negative volumes detected
+-------------------------------------------------------------
+Setting up ErrorEstimatorMethod's
+-------------------------------------------------------------
+Setting up DataPostProcessing's
+-------------------------------------------------------------
+Setting up CouplerMethod's
+-------------------------------------------------------------
+CouplerMethod's setup
+-------------------------------------------------------------
+CouplerMethod's write interface coordinates
+-------------------------------------------------------------
+CouplerMethod's read interface coordinates
+-------------------------------------------------------------
+CouplerMethod's match mesh and write
+-------------------------------------------------------------
+CouplerMethod's read match mesh
+-------------------------------------------------------------
+Setting up OutputFormatter's
+
+-------------------------------------------------------------
+Initializing solution
+-------------------------------------------------------------
+Initializing solution of method [CellCenterFVM]
+-------------------------------------------------------------
+Writing initial solution ... 
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_0.plt
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_0.surf.plt
+Writing took 0.589016s
+ParCFmeshFileWriter::writeToFile() => IO rank is 0
+Element written 
+Nodes written 
+States written 
+Writing solution to: ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output.CFmesh
+Writing took 0.096565s
+-------------------------------------------------------------
+#
+###### RUN PHASE ####################
+#
+KSP convergence reached at iteration: 2
+Iter: 1       Res: [    4.9524797 3.6996799 2.8296064 4.171594 ]  CFL: 0.5      CPUTime: 2.103765 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 2       Res: [    4.5932476 3.5427666 2.7686339 3.6999236 ]  CFL: 0.5      CPUTime: 4.162715 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 3       Res: [    4.4815838 3.3579875 2.7491208 3.5343264 ]  CFL: 0.5      CPUTime: 6.322639 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 4       Res: [    4.4246342 3.2393122 2.7372214 3.4192382 ]  CFL: 0.5      CPUTime: 8.392624 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 5       Res: [    4.3891058 3.1561486 2.7255223 3.3330989 ]  CFL: 0.5      CPUTime: 10.463232 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 6       Res: [    4.3636491 3.0919725 2.7151845 3.2652259 ]  CFL: 0.5      CPUTime: 14.26746 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 7       Res: [    4.344036 3.0400994 2.7062753 3.2091509 ]  CFL: 0.5      CPUTime: 18.146699 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 8       Res: [    4.3288281 2.9972223 2.6984349 3.1615114 ]  CFL: 0.5      CPUTime: 22.014619 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 9       Res: [    4.3172657 2.9613787 2.6912339 3.120518 ]  CFL: 0.5      CPUTime: 25.885117 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 10      Res: [    4.3085152 2.9313137 2.684312 3.0842463 ]  CFL: 0.5      CPUTime: 29.7541  Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 11      Res: [    4.3022389 2.9060787 2.6774433 3.0522397 ]  CFL: 0.5      CPUTime: 33.625763 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 12      Res: [    4.2978556 2.8849341 2.6704153 3.0232563 ]  CFL: 0.5      CPUTime: 37.488783 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 13      Res: [    4.2952074 2.8673306 2.6632083 2.9971976 ]  CFL: 0.5      CPUTime: 41.361168 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 14      Res: [    4.2939636 2.8527929 2.6558025 2.9733296 ]  CFL: 0.5      CPUTime: 45.233396 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 15      Res: [    4.2939276 2.8409335 2.6482416 2.9516427 ]  CFL: 0.5      CPUTime: 49.100046 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 16      Res: [    4.2949024 2.8314177 2.6405891 2.9316904 ]  CFL: 0.5      CPUTime: 52.966307 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 17      Res: [    4.2972679 2.8205441 2.6326381 2.9157457 ]  CFL: 0.5      CPUTime: 56.520358 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 18      Res: [    4.3008335 2.8090349 2.6245699 2.9040363 ]  CFL: 0.5      CPUTime: 58.63337 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 19      Res: [    4.3048128 2.7991383 2.6167821 2.8938903 ]  CFL: 0.5      CPUTime: 60.757001 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 20      Res: [    4.3090159 2.7905637 2.6094643 2.8845938 ]  CFL: 0.5      CPUTime: 62.873475 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 21      Res: [    4.3130358 2.7830683 2.6027397 2.8752924 ]  CFL: 0.5      CPUTime: 64.986065 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 22      Res: [    4.3167931 2.7764578 2.5967191 2.866046 ]  CFL: 0.5      CPUTime: 67.104745 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 23      Res: [    4.3199613 2.7706006 2.5914566 2.8560713 ]  CFL: 0.5      CPUTime: 69.231864 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 24      Res: [    4.3229451 2.7636158 2.5876378 2.8474972 ]  CFL: 0.5      CPUTime: 71.988102 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 25      Res: [    4.3254143 2.7571 2.584605 2.8384232 ]  CFL: 0.5      CPUTime: 74.196243 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 26      Res: [    4.3272751 2.7506385 2.5822532 2.8291532 ]  CFL: 0.5      CPUTime: 76.369417 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 27      Res: [    4.3287515 2.7443066 2.5804277 2.8198295 ]  CFL: 0.5      CPUTime: 78.762967 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 28      Res: [    4.329678 2.7380317 2.578974 2.8102831 ]  CFL: 0.5      CPUTime: 80.881401 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 29      Res: [    4.3302582 2.7318304 2.577796 2.8008081 ]  CFL: 0.5      CPUTime: 83.008101 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 30      Res: [    4.3303567 2.7256724 2.5767201 2.7912694 ]  CFL: 0.5      CPUTime: 85.135995 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 31      Res: [    4.330093 2.719569 2.575669 2.7816368 ]  CFL: 0.5      CPUTime: 87.27618 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 32      Res: [    4.329477 2.7134243 2.5744351 2.7723247 ]  CFL: 0.5      CPUTime: 89.411546 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 33      Res: [    4.3286941 2.7072139 2.5733674 2.763835 ]  CFL: 0.5      CPUTime: 91.544365 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 34      Res: [    4.3275302 2.7010165 2.5721286 2.7551959 ]  CFL: 0.5      CPUTime: 93.674984 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 35      Res: [    4.3260995 2.6948161 2.5707394 2.7468519 ]  CFL: 0.5      CPUTime: 95.803452 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 36      Res: [    4.3244835 2.6886152 2.5691753 2.7385848 ]  CFL: 0.5      CPUTime: 97.938289 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 37      Res: [    4.3226148 2.682413 2.5674523 2.7303159 ]  CFL: 0.5      CPUTime: 100.069  Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 38      Res: [    4.320548 2.6762291 2.5655887 2.722294 ]  CFL: 0.5      CPUTime: 102.19532 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 39      Res: [    4.318306 2.6700378 2.563569 2.7143219 ]  CFL: 0.5      CPUTime: 104.33103 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 40      Res: [    4.3158264 2.6638688 2.5614281 2.7064191 ]  CFL: 0.5      CPUTime: 106.4605 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 41      Res: [    4.3132737 2.6576878 2.5593424 2.6987526 ]  CFL: 0.5      CPUTime: 108.58768 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 42      Res: [    4.3105851 2.6515016 2.5573371 2.6916225 ]  CFL: 0.5      CPUTime: 110.7175 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 43      Res: [    4.3077352 2.6453211 2.5553208 2.6845285 ]  CFL: 0.5      CPUTime: 112.84713 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 44      Res: [    4.304804 2.6391601 2.5531129 2.6775575 ]  CFL: 0.5      CPUTime: 114.98096 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 45      Res: [    4.3018145 2.6330254 2.5507696 2.6705584 ]  CFL: 0.5      CPUTime: 117.11082 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 46      Res: [    4.2986919 2.6269076 2.5483422 2.6636488 ]  CFL: 0.5      CPUTime: 119.23694 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 47      Res: [    4.2955453 2.6208282 2.5459245 2.6567866 ]  CFL: 0.5      CPUTime: 121.37131 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 48      Res: [    4.292345 2.6147921 2.5434933 2.6499992 ]  CFL: 0.5      CPUTime: 123.49977 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 49      Res: [    4.2890297 2.6088046 2.5410673 2.6431113 ]  CFL: 0.5      CPUTime: 125.62655 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 50      Res: [    4.2857411 2.6028595 2.5387635 2.6364267 ]  CFL: 0.5      CPUTime: 127.75249 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 51      Res: [    4.2825331 2.5969784 2.5367133 2.6301248 ]  CFL: 0.5      CPUTime: 129.88834 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 52      Res: [    4.2793791 2.5911523 2.5348143 2.6239896 ]  CFL: 0.5      CPUTime: 132.02079 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 53      Res: [    4.2763182 2.5853742 2.5329739 2.617927 ]  CFL: 0.5      CPUTime: 134.14911 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 54      Res: [    4.2733807 2.5796667 2.5311664 2.6119769 ]  CFL: 0.5      CPUTime: 136.27799 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 55      Res: [    4.2706925 2.5740396 2.5294055 2.6062377 ]  CFL: 0.5      CPUTime: 138.4125 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 56      Res: [    4.2682123 2.5684917 2.5275379 2.6004362 ]  CFL: 0.5      CPUTime: 140.54314 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 57      Res: [    4.2659161 2.5630326 2.5255607 2.5946538 ]  CFL: 0.5      CPUTime: 142.67064 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 2
+Iter: 58      Res: [    4.2639004 2.5576614 2.5235532 2.5889207 ]  CFL: 0.5      CPUTime: 144.81209 Mem: 123.754 MB
+
+KSP convergence reached at iteration: 0
+Iter: 59      Res: [    -1.7976931e+308 -1.7976931e+308 -1.7976931e+308 -1.7976931e+308 ]  CFL: 0.5      CPUTime: 146.93511 Mem: 123.754 MB
+
+SubSystem WallTime: 147.077s
+#
+###### UNSETUP PHASE ################
+#
+Total Number Iter: 59 Reached Residual: -1.79769e+308 and took: 2 min 26.9352 sec
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_59.plt
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_59.surf.plt
+Writing took 0.649932s
+ParCFmeshFileWriter::writeToFile() => IO rank is 0
+Nodes written 
+States written 
+Writing solution to: ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output.CFmesh
+Writing took 0.099702s
+-------------------------------------------------------------
+#
+###### SOCKETS UNPLUG PHASE #########
+#
+#
+###### DESTRUCTION SUBSYSTEM PHASE #########
+#
+Terminated PETSc
+-------------------------------------------------------------
+COOLFluiD Environment Terminated
+-------------------------------------------------------------

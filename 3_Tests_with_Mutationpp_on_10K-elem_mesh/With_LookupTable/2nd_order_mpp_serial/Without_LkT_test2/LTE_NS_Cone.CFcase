@@ -1,0 +1,402 @@
+# # # # # .CFcase   F I L E - Simulation of an Axisymmetric cone
+#   __________________________________________________________
+#  |   PHYSICAL MODEL     |   NavierStokes2D with physical    |
+#  |                      |   equilibrium for air5            |
+#  |______________________|___________________________________|
+#  |  MUTATION VERSION    |   Mutationpp                      |
+#  |______________________|___________________________________|
+#  |  SPACE METHOD        |   CellCenteredFVM                 |
+#  |                      |___________________________________|
+#  |                      |accuracy: 2nd order Reconstruction |
+#  |                      |___________________________________|
+#  |                      |convective flux: AUSMPlus2D        |
+#  |                      |___________________________________|
+#  |                      |diffusive flux: NavierStokes       |
+#  |                      |___________________________________|
+#  |                      |source term: NavierStokes2DAxiST   |
+#  |______________________|___________________________________|
+#  |  CONVERGENCE METHOD  |  NewtonIterator                   |
+#  |  (time method)       |  (Backward Euler integration)     |                           
+#  |______________________|___________________________________|  
+#  Mach = 6.29 -  U_inf=4244m/s)  - Isothermal wall = 293K       
+#  Freestream temperature = 1192K - Pressure = 6880Pa            #
+# --   It is to be used for stability computations   --          #
+#                                                    # # # # # # # 
+
+# SECTIONS  : =====
+#	SUBSECTION: -----
+#	NOTES	  : >>
+
+##### 	=======================================
+###	E N V I R O N M E N T   O P T I O N S
+## 
+#
+#	-------------------
+#	Test Configurations
+#	-------------------
+CFEnv.ExceptionLogLevel    = 1000
+CFEnv.ExceptionDumps       = true
+CFEnv.ExceptionOutputs     = true
+#
+# 	------------------
+#	Simulation Modules
+#	------------------
+Simulator.Modules.Libs = libShapeFunctions libCFmeshFileWriter libCFmeshFileReader libTecplotWriter libNavierStokes libLTE libNEQ libFiniteVolume libNewtonMethod libFiniteVolumeNavierStokes libFiniteVolumeNEQ libGambit2CFmesh libTecplot2CFmesh libPetscI libMutationppI libAeroCoefFVM libAeroCoefFVMNEQ libGmsh2CFmesh
+#
+# 	-----------------------------
+# 	Relative paths to directories
+#	-----------------------------
+Simulator.Paths.WorkingDir = ./
+Simulator.Paths.ResultsDir = ./RESULTS_AUSM_Choice2
+#
+# 	----------------------------
+# 	Interactive settings details (filename and reading rate)
+#	----------------------------
+#Simulator.SubSystem.InteractiveParamReader.FileName = ./LTE_NS_Cone.inter
+#Simulator.SubSystem.InteractiveParamReader.readRate = 10
+# >> For more detail see section - Convergence Method -
+#
+#	---------------
+#	Stop conditions
+#	---------------
+# >> Stop the simulation after a certain number of iterations
+#Simulator.SubSystem.StopCondition = MaxNumberSteps
+#Simulator.SubSystem.MaxNumberSteps.nbSteps = 20
+#
+# >> Stop the simulation when a certain residual norm is reached
+Simulator.SubSystem.StopCondition  = Norm
+Simulator.SubSystem.Norm.valueNorm = -4.0
+#####
+
+
+##### 	=======================================
+###	P H Y S I C A L   M O D E L
+## 
+#
+Simulator.SubSystem.Default.PhysicalModelType = NavierStokes2D
+#
+# 	--------------------
+# 	Reference quantities (for LTE the variables are [p u v T])
+#	--------------------
+# >> They have to be kept >= the free stream values
+Simulator.SubSystem.NavierStokes2D.refValues = 6880 4244 4244 1192
+#
+#	------------
+#	Mutationpp
+#	------------
+Simulator.SubSystem.NavierStokes2D.PropertyLibrary = Mutationpp
+Simulator.SubSystem.NavierStokes2D.Mutationpp.mixtureName = air5
+Simulator.SubSystem.NavierStokes2D.Mutationpp.ShiftH0 = false
+#####
+
+
+##### 	=======================================
+###	O U T P U T   F O R M A T
+## 
+#
+#	------------------------------------------------
+#	Specifies the list of the requiered output files
+#	used for restarting
+#	------------------------------------------------
+Simulator.SubSystem.OutputFormat      = Tecplot CFmesh
+#
+#	-------------
+#	CFmesh writer   
+#	-------------
+Simulator.SubSystem.CFmesh.FileName   = LTE_NS_Cone_Output.CFmesh
+Simulator.SubSystem.CFmesh.SaveRate   = 1000
+Simulator.SubSystem.CFmesh.AppendIter = false  # to the CFmesh files
+#
+#	--------------
+#	Tecplot writer  
+#	--------------
+Simulator.SubSystem.Tecplot.FileName              = LTE_NS_Cone_Output.plt
+Simulator.SubSystem.Tecplot.Data.outputVar        = PuvtLTE
+Simulator.SubSystem.Tecplot.Data.printExtraValues = true
+Simulator.SubSystem.Tecplot.Data.SurfaceTRS       = Wall Symmetry Inlet Outlet
+Simulator.SubSystem.Tecplot.SaveRate              = 500
+Simulator.SubSystem.Tecplot.AppendIter = true  # to the tecplot files
+Simulator.SubSystem.Tecplot.Data.DataHandleOutput.CCSocketNames = uX uY
+Simulator.SubSystem.Tecplot.Data.DataHandleOutput.CCVariableNames =  px ux vx Tx py uy vy Ty
+Simulator.SubSystem.Tecplot.Data.DataHandleOutput.CCBlockSize = 1 1
+Simulator.SubSystem.Tecplot.WriteSol = ParWriteSolutionBlock
+#####
+
+
+##### 	=======================================
+###	M E S H   C R E A T O R
+## 
+#
+#	-----------------------------
+#	Topological Region Sets (TRS) 
+#	-----------------------------
+Simulator.SubSystem.Default.listTRS = Wall Symmetry Inlet Outlet
+#
+#	-------------
+#	CFmesh reader
+#	-------------
+Simulator.SubSystem.MeshCreator = CFmeshFileReader
+#
+# >> You should use the extension [.CFmesh] down below even if you start 
+# >> with an another format (=! CFmesh) 
+#
+Simulator.SubSystem.CFmeshFileReader.Data.FileName = cone_mesh_10K.CFmesh 
+#
+#	-----------------------------------
+#	Converting from [.msh] -> [.CFmesh]
+#	-----------------------------------
+#Simulator.SubSystem.CFmeshFileReader.Gmsh2CFmesh.Discontinuous = true
+#Simulator.SubSystem.CFmeshFileReader.Gmsh2CFmesh.SolutionOrder = P0
+#Simulator.SubSystem.CFmeshFileReader.convertFrom = Gmsh2CFmesh
+#
+#	-----------------------------------
+#	Converting from [.plt] -> [.CFmesh]
+#	-----------------------------------
+# >> [file.plt] and [file.surf.plt] must be both present.
+# >> They must have the same name.
+#Simulator.SubSystem.CFmeshFileReader.convertFrom = Tecplot2CFmesh
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.Discontinuous = true
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.SolutionOrder = P0
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.HasBlockFormat = false
+# >> Name of the boundaries in [file.surf.plt]
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.SurfaceTRS = Wall Symmetry Inlet Outlet
+# >> Name of the variables  in  your [file.plt]   
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.ReadVariables = "p" "u" "v" "T"    
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.NbElementTypes = 1
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.SkipSolution = true  # we test just the mesh 
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.Precision = 12
+# >> [file.allsurf.plt] must be present
+#Simulator.SubSystem.CFmeshFileReader.Tecplot2CFmesh.HasAllSurfFile = true
+#
+#	-----------------------------------
+#	Converting from [.neu] -> [.CFmesh]
+#	-----------------------------------
+Simulator.SubSystem.CFmeshFileReader.convertFrom = Gambit2CFmesh
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.Discontinuous = true
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.SolutionOrder = P0
+# >> The scaling factor is the number by which the mesh is REDUCED (divided)
+# >> To be used ONLY if Restart=false
+Simulator.SubSystem.CFmeshFileReader.Data.ScalingFactor = 1000
+#####
+
+
+##### 	=======================================
+###	C O N V E R G E N C E   M E T H O D
+## 
+#
+#	---------------	
+#	Interactive CFL
+#	---------------
+## The CFL can be changed interactively in [file.inter]
+#Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Interactive
+#
+#	------------
+#	Function CFL
+#	------------
+Simulator.SubSystem.NewtonIterator.Data.CFL.Value = 0.5
+Simulator.SubSystem.NewtonIterator.Data.CFL.ComputeCFL = Function
+Simulator.SubSystem.NewtonIterator.Data.CFL.Function.Def = \
+if(i<3300,0.5,if(i<3300,2.0,if(i<4000,4.0,8.0)))
+#if(i<3800,1.0,if(i<4200,2.0,if(i<6500,4.0,8.0)))
+#
+#	-------------	
+#	Newton Method
+#	-------------
+# >> Steady implicit time stepping case (Backward Euler integration)
+Simulator.SubSystem.ConvergenceMethod = NewtonIterator
+Simulator.SubSystem.NewtonIterator.Data.MaxSteps = 1
+#
+# >> Underelaxation parameter (usually it can be kept equal to 1)
+Simulator.SubSystem.NewtonIterator.StdUpdateSol.Relaxation = 1.
+# >> ID of the variable to be monitored for convergence (see StopCondition)
+# >> [p u v T]
+# >>  0 1 2 3
+Simulator.SubSystem.NewtonIterator.Data.L2.MonitoredVarID = 3
+Simulator.SubSystem.NewtonIterator.Data.FilterState = Max           # ??? ONLY CNEq ???
+Simulator.SubSystem.NewtonIterator.Data.Max.maskIDs = 1 0 0 1       # ??? ONLY CNEq ???
+Simulator.SubSystem.NewtonIterator.Data.Max.minValues = 0. 0. 0. 0. # ??? ONLY CNEq ???
+#####
+
+##### 	=======================================
+###	L I N E A R   S Y S T E M   S O L V E R
+## 
+#
+#	-----
+#	PETSc
+#	-----	
+Simulator.SubSystem.LinearSystemSolver = PETSC
+Simulator.SubSystem.LSSNames = NewtonIteratorLSS
+# >> Preconditioner types: PCILU for serial - PCASM for serial/parallel
+Simulator.SubSystem.NewtonIteratorLSS.Data.PCType = PCASM
+Simulator.SubSystem.NewtonIteratorLSS.Data.MaxIter = 1000
+Simulator.SubSystem.NewtonIteratorLSS.Data.RelativeTolerance = 1e-4
+#####
+
+
+##### 	=======================================
+###	S P A C E   M E T H O D
+## 
+#
+#	-----------------
+#	Standard settings 
+#	-----------------
+Simulator.SubSystem.SpaceMethod = CellCenterFVM
+Simulator.SubSystem.CellCenterFVM.ComputeRHS = NumJacobFast
+Simulator.SubSystem.CellCenterFVM.NumJacobFast.FreezeDiffCoeff = true
+Simulator.SubSystem.CellCenterFVM.ComputeTimeRHS = PseudoSteadyTimeRhs
+#
+#	------------------------
+# 	Activate this to restart
+#	------------------------
+Simulator.SubSystem.CellCenterFVM.Restart = false
+#
+#	-----------------------
+#	Convective flux schemes
+#	-----------------------
+# >> AUSM flux splitter 
+Simulator.SubSystem.CellCenterFVM.Data.FluxSplitter = AUSMPlus2D
+# >> choiceA12 := Speed of the sound through the interface of 
+# >>		  each cells (1, 2, 3, 5)
+Simulator.SubSystem.CellCenterFVM.Data.AUSMPlus2D.choiceA12 = 2
+#
+#	---------------------
+#	Axisymmetric settings
+#	---------------------
+Simulator.SubSystem.CellCenterFVM.Data.isAxisymm  = true
+Simulator.SubSystem.CellCenterFVM.Data.SourceTerm = NavierStokes2DAxiST
+Simulator.SubSystem.CellCenterFVM.Data.NavierStokes2DAxiST.UseAnalyticalJacob = false 
+#
+#	---------------
+#	Useful settings (DO NOT MODIFY)
+#	---------------
+Simulator.SubSystem.CellCenterFVM.Data.UpdateVar          = PuvtLTE
+Simulator.SubSystem.CellCenterFVM.Data.SolutionVar        = Cons
+Simulator.SubSystem.CellCenterFVM.Data.DiffusiveVar       = PuvtLTE
+Simulator.SubSystem.CellCenterFVM.Data.DiffusiveFlux      = NavierStokes
+Simulator.SubSystem.CellCenterFVM.Data.DerivativeStrategy = Corrected2D
+#
+#	---------------------
+#	Second order settings
+#	---------------------
+# >> Polynomial reconstruction
+Simulator.SubSystem.CellCenterFVM.SetupCom = LeastSquareP1Setup
+Simulator.SubSystem.CellCenterFVM.SetupNames = Setup1
+Simulator.SubSystem.CellCenterFVM.Setup1.stencil = FaceVertexPlusGhost
+Simulator.SubSystem.CellCenterFVM.UnSetupCom = LeastSquareP1UnSetup
+Simulator.SubSystem.CellCenterFVM.UnSetupNames = UnSetup1
+Simulator.SubSystem.CellCenterFVM.Data.PolyRec = LinearLS2D
+#
+# >> The following factor determines if the simulation is:
+# >> of first order   (gradientFactor = 0.)
+# >> of second order  (gradientFactor = 1.)
+# >> in between	      (0<= gradientFactor <=1)
+# >> It can be also directly modified in the interactive file
+#Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.gradientFactor = 0. 
+Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitRes = -4.0
+Simulator.SubSystem.CellCenterFVM.Data.Limiter = Venktn2D
+Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.limitIter = 8000
+Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.coeffEps = 1.0
+Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.useFullStencil = true
+Simulator.SubSystem.CellCenterFVM.Data.Venktn2D.length = 1.0
+Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.Vars = i
+Simulator.SubSystem.CellCenterFVM.Data.LinearLS2D.Def =  \
+      if(i<5800,0.,1.) \
+			if(i<5800,0.,1.) \
+			if(i<5800,0.,1.) \
+			if(i<5800,0.,1.)
+#
+# ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+# >> ACTIVATE the following settings 			  
+#    ONLY IF you are restarting from a 2nd order solution 
+#
+#Simulator.SubSystem.CFmeshFileReader.Data.ExtraStateVarNames = InitLimiter
+#Simulator.SubSystem.CFmeshFileReader.Data.ExtraStateVarTags = limiter
+#Simulator.SubSystem.CFmeshFileReader.Data.ExtraStateVarStrides = 4
+#Simulator.SubSystem.CellCenterFVM.Setup1.InitLimiterSocket = InitLimiter
+# ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
+#
+# >> This saves the limiter as extra variables allowing to restart from the latest saved values 
+# >> only useful if "freezing" of limiter has been already activated (LinearLS3D.limitRes > 8.0)
+Simulator.SubSystem.CFmesh.Data.ExtraStateVarNames = limiter
+Simulator.SubSystem.CFmesh.Data.ExtraStateVarStrides = 4
+#
+#	-------------
+#	Initial field
+#	-------------
+Simulator.SubSystem.CellCenterFVM.InitComds = InitState
+Simulator.SubSystem.CellCenterFVM.InitNames = InField
+Simulator.SubSystem.CellCenterFVM.InField.applyTRS = InnerFaces
+Simulator.SubSystem.CellCenterFVM.InField.Vars = x y
+Simulator.SubSystem.CellCenterFVM.InField.Def = 6880 4244 0 1192
+#
+#	-------------------
+#	Boundary conditions 
+#	-------------------
+Simulator.SubSystem.CellCenterFVM.BcComds = NoSlipWallIsothermalNSvtFVMCC MirrorVelocityFVMCC SuperOutletFVMCC SuperInletFVMCC
+# >> Names IN COOLFluiD
+Simulator.SubSystem.CellCenterFVM.BcNames = Wall Mirror SOutlet SInlet
+#
+Simulator.SubSystem.CellCenterFVM.Wall.applyTRS          = Wall
+Simulator.SubSystem.CellCenterFVM.Wall.TWall             = 293
+Simulator.SubSystem.CellCenterFVM.Wall.Adiabatic         = false
+Simulator.SubSystem.CellCenterFVM.Wall.ZeroGradientFlags = 1 0 0 0
+#
+Simulator.SubSystem.CellCenterFVM.Mirror.applyTRS          = Symmetry
+Simulator.SubSystem.CellCenterFVM.Mirror.ZeroGradientFlags = 1 0 0 1 
+#
+Simulator.SubSystem.CellCenterFVM.SInlet.applyTRS = Inlet
+Simulator.SubSystem.CellCenterFVM.SInlet.Vars     = x y
+Simulator.SubSystem.CellCenterFVM.SInlet.Def      = 6880 4244 0 1192
+#
+Simulator.SubSystem.CellCenterFVM.SOutlet.applyTRS          = Outlet
+Simulator.SubSystem.CellCenterFVM.SOutlet.ZeroGradientFlags = 1 1 1 1
+#
+#	-------------------
+#	Nodal extrapolation
+#	-------------------
+Simulator.SubSystem.CellCenterFVM.Data.NodalExtrapolation = DistanceBasedGMove
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.NbIterAdiabatic = 3000
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.TrsPriorityList = Wall Symmetry Inlet Outlet
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.TRSName = Wall
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.ValuesIdx = 1 2 3
+Simulator.SubSystem.CellCenterFVM.Data.DistanceBasedGMove.Values = 0. 0. 293.
+#
+#	-------------------
+#	Surface quantities
+#	-------------------
+# >> Surface quantities such as surface pressure, temperature, heat flux and skin friction 
+# >> can be computed and saved to one single Tecplot file with the following settings.
+Simulator.SubSystem.DataPostProcessing = DataProcessing
+Simulator.SubSystem.DataPostProcessingNames = DataProcessing3
+#
+# >> How often the post-processing is applied 
+Simulator.SubSystem.DataProcessing3.ProcessRate = 100
+#
+# >> Name of the command object implementing the post-processing
+Simulator.SubSystem.DataProcessing3.Comds = NavierStokesSkinFrictionHeatFluxCC
+#
+# >> User-defined configuration name for "NavierStokesSkinFrictionHeatFluxCC"
+Simulator.SubSystem.DataProcessing3.Names = SkinFriction
+#
+# >> Boundary TRS on which applying the post-process
+Simulator.SubSystem.DataProcessing3.SkinFriction.applyTRS = Wall
+#
+# >> Output Tecplot data file on which surface quantities will be written
+Simulator.SubSystem.DataProcessing3.SkinFriction.OutputFileWall = walldata.plt
+#
+# >> ALL the following free stream values and update variable IDs MUST BE SPECIFIED
+# >> Density
+Simulator.SubSystem.DataProcessing3.SkinFriction.rhoInf = 0.0000372
+# >> Pressure
+Simulator.SubSystem.DataProcessing3.SkinFriction.pInf = 800
+# >> x-velocity
+Simulator.SubSystem.DataProcessing3.SkinFriction.uInf = 4000.
+# >> temperature
+Simulator.SubSystem.DataProcessing3.SkinFriction.TInf = 100.
+# >> x-velocity ID
+Simulator.SubSystem.DataProcessing3.SkinFriction.UID = 1
+# >> y-velocity ID
+Simulator.SubSystem.DataProcessing3.SkinFriction.VID = 2
+# >> temperature ID
+Simulator.SubSystem.DataProcessing3.SkinFriction.TID = 3
+#####
