@@ -1,0 +1,14 @@
+This case is a restart from a previous CFmesh from Fernando Miro Miro. 
+
+The shock refinement works with two regions: (1st) close to the nose, where it refines
+around a parabola, and then (2nd) farther downstream, where it refines around a
+constant ray:
+1 The parabola can be fitted onto a series of arbitrary points, but it remains a
+parabola. The extracted shock position points that you gave me (because of the
+chemistry) are not exactly in a parabola, so the fitted parabola is quite different
+from the original shock points.
+2 The ray is taken at the infinitely sharp taylor-maccoll shock angle. However this
+equation is solved in perfect-gas conditions, not in LTE, so the angle can
+change substantially.
+In short, the shock refinement is tailored for perfect-gas flows, where the nose shock is
+parabolic, and where the downstream shock satisfies perfect-gas taylor-maccoll.
