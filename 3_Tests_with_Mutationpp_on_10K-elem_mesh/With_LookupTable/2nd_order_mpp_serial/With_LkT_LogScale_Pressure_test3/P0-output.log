@@ -1,0 +1,3385 @@
+-------------------------------------------------------------
+Creating Simulation
+-------------------------------------------------------------
+Configuration of Simulator
+-------------------------------------------------------------
+-------------------------------------------------------------
+-------------------------------------------------------------
+Loading external modules
+ModuleLoader: Module libShapeFunctions is already loaded.
+Initiating environment of loaded modules
+Initiated PETSc
+-------------------------------------------------------------
+-------------------------------------------------------------
+#
+###### STARTING SUBSYSTEM [SubSystem] ######
+#
+-------------------------------------------------------------
+Building SubSystem
+Name : SubSystem
+Type : StandardSubSystem
+-------------------------------------------------------------
+#
+###### CONFIG PHASE #################
+#
+-------------------------------------------------------------
+Setting Namespace : Default
+MeshData          : Default
+PhysicalModelName : NavierStokes2D
+PhysicalModelType : NavierStokes2D
+SubSysStatus      : SubSystemStatus
+-------------------------------------------------------------
+========================================
+MutationLibrarypp::config() => start
+Tmax   = 7000
+Tmin   = 100
+deltaT = 10
+Pmax   = 400000
+Pmin   = 800
+deltaP = 100
+GammaN = 0
+GammaO = 0
+MutationLibrarypp::config() => end
+========================================
+-------------------------------------------------------------
+Creating MeshCreator : CFmeshFileReader
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating MeshAdapterMethod : Null1
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating CouplerMethod : Null2
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating SpaceMethod : CellCenterFVM
+CellCenterFVM: configureGeoDataComputer()
+CellCenterFVM: configureFluxSplitter()
+CellCenterFVM: configureDiffusiveFluxComputer()
+CellCenterFVM: configureVarSetTransformers()
+CellCenterFVM: configureJacobianLinearizer()
+CellCenterFVM: configurePolyReconstructor()
+CellCenterFVM: configureLimiter()
+CellCenterFVM: configureNodalStatesExtrapolator()
+CellCenterFVM: configureEquationFilters()
+CellCenterFVM: configureSourceTermComputer()
+CellCenterFVM: Using GeoDataComputer: FVMCC
+CellCenterFVM: Using FluxSplitter: AUSMPlus2D
+CellCenterFVM: Using Update VarSet: PuvtLTE
+CellCenterFVM: Using Solution VarSet: Cons
+CellCenterFVM: Using Diffusive VarSet: PuvtLTE
+CellCenterFVM: Using Linear VarSet: PuvtLTE
+CellCenterFVM: Using NodalStatesExtrapolator: DistanceBasedGMove
+SETUP type = LeastSquareP1Setup
+SETUP name = Setup1
+SETUP type = LeastSquareP1UnSetup
+SETUP name = UnSetup1
+PREPROCESS type = Null
+PREPROCESS name = PreProcess1
+CellCenterFVM: Using ComputeRHS: NumJacobFast
+INIT type = InitState
+INIT name = InField
+BC type = NoSlipWallIsothermalNSvtFVMCC
+BC name = Wall
+BC type = MirrorVelocityFVMCC
+BC name = Mirror
+BC type = SuperOutletFVMCC
+BC name = SOutlet
+BC type = SuperInletFVMCC
+BC name = SInlet
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating ErrorEstimatorMethod : Null4
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating LinearSystemSolver : NewtonIteratorLSS
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating ConvergenceMethod : NewtonIterator
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating DataProcessing : Null7
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating DataProcessing : DataProcessing3
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating OutputFormatter : Tecplot
+-------------------------------------------------------------
+-------------------------------------------------------------
+Creating OutputFormatter : CFmesh
+-------------------------------------------------------------
+WARNING : Unused User Configuration Arguments:
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.Discontinuous true
+Simulator.SubSystem.CFmeshFileReader.Gambit2CFmesh.SolutionOrder P0
+
+#
+###### SOCKETS PLUG PHASE ###########
+#
+#
+###### BUILD PHASE ##################
+#
+-------------------------------------------------------------
+Setting up all PhysicalModel's
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+Setting up Physical Model [NavierStokes2D]
+MutationLibrarypp::setup() => start
+>> In setup: Molar mass of each species:
+>> In setup: m_shiftHO = 0
+>> In setup: _lkpVarNames.size() = 4
+>> In setup::Inside the loop IF(_lkpVarNames.size() > 0): 
+>> -----> BEFORE the call of setLookUpTables()... 
+>> In SetLookUpTables():_lkpVarNames[0] == 'a'  
+>> In SetLookUpTables():_lkpVarNames[1] == 'e' 
+>> In SetLookUpTables():_lkpVarNames[2] == 'h' 
+>> In SetLookUpTables():_lkpVarNames[3] == 'd'  
+>> In SetLookUpTables(): -------> BEFORE the call of setTables() 
+>> In setTables(): Creating and printing the mapping CFmap... 
+a => 0
+e => 1
+h => 2
+d => 3
+>> In setTables(): After sorting the mapping CFmap... 
+a => 0
+d => 3
+e => 1
+h => 2
+>> 	           __________________________________
+>> In setTables(): Linear scale for the temperature
+>> In setTables(): Tmin           = 100
+>> In setTables(): Tmax           = 7000
+>> In setTables(): deltaT         = 10
+>> In setTables(): nbT = 691
+>> In setTables(): vT[0] = 100,  vT[1] = 110... vT[690] = 7000
+>> 	           __________________________________
+>> In setTables(): Logarithmic scale for the pressure
+>> In setTables(): pmin   = 8x 10^2
+>> In setTables(): pmax   = 4x 10^5
+>> In setTables(): deltaP = 100
+>> In setTables(): nbP_log before truncation = 3992
+>> In setTables(): NbPowerOfTen = 5
+>> In setTables(): nbBlocs = 4
+>> In setTables(): NbPixPerBloc = 998
+>> In setTables(): nbP_log after removing the excess values = 2694
+>> In setTables(): vP[0] = 800,  vP[1] = 801.323,  vP[2] = 803.174... vP[2693] = 400000
+>> 	           ____________________________________________
+>> In setTables(): inserting the values in the _lookUpTables (Takes time...) 
+>> In SetLookUpTables(): -------> AFTER the call of setTables() 
+>> -----> AFTER the call of setLookUpTables() 
+>> -----> Boolean _useLookUpTable = 1
+>> In setup::END loop IF
+MutationLibrarypp::setup() => end
+-------------------------------------------------------------
+-------------------------------------------------------------
+Setting up all MeshCreator's
+-------------------------------------------------------------
+-------------------------------------------------------------
+Building MeshData's
+-------------------------------------------------------------
+-------------------------------------------------------------
+MeshCreator [CFmeshFileReader] Generate or Read Mesh
+
+Memory usage before building mesh: 61.8516 MB
+
+Reading Gambit2CFmesh took: 0.132633s
+Conversion Gambit2CFmesh took: 0.027363s
+Original NbEquations = 4
+Final NbEquations    = 4
+Memory Usage before assembling connectivity: 62.7695 MB
+ParCFmeshFileReader::moveElementData() => start memory usage: 62.7695 MB
+ParCFmeshFileReader::buildOverlapLayers()
+ParCFmeshFileReader::moveElementData() => end memory usage: 64.375 MB
+Reading data from cone_mesh_10K.CFmesh took 0.048102s
+Memory Usage after mesh reading: 65.6641 MB
+Building TRS: InnerCells
+nbCells = 9522, nbStates = 9522
+FVMCC BoundaryFaces [414]
+FVMCC Max Total NbFaces [38088]
+FVMCC Total nb faces [19251]
+FVMCC Inner nb faces [18837]
+FVMCC Boundary and Partition faces [414]
+Building TRS: InnerFaces
+FVM Faces created : 19251
+Building TRS: Wall
+Built TRS named Wall
+Building TRS: Outlet
+Built TRS named Outlet
+Building TRS: Symmetry
+Built TRS named Symmetry
+Building TRS: Inlet
+Built TRS named Inlet
+Number of partition faces detected = 0
+Building TRS: PartitionFaces
+Built PartitionFaces TRS 
+Building MeshData from ./cone_mesh_10K.CFmesh took 0.069474s
+Building the mesh took: 0.070292s
+
+Memory usage after building mesh: 67.0352 MB
+-------------------------------------------------------------
+-------------------------------------------------------------
+MeshCreator [CFmeshFileReader] Building Mesh Data
+-------------------------------------------------------------
+Building TRS info for MeshData in Namespace Default
+#
+###### SETUP PHASE ##################
+#
+-------------------------------------------------------------
+Setting up DataPreProcessing's
+-------------------------------------------------------------
+Setting up MeshAdapterMethod's
+-------------------------------------------------------------
+Setting up ConvergenceMethod's
+-------------------------------------------------------------
+Setting up LinearSystemSolver's
+-------------------------------------------------------------
+Setting up SpaceMethod's
+FVMCCGeoDataComputer::computeCellVolumes() = > [0] negative volumes detected
+-------------------------------------------------------------
+Setting up ErrorEstimatorMethod's
+-------------------------------------------------------------
+Setting up DataPostProcessing's
+-------------------------------------------------------------
+Setting up CouplerMethod's
+-------------------------------------------------------------
+CouplerMethod's setup
+-------------------------------------------------------------
+CouplerMethod's write interface coordinates
+-------------------------------------------------------------
+CouplerMethod's read interface coordinates
+-------------------------------------------------------------
+CouplerMethod's match mesh and write
+-------------------------------------------------------------
+CouplerMethod's read match mesh
+-------------------------------------------------------------
+Setting up OutputFormatter's
+
+-------------------------------------------------------------
+Initializing solution
+-------------------------------------------------------------
+Initializing solution of method [CellCenterFVM]
+-------------------------------------------------------------
+Writing initial solution ... 
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_0.plt
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_0.surf.plt
+Writing took 0.623919s
+ParCFmeshFileWriter::writeToFile() => IO rank is 0
+Element written 
+Nodes written 
+States written 
+Writing solution to: ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output.CFmesh
+Writing took 0.105377s
+-------------------------------------------------------------
+#
+###### RUN PHASE ####################
+#
+KSP convergence reached at iteration: 2
+Iter: 1       Res: [    4.9524797 3.6996799 2.8296064 4.171594 ]  CFL: 0.5      CPUTime: 2.243295 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 2       Res: [    4.5932493 3.5427666 2.768634 3.6999251 ]  CFL: 0.5      CPUTime: 4.429216 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 3       Res: [    4.4815728 3.3579873 2.7491191 3.534319 ]  CFL: 0.5      CPUTime: 6.932256 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 4       Res: [    4.4246354 3.2393124 2.7372204 3.4192383 ]  CFL: 0.5      CPUTime: 9.130309 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 5       Res: [    4.3890871 3.1561487 2.7255213 3.3330781 ]  CFL: 0.5      CPUTime: 11.318429 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 6       Res: [    4.3636381 3.0919727 2.7151837 3.2652229 ]  CFL: 0.5      CPUTime: 13.512077 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 7       Res: [    4.3440232 3.0400994 2.7062744 3.2091416 ]  CFL: 0.5      CPUTime: 15.700044 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 8       Res: [    4.3288182 2.9972207 2.6984338 3.161509 ]  CFL: 0.5      CPUTime: 17.887231 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 9       Res: [    4.3172659 2.9613777 2.6912329 3.1205203 ]  CFL: 0.5      CPUTime: 20.115218 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 10      Res: [    4.3085119 2.9313131 2.6843111 3.0842304 ]  CFL: 0.5      CPUTime: 22.332431 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 11      Res: [    4.302238 2.9060782 2.6774426 3.0522394 ]  CFL: 0.5      CPUTime: 24.526252 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 12      Res: [    4.2978591 2.8849337 2.6704146 3.0232556 ]  CFL: 0.5      CPUTime: 26.712527 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 13      Res: [    4.2952086 2.8673303 2.6632087 2.9972041 ]  CFL: 0.5      CPUTime: 28.899519 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 14      Res: [    4.2939629 2.8527926 2.6558028 2.9733394 ]  CFL: 0.5      CPUTime: 31.070951 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 15      Res: [    4.2939331 2.8409332 2.6482418 2.9516449 ]  CFL: 0.5      CPUTime: 33.244895 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 16      Res: [    4.2949078 2.8314173 2.6405897 2.9317046 ]  CFL: 0.5      CPUTime: 35.474164 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 17      Res: [    4.2972663 2.8205436 2.6326386 2.9157541 ]  CFL: 0.5      CPUTime: 37.64566 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 18      Res: [    4.3008234 2.8090338 2.6245692 2.9040224 ]  CFL: 0.5      CPUTime: 39.921478 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 19      Res: [    4.3048052 2.7991375 2.6167818 2.8938811 ]  CFL: 0.5      CPUTime: 42.101424 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 20      Res: [    4.3090077 2.7905621 2.6094641 2.8845958 ]  CFL: 0.5      CPUTime: 44.272552 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 21      Res: [    4.3130315 2.7830669 2.6027385 2.8752778 ]  CFL: 0.5      CPUTime: 46.454566 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 22      Res: [    4.3167913 2.7764565 2.596719 2.8660602 ]  CFL: 0.5      CPUTime: 48.628611 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 23      Res: [    4.3199762 2.7705994 2.5914564 2.8560705 ]  CFL: 0.5      CPUTime: 50.805784 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 24      Res: [    4.3229504 2.7636149 2.5876376 2.847498 ]  CFL: 0.5      CPUTime: 52.985256 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 25      Res: [    4.3254113 2.7570992 2.5846048 2.8384319 ]  CFL: 0.5      CPUTime: 55.15545 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 26      Res: [    4.3272723 2.7506378 2.5822528 2.8291516 ]  CFL: 0.5      CPUTime: 58.908366 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 27      Res: [    4.3287536 2.744306 2.5804282 2.81984 ]  CFL: 0.5      CPUTime: 62.921482 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 28      Res: [    4.3296819 2.7380312 2.5789744 2.8102818 ]  CFL: 0.5      CPUTime: 66.933562 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 29      Res: [    4.3302576 2.7318299 2.5777965 2.8008081 ]  CFL: 0.5      CPUTime: 70.945805 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 30      Res: [    4.3303509 2.7256718 2.5767207 2.7912698 ]  CFL: 0.5      CPUTime: 74.96164 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 31      Res: [    4.3300859 2.7195684 2.5756691 2.7816302 ]  CFL: 0.5      CPUTime: 78.977141 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 32      Res: [    4.3294742 2.7134237 2.5744351 2.772323 ]  CFL: 0.5      CPUTime: 82.99105 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 33      Res: [    4.3286901 2.7072133 2.5733674 2.7638344 ]  CFL: 0.5      CPUTime: 87.007671 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 34      Res: [    4.3275325 2.701016 2.5721287 2.7551941 ]  CFL: 0.5      CPUTime: 91.027786 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 35      Res: [    4.3261048 2.6948156 2.5707398 2.746852 ]  CFL: 0.5      CPUTime: 95.042027 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 36      Res: [    4.3244748 2.6886147 2.5691751 2.7385775 ]  CFL: 0.5      CPUTime: 99.055266 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 37      Res: [    4.3226105 2.6824129 2.5674518 2.7303102 ]  CFL: 0.5      CPUTime: 103.07068 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 38      Res: [    4.3205372 2.676229 2.5655877 2.7222854 ]  CFL: 0.5      CPUTime: 106.92879 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 39      Res: [    4.3183182 2.6700377 2.5635681 2.7143278 ]  CFL: 0.5      CPUTime: 109.10906 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 40      Res: [    4.3158192 2.6638687 2.5614273 2.7064192 ]  CFL: 0.5      CPUTime: 111.2756 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 41      Res: [    4.3132683 2.6576876 2.5593415 2.6987479 ]  CFL: 0.5      CPUTime: 113.45067 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 42      Res: [    4.3105825 2.6515012 2.5573361 2.6916225 ]  CFL: 0.5      CPUTime: 115.62471 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 43      Res: [    4.3077371 2.6453208 2.5553199 2.6845306 ]  CFL: 0.5      CPUTime: 117.79939 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 44      Res: [    4.3047892 2.6391596 2.5531119 2.6775568 ]  CFL: 0.5      CPUTime: 120.02554 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 45      Res: [    4.3018165 2.633025 2.5507687 2.6705593 ]  CFL: 0.5      CPUTime: 122.24714 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 46      Res: [    4.2986848 2.6269072 2.5483413 2.6636481 ]  CFL: 0.5      CPUTime: 124.46769 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 47      Res: [    4.2955572 2.6208279 2.5459236 2.6567874 ]  CFL: 0.5      CPUTime: 126.68982 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 48      Res: [    4.2923489 2.6147918 2.5434923 2.649997 ]  CFL: 0.5      CPUTime: 128.91003 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 49      Res: [    4.2890242 2.6088043 2.5410663 2.6431083 ]  CFL: 0.5      CPUTime: 131.13231 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 50      Res: [    4.2857321 2.602859 2.5387625 2.6364257 ]  CFL: 0.5      CPUTime: 133.35379 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 51      Res: [    4.2825321 2.596978 2.5367123 2.6301352 ]  CFL: 0.5      CPUTime: 135.57539 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 52      Res: [    4.2793825 2.591152 2.5348135 2.6239901 ]  CFL: 0.5      CPUTime: 137.79773 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 53      Res: [    4.2763151 2.5853737 2.5329731 2.6179279 ]  CFL: 0.5      CPUTime: 140.05071 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 54      Res: [    4.273386 2.5796662 2.5311658 2.6119807 ]  CFL: 0.5      CPUTime: 142.27886 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 55      Res: [    4.270692 2.5740391 2.5294048 2.6062275 ]  CFL: 0.5      CPUTime: 144.51913 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 56      Res: [    4.2682137 2.5684906 2.5275367 2.6004352 ]  CFL: 0.5      CPUTime: 146.76063 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 57      Res: [    4.2659091 2.5630316 2.5255598 2.5946562 ]  CFL: 0.5      CPUTime: 148.95682 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 58      Res: [    4.2638962 2.5576603 2.5235523 2.5889171 ]  CFL: 0.5      CPUTime: 151.12715 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 59      Res: [    5.9568538 2.7347335 2.5229587 2.5954432 ]  CFL: 0.5      CPUTime: 153.29512 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 60      Res: [    5.9844401 2.5637425 2.5198656 2.5814786 ]  CFL: 0.5      CPUTime: 155.46307 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 61      Res: [    4.2567409 2.5505946 2.5179327 2.5743872 ]  CFL: 0.5      CPUTime: 157.63329 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 62      Res: [    5.8245495 2.6573715 2.5220358 2.574478 ]  CFL: 0.5      CPUTime: 159.80083 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 63      Res: [    5.8324325 2.5419105 2.5152761 2.5650439 ]  CFL: 0.5      CPUTime: 161.9701 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 64      Res: [    4.2559552 2.5314037 2.5134663 2.5590369 ]  CFL: 0.5      CPUTime: 164.13976 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 65      Res: [    4.2551206 2.5234049 2.5119157 2.5534379 ]  CFL: 0.5      CPUTime: 166.31034 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 66      Res: [    4.2549892 2.5167754 2.5103704 2.5481925 ]  CFL: 0.5      CPUTime: 168.48061 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 67      Res: [    4.2555 2.5109691 2.5088716 2.5432318 ]  CFL: 0.5      CPUTime: 170.6509 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 68      Res: [    4.2565821 2.5057438 2.5073757 2.5384343 ]  CFL: 0.5      CPUTime: 172.82041 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 69      Res: [    4.2578836 2.5008841 2.5057508 2.5336333 ]  CFL: 0.5      CPUTime: 174.98899 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 70      Res: [    5.3977359 2.5206344 2.5060452 2.5295714 ]  CFL: 0.5      CPUTime: 177.15937 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 71      Res: [    5.4135106 2.4942631 2.5030956 2.5251287 ]  CFL: 0.5      CPUTime: 179.35067 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 72      Res: [    5.2241956 2.4988027 2.5013451 2.520667 ]  CFL: 0.5      CPUTime: 181.58292 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 73      Res: [    5.2128427 2.4864377 2.5002974 2.5168516 ]  CFL: 0.5      CPUTime: 183.80059 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 74      Res: [    4.3539673 2.4817308 2.498698 2.5127075 ]  CFL: 0.5      CPUTime: 186.01835 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 75      Res: [    4.2792231 2.4775734 2.4974064 2.5085881 ]  CFL: 0.5      CPUTime: 188.23614 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 76      Res: [    4.2783155 2.4736101 2.4962041 2.5046716 ]  CFL: 0.5      CPUTime: 190.45026 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 77      Res: [    4.2808779 2.46984 2.4949817 2.5007152 ]  CFL: 0.5      CPUTime: 192.66875 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 78      Res: [    4.2790956 2.4661813 2.4937874 2.4969074 ]  CFL: 0.5      CPUTime: 194.88708 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 79      Res: [    4.2808508 2.462623 2.4925426 2.4930867 ]  CFL: 0.5      CPUTime: 197.09369 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 80      Res: [    4.2804011 2.4591618 2.4913233 2.4893041 ]  CFL: 0.5      CPUTime: 199.2649 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 81      Res: [    4.2796762 2.4558099 2.4901244 2.4856808 ]  CFL: 0.5      CPUTime: 201.43636 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 82      Res: [    5.3838989 2.4733652 2.4889501 2.4828507 ]  CFL: 0.5      CPUTime: 203.60953 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 83      Res: [    5.3411463 2.4521192 2.4878278 2.4789968 ]  CFL: 0.5      CPUTime: 205.78073 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 84      Res: [    4.2953528 2.4487118 2.4866496 2.4759057 ]  CFL: 0.5      CPUTime: 207.95151 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 85      Res: [    4.2944579 2.4454155 2.4855051 2.4724474 ]  CFL: 0.5      CPUTime: 210.12318 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 86      Res: [    4.2926536 2.4422087 2.4843934 2.4690948 ]  CFL: 0.5      CPUTime: 212.29428 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 87      Res: [    4.2872817 2.4390972 2.4833163 2.4657559 ]  CFL: 0.5      CPUTime: 214.46543 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 88      Res: [    4.2864588 2.436053 2.4822385 2.4624619 ]  CFL: 0.5      CPUTime: 216.63569 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 89      Res: [    4.2835963 2.4330591 2.4811723 2.459232 ]  CFL: 0.5      CPUTime: 218.80605 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 90      Res: [    4.2808601 2.4301319 2.4800888 2.4559971 ]  CFL: 0.5      CPUTime: 220.97655 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 91      Res: [    4.2804276 2.4272772 2.479003 2.4527723 ]  CFL: 0.5      CPUTime: 223.14411 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 92      Res: [    4.2777811 2.4244759 2.4779361 2.4497144 ]  CFL: 0.5      CPUTime: 225.31464 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 93      Res: [    4.2772641 2.4217297 2.4769814 2.4467838 ]  CFL: 0.5      CPUTime: 227.50415 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 94      Res: [    4.274981 2.4190427 2.4760778 2.4439038 ]  CFL: 0.5      CPUTime: 229.72164 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 95      Res: [    4.2745135 2.4164183 2.4750918 2.4410745 ]  CFL: 0.5      CPUTime: 231.93811 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 96      Res: [    4.2726344 2.4138404 2.4741056 2.4382922 ]  CFL: 0.5      CPUTime: 234.17043 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 97      Res: [    4.2721306 2.4112922 2.4731411 2.4354338 ]  CFL: 0.5      CPUTime: 236.38957 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 98      Res: [    4.2705412 2.4087954 2.4721401 2.4326604 ]  CFL: 0.5      CPUTime: 238.6083 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 99      Res: [    4.2701198 2.406352 2.4711667 2.4299518 ]  CFL: 0.5      CPUTime: 240.82369 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 100     Res: [    4.268972 2.4039831 2.4701526 2.4272348 ]  CFL: 0.5      CPUTime: 243.04273 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 101     Res: [    4.2687214 2.4016619 2.4692007 2.4244846 ]  CFL: 0.5      CPUTime: 245.27648 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 102     Res: [    5.6363298 2.4704984 2.4683921 2.4239297 ]  CFL: 0.5      CPUTime: 247.49259 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 103     Res: [    5.397372 2.4329259 2.4673809 2.4220463 ]  CFL: 0.5      CPUTime: 249.70904 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 104     Res: [    5.5010894 2.404972 2.4664354 2.4193509 ]  CFL: 0.5      CPUTime: 251.92621 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 105     Res: [    5.4740113 2.4354236 2.4665242 2.4177026 ]  CFL: 0.5      CPUTime: 254.14501 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 106     Res: [    5.3435984 2.4019577 2.4649579 2.4151146 ]  CFL: 0.5      CPUTime: 256.36286 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 107     Res: [    4.3272205 2.3980714 2.4641502 2.4125041 ]  CFL: 0.5      CPUTime: 258.58047 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 108     Res: [    4.4995893 2.3942345 2.4633087 2.4099922 ]  CFL: 0.5      CPUTime: 260.79956 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 109     Res: [    4.2982356 2.3909543 2.4624203 2.4073357 ]  CFL: 0.5      CPUTime: 263.0184 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 110     Res: [    4.3197339 2.3878694 2.4615255 2.4047921 ]  CFL: 0.5      CPUTime: 265.23742 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 111     Res: [    4.3112261 2.3849818 2.4606003 2.4022104 ]  CFL: 0.5      CPUTime: 267.45601 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 112     Res: [    4.3068805 2.3822177 2.4596914 2.3996445 ]  CFL: 0.5      CPUTime: 269.67412 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 113     Res: [    4.3006963 2.3795831 2.4587867 2.3971666 ]  CFL: 0.5      CPUTime: 271.89282 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 114     Res: [    4.2955684 2.3770809 2.4578646 2.3947495 ]  CFL: 0.5      CPUTime: 274.10837 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 115     Res: [    4.2902095 2.3746733 2.456989 2.3923067 ]  CFL: 0.5      CPUTime: 276.32734 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 116     Res: [    4.2909257 2.3723354 2.4561775 2.3900703 ]  CFL: 0.5      CPUTime: 278.50248 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 117     Res: [    4.2839915 2.3700758 2.4554372 2.3878898 ]  CFL: 0.5      CPUTime: 280.67266 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 118     Res: [    4.2730696 2.3679328 2.4547319 2.3858084 ]  CFL: 0.5      CPUTime: 282.84453 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 119     Res: [    4.2725561 2.365877 2.454098 2.3838001 ]  CFL: 0.5      CPUTime: 285.01588 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 120     Res: [    4.2719867 2.3638991 2.4533897 2.381842 ]  CFL: 0.5      CPUTime: 287.18717 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 121     Res: [    4.2697541 2.3619789 2.452622 2.3798332 ]  CFL: 0.5      CPUTime: 289.35907 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 122     Res: [    4.2692283 2.3601093 2.4518391 2.3778264 ]  CFL: 0.5      CPUTime: 291.53111 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 123     Res: [    4.2687675 2.3582859 2.4510194 2.3757949 ]  CFL: 0.5      CPUTime: 293.70937 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 124     Res: [    4.267129 2.3564766 2.4501945 2.3737798 ]  CFL: 0.5      CPUTime: 295.87899 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 125     Res: [    4.2668055 2.3547135 2.4493484 2.3717503 ]  CFL: 0.5      CPUTime: 298.05292 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 126     Res: [    4.2655051 2.3530075 2.4484972 2.369824 ]  CFL: 0.5      CPUTime: 300.24304 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 127     Res: [    4.2654031 2.3513821 2.4477102 2.3678841 ]  CFL: 0.5      CPUTime: 302.41458 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 128     Res: [    4.2652887 2.3498085 2.4469019 2.3659667 ]  CFL: 0.5      CPUTime: 304.58635 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 129     Res: [    4.2652398 2.3482789 2.446247 2.3643018 ]  CFL: 0.5      CPUTime: 306.7709 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 130     Res: [    4.2652258 2.3467762 2.4456169 2.362654 ]  CFL: 0.5      CPUTime: 308.99077 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 131     Res: [    4.2652986 2.3453017 2.4449773 2.3610253 ]  CFL: 0.5      CPUTime: 311.20936 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 132     Res: [    5.4044604 2.3816938 2.4451364 2.3600819 ]  CFL: 0.5      CPUTime: 313.42691 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 133     Res: [    5.3184811 2.3476013 2.4439453 2.3587438 ]  CFL: 0.5      CPUTime: 315.64568 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 134     Res: [    5.4074901 2.3827233 2.4432704 2.3585828 ]  CFL: 0.5      CPUTime: 317.86433 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 135     Res: [    5.3056481 2.3484693 2.442438 2.3568149 ]  CFL: 0.5      CPUTime: 320.08369 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 136     Res: [    4.3491351 2.3457237 2.441658 2.3549894 ]  CFL: 0.5      CPUTime: 322.30231 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 137     Res: [    4.2879774 2.343469 2.440858 2.3531847 ]  CFL: 0.5      CPUTime: 324.52248 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 138     Res: [    4.2911139 2.3413987 2.4400498 2.3513597 ]  CFL: 0.5      CPUTime: 326.744  Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 139     Res: [    4.2884821 2.3395262 2.4392552 2.34952 ]  CFL: 0.5      CPUTime: 328.96494 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 140     Res: [    4.2863935 2.3378064 2.4384786 2.3477743 ]  CFL: 0.5      CPUTime: 331.18434 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 141     Res: [    4.286421 2.3361926 2.4377834 2.3461857 ]  CFL: 0.5      CPUTime: 333.40444 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 142     Res: [    4.2828382 2.3345892 2.437171 2.3446312 ]  CFL: 0.5      CPUTime: 335.62371 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 143     Res: [    5.2407869 2.343896 2.4365876 2.3433679 ]  CFL: 0.5      CPUTime: 337.84424 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 144     Res: [    5.18768 2.3334288 2.436037 2.34205 ]  CFL: 0.5      CPUTime: 340.06368 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 145     Res: [    4.3261586 2.3318051 2.435419 2.3406391 ]  CFL: 0.5      CPUTime: 342.29854 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 146     Res: [    4.3275445 2.3302711 2.4348251 2.3392945 ]  CFL: 0.5      CPUTime: 344.51536 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 147     Res: [    4.3127932 2.3288244 2.4342205 2.3378852 ]  CFL: 0.5      CPUTime: 346.71116 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 148     Res: [    4.3006336 2.3274549 2.4335407 2.3364506 ]  CFL: 0.5      CPUTime: 348.88525 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 149     Res: [    4.2823088 2.3261635 2.4328306 2.3350225 ]  CFL: 0.5      CPUTime: 351.05869 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 150     Res: [    4.2791718 2.3249283 2.4320794 2.3334757 ]  CFL: 0.5      CPUTime: 353.22813 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 151     Res: [    4.2782797 2.323707 2.4313274 2.3319799 ]  CFL: 0.5      CPUTime: 355.40242 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 152     Res: [    4.2772494 2.3225394 2.4305809 2.3306112 ]  CFL: 0.5      CPUTime: 357.57503 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 153     Res: [    4.2764555 2.3214078 2.4298463 2.3290941 ]  CFL: 0.5      CPUTime: 359.74813 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 154     Res: [    4.2759721 2.3203137 2.4292268 2.3277889 ]  CFL: 0.5      CPUTime: 361.92218 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 155     Res: [    4.2732822 2.3192596 2.4286189 2.3265583 ]  CFL: 0.5      CPUTime: 364.09737 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 156     Res: [    4.2730189 2.3182643 2.4281351 2.3254159 ]  CFL: 0.5      CPUTime: 366.27092 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 157     Res: [    4.2728235 2.3173069 2.4275964 2.3242885 ]  CFL: 0.5      CPUTime: 368.44675 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 158     Res: [    4.2728676 2.3163725 2.4269922 2.3231383 ]  CFL: 0.5      CPUTime: 370.62115 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 1
+Iter: 159     Res: [    5.5305676 2.3898566 2.4265751 2.3238621 ]  CFL: 0.5      CPUTime: 372.79363 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 160     Res: [    5.5499753 2.3601166 2.4267494 2.3240009 ]  CFL: 0.5      CPUTime: 374.9696 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 161     Res: [    5.2802858 2.326297 2.4253722 2.3227746 ]  CFL: 0.5      CPUTime: 377.1958 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 162     Res: [    4.3185089 2.3230473 2.4246624 2.3213127 ]  CFL: 0.5      CPUTime: 379.41849 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 163     Res: [    4.3185622 2.3203335 2.4239501 2.3198651 ]  CFL: 0.5      CPUTime: 381.64201 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 2
+Iter: 164     Res: [    4.7998314 2.3195593 2.4232119 2.3183072 ]  CFL: 0.5      CPUTime: 383.86421 Mem: 95.5039 MB
+
+KSP convergence reached at iteration: 3
+Iter: 165     Res: [    5.3950837 2.3334774 2.4224915 2.3172185 ]  CFL: 0.5      CPUTime: 386.09016 Mem: 97.2461 MB
+
+KSP convergence reached at iteration: 2
+Iter: 166     Res: [    5.4123382 2.3174092 2.4217884 2.3158452 ]  CFL: 0.5      CPUTime: 388.32199 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 167     Res: [    4.2960312 2.3152553 2.4211387 2.3145834 ]  CFL: 0.5      CPUTime: 390.55142 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 168     Res: [    4.3734431 2.3133586 2.4205681 2.3132619 ]  CFL: 0.5      CPUTime: 392.78506 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 169     Res: [    4.3206003 2.3116174 2.4200337 2.3120652 ]  CFL: 0.5      CPUTime: 395.01627 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 170     Res: [    4.2946904 2.3100874 2.4195156 2.3107781 ]  CFL: 0.5      CPUTime: 397.24959 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 171     Res: [    4.2887744 2.3087479 2.4189725 2.3096393 ]  CFL: 0.5      CPUTime: 399.49785 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 172     Res: [    4.2859174 2.3075431 2.4184152 2.3084449 ]  CFL: 0.5      CPUTime: 401.90246 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 173     Res: [    4.2846273 2.3064306 2.4178272 2.3073312 ]  CFL: 0.5      CPUTime: 404.08279 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 174     Res: [    4.2833355 2.3053914 2.4172732 2.3062671 ]  CFL: 0.5      CPUTime: 406.28594 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 175     Res: [    4.2821484 2.3044018 2.4166449 2.3050916 ]  CFL: 0.5      CPUTime: 408.46695 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 176     Res: [    4.2810626 2.3034545 2.4159838 2.3039315 ]  CFL: 0.5      CPUTime: 410.65009 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 177     Res: [    4.2803425 2.3025129 2.4153133 2.302795 ]  CFL: 0.5      CPUTime: 412.83623 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 178     Res: [    4.2791145 2.3015965 2.4145966 2.3015286 ]  CFL: 0.5      CPUTime: 415.01786 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 179     Res: [    4.2769969 2.3007358 2.4139153 2.3005514 ]  CFL: 0.5      CPUTime: 417.19743 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 180     Res: [    4.2766475 2.2999319 2.4132635 2.2993153 ]  CFL: 0.5      CPUTime: 419.38042 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 181     Res: [    4.2763227 2.2991567 2.4126975 2.2983988 ]  CFL: 0.5      CPUTime: 421.5599 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 182     Res: [    4.2761031 2.2984314 2.4121943 2.2975758 ]  CFL: 0.5      CPUTime: 423.74216 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 183     Res: [    4.2759283 2.2977546 2.4116839 2.2966455 ]  CFL: 0.5      CPUTime: 425.92302 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 184     Res: [    4.2759722 2.2971218 2.4112171 2.2958831 ]  CFL: 0.5      CPUTime: 428.10465 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 185     Res: [    5.5041232 2.372454 2.4108318 2.2969879 ]  CFL: 0.5      CPUTime: 430.28563 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 186     Res: [    5.4117804 2.3060329 2.4101359 2.2959975 ]  CFL: 0.5      CPUTime: 432.50134 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 187     Res: [    5.3233673 2.3383991 2.4104268 2.2964705 ]  CFL: 0.5      CPUTime: 434.72932 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 188     Res: [    5.2478009 2.3062676 2.4091344 2.2955615 ]  CFL: 0.5      CPUTime: 436.96047 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 189     Res: [    4.3142337 2.3034821 2.4084947 2.2943535 ]  CFL: 0.5      CPUTime: 439.19514 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 190     Res: [    4.3164689 2.3011158 2.4078271 2.2931598 ]  CFL: 0.5      CPUTime: 441.42627 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 191     Res: [    4.3082619 2.2991704 2.4071439 2.2918399 ]  CFL: 0.5      CPUTime: 443.65401 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 192     Res: [    4.3241216 2.2974347 2.4064528 2.2905283 ]  CFL: 0.5      CPUTime: 445.88566 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 193     Res: [    4.2940729 2.2959138 2.4057446 2.2893323 ]  CFL: 0.5      CPUTime: 448.11617 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 194     Res: [    4.2944918 2.2945575 2.4051634 2.2881524 ]  CFL: 0.5      CPUTime: 450.34668 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 195     Res: [    4.2916373 2.2933565 2.4046137 2.2871042 ]  CFL: 0.5      CPUTime: 452.5763 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 196     Res: [    4.2898454 2.2921595 2.4040776 2.2860311 ]  CFL: 0.5      CPUTime: 454.80714 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 197     Res: [    4.2835056 2.2911296 2.4035943 2.2851241 ]  CFL: 0.5      CPUTime: 457.03513 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 198     Res: [    4.3028626 2.290268 2.4031029 2.2842058 ]  CFL: 0.5      CPUTime: 459.26571 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 199     Res: [    4.3234553 2.2893703 2.4025608 2.2832744 ]  CFL: 0.5      CPUTime: 461.49301 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 200     Res: [    4.2800566 2.2885886 2.4020256 2.2823358 ]  CFL: 0.5      CPUTime: 463.72178 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 201     Res: [    4.2800363 2.2878512 2.4014453 2.2814103 ]  CFL: 0.5      CPUTime: 465.96832 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 202     Res: [    4.2791791 2.2871523 2.4008987 2.280611 ]  CFL: 0.5      CPUTime: 468.18973 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 203     Res: [    4.2785366 2.2864818 2.4003022 2.2797218 ]  CFL: 0.5      CPUTime: 470.41617 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 204     Res: [    4.2777119 2.2857848 2.3996857 2.2788091 ]  CFL: 0.5      CPUTime: 472.60593 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 205     Res: [    4.2762088 2.2851374 2.399026 2.2779567 ]  CFL: 0.5      CPUTime: 474.79416 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 206     Res: [    4.2759904 2.2845376 2.3983729 2.2770978 ]  CFL: 0.5      CPUTime: 477.01237 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 207     Res: [    4.2758155 2.2839677 2.3977116 2.2762352 ]  CFL: 0.5      CPUTime: 479.19549 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 208     Res: [    4.2757303 2.2834402 2.3971149 2.2753169 ]  CFL: 0.5      CPUTime: 481.74239 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 209     Res: [    4.2757029 2.2829661 2.3965935 2.2746796 ]  CFL: 0.5      CPUTime: 484.50557 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 210     Res: [    4.2758327 2.2825539 2.3960832 2.274027 ]  CFL: 0.5      CPUTime: 487.01892 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 211     Res: [    4.2759502 2.2821241 2.3955914 2.2733154 ]  CFL: 0.5      CPUTime: 489.21773 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 212     Res: [    4.2760917 2.2817226 2.3951109 2.2726943 ]  CFL: 0.5      CPUTime: 491.42668 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 213     Res: [    5.4137788 2.3393513 2.3947016 2.2736198 ]  CFL: 0.5      CPUTime: 493.81217 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 214     Res: [    5.4432955 2.3196164 2.3948273 2.2744622 ]  CFL: 0.5      CPUTime: 496.44911 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 215     Res: [    5.1897884 2.2922589 2.3936459 2.2737389 ]  CFL: 0.5      CPUTime: 499.24057 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 216     Res: [    4.3118038 2.2897136 2.3930774 2.2728598 ]  CFL: 0.5      CPUTime: 501.48665 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 217     Res: [    4.3134112 2.2876062 2.3924807 2.2717986 ]  CFL: 0.5      CPUTime: 503.77766 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 218     Res: [    4.3076364 2.2858941 2.3918626 2.270937 ]  CFL: 0.5      CPUTime: 505.95793 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 219     Res: [    4.300156 2.2845019 2.3912309 2.2698645 ]  CFL: 0.5      CPUTime: 508.18919 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 220     Res: [    4.296839 2.283246 2.3905788 2.2688723 ]  CFL: 0.5      CPUTime: 510.76843 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 221     Res: [    4.3027139 2.282037 2.3899179 2.2677629 ]  CFL: 0.5      CPUTime: 513.45298 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 222     Res: [    4.2856927 2.2810951 2.3892968 2.2668956 ]  CFL: 0.5      CPUTime: 516.66799 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 223     Res: [    4.2846101 2.28026 2.3887374 2.2658382 ]  CFL: 0.5      CPUTime: 519.62145 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 224     Res: [    4.2834696 2.2794723 2.3882152 2.265054 ]  CFL: 0.5      CPUTime: 522.23819 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 225     Res: [    4.2825311 2.2787773 2.3876955 2.2641929 ]  CFL: 0.5      CPUTime: 524.57808 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 226     Res: [    4.2816374 2.2781486 2.3871989 2.2634583 ]  CFL: 0.5      CPUTime: 527.14057 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 227     Res: [    4.2808575 2.2775672 2.3867218 2.2627971 ]  CFL: 0.5      CPUTime: 529.52739 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 228     Res: [    4.2801006 2.2770165 2.386189 2.2620296 ]  CFL: 0.5      CPUTime: 532.83129 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 229     Res: [    4.2795771 2.2764933 2.3856416 2.2612749 ]  CFL: 0.5      CPUTime: 536.05804 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 230     Res: [    4.2773437 2.2759937 2.3850887 2.2605858 ]  CFL: 0.5      CPUTime: 539.23616 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 231     Res: [    4.2772709 2.275507 2.3845252 2.2600945 ]  CFL: 0.5      CPUTime: 541.6455 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 232     Res: [    4.2771723 2.2750609 2.3839487 2.2593098 ]  CFL: 0.5      CPUTime: 544.88293 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 233     Res: [    4.2771271 2.274653 2.3833545 2.2586248 ]  CFL: 0.5      CPUTime: 547.6209 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 234     Res: [    4.2771249 2.2742534 2.3827354 2.2579022 ]  CFL: 0.5      CPUTime: 550.58958 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 235     Res: [    4.2771762 2.2738953 2.3820992 2.2573102 ]  CFL: 0.5      CPUTime: 554.52907 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 236     Res: [    4.2772133 2.2735886 2.3814744 2.2565861 ]  CFL: 0.5      CPUTime: 558.37469 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 237     Res: [    4.2774424 2.2733161 2.3809394 2.2560136 ]  CFL: 0.5      CPUTime: 561.46643 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 238     Res: [    4.2775919 2.2730135 2.3804093 2.2554865 ]  CFL: 0.5      CPUTime: 565.34091 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 239     Res: [    5.4075949 2.3337285 2.379999 2.2566956 ]  CFL: 0.5      CPUTime: 568.56446 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 240     Res: [    5.3175597 2.2817295 2.3793655 2.2562138 ]  CFL: 0.5      CPUTime: 571.5206 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 241     Res: [    5.169426 2.3024157 2.3794847 2.2568696 ]  CFL: 0.5      CPUTime: 574.43512 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 242     Res: [    5.1128173 2.2819613 2.3785057 2.2562719 ]  CFL: 0.5      CPUTime: 577.63507 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 243     Res: [    4.3050213 2.2798222 2.3779524 2.2554995 ]  CFL: 0.5      CPUTime: 580.88988 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 244     Res: [    4.3079915 2.2780769 2.3773734 2.2546183 ]  CFL: 0.5      CPUTime: 584.62842 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 245     Res: [    4.3021801 2.2766891 2.3768041 2.2538313 ]  CFL: 0.5      CPUTime: 587.7817 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 246     Res: [    4.2988127 2.275567 2.3762456 2.2529791 ]  CFL: 0.5      CPUTime: 590.90429 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 247     Res: [    4.2945965 2.2745399 2.3756404 2.2520266 ]  CFL: 0.5      CPUTime: 593.30956 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 248     Res: [    4.2866355 2.2736868 2.3750175 2.251138 ]  CFL: 0.5      CPUTime: 595.76258 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 249     Res: [    4.2855598 2.2730289 2.3743806 2.2503765 ]  CFL: 0.5      CPUTime: 598.10077 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 250     Res: [    4.2846513 2.2724651 2.3737419 2.2493697 ]  CFL: 0.5      CPUTime: 600.75018 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 251     Res: [    4.2837456 2.2718775 2.3731314 2.2487141 ]  CFL: 0.5      CPUTime: 603.14621 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 252     Res: [    4.2830142 2.2713656 2.3725895 2.2478803 ]  CFL: 0.5      CPUTime: 606.31499 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 253     Res: [    4.282116 2.2709005 2.3720644 2.2472553 ]  CFL: 0.5      CPUTime: 609.47241 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 254     Res: [    4.2815193 2.2704699 2.3715495 2.2465959 ]  CFL: 0.5      CPUTime: 613.50673 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 255     Res: [    4.2809253 2.2700588 2.3710299 2.2460107 ]  CFL: 0.5      CPUTime: 617.53871 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 256     Res: [    4.2788458 2.2697008 2.3705276 2.2453926 ]  CFL: 0.5      CPUTime: 621.57261 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 257     Res: [    4.278704 2.2693011 2.3700071 2.2448247 ]  CFL: 0.5      CPUTime: 625.60688 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 258     Res: [    4.278724 2.2689429 2.3694806 2.244293 ]  CFL: 0.5      CPUTime: 629.63896 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 259     Res: [    4.2787708 2.2686179 2.3689337 2.2438211 ]  CFL: 0.5      CPUTime: 633.67298 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 260     Res: [    4.2788065 2.2683244 2.3683853 2.2432559 ]  CFL: 0.5      CPUTime: 637.70919 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 261     Res: [    4.2788724 2.268036 2.3678363 2.2427875 ]  CFL: 0.5      CPUTime: 640.43467 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 262     Res: [    4.2789723 2.267793 2.3672601 2.2422255 ]  CFL: 0.5      CPUTime: 642.75286 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 263     Res: [    4.2790864 2.267604 2.3666686 2.24184 ]  CFL: 0.5      CPUTime: 644.95985 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 264     Res: [    4.2792909 2.267376 2.3660568 2.2411588 ]  CFL: 0.5      CPUTime: 647.46125 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 265     Res: [    5.3969544 2.3292988 2.365586 2.2428018 ]  CFL: 0.5      CPUTime: 650.31475 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 266     Res: [    5.3086568 2.2766264 2.3648025 2.2422315 ]  CFL: 0.5      CPUTime: 654.138  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 267     Res: [    5.1291079 2.2951862 2.3648385 2.2427524 ]  CFL: 0.5      CPUTime: 658.17297 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 268     Res: [    5.0799385 2.2764892 2.3638457 2.2421588 ]  CFL: 0.5      CPUTime: 662.20596 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 269     Res: [    4.3044042 2.2744006 2.3632915 2.241536 ]  CFL: 0.5      CPUTime: 666.23687 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 270     Res: [    4.3076913 2.2726467 2.3627288 2.2406195 ]  CFL: 0.5      CPUTime: 670.26621 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 271     Res: [    4.3018707 2.271274 2.3621995 2.2399432 ]  CFL: 0.5      CPUTime: 674.29483 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 272     Res: [    4.2981201 2.2702026 2.3616647 2.2390873 ]  CFL: 0.5      CPUTime: 678.32615 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 273     Res: [    4.2889431 2.2694956 2.3611464 2.2383562 ]  CFL: 0.5      CPUTime: 682.3544 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 274     Res: [    4.2877439 2.268827 2.3605944 2.2376323 ]  CFL: 0.5      CPUTime: 686.38212 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 275     Res: [    4.2867708 2.268283 2.3600298 2.2369203 ]  CFL: 0.5      CPUTime: 690.41317 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 276     Res: [    4.2859381 2.2678773 2.3594838 2.2363194 ]  CFL: 0.5      CPUTime: 694.44262 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 277     Res: [    4.2851122 2.2675234 2.358908 2.2355751 ]  CFL: 0.5      CPUTime: 698.47073 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 278     Res: [    4.2842693 2.2670813 2.3583061 2.2350066 ]  CFL: 0.5      CPUTime: 702.4991 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 279     Res: [    4.2835594 2.2666905 2.3577034 2.2342607 ]  CFL: 0.5      CPUTime: 706.52926 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 280     Res: [    4.2829122 2.2663335 2.3570954 2.2335921 ]  CFL: 0.5      CPUTime: 709.92385 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 281     Res: [    4.2804985 2.2660359 2.3564869 2.2330097 ]  CFL: 0.5      CPUTime: 712.11013 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 282     Res: [    4.2803975 2.2657819 2.3559063 2.2323559 ]  CFL: 0.5      CPUTime: 714.31031 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 283     Res: [    4.2804091 2.2655235 2.355364 2.2317997 ]  CFL: 0.5      CPUTime: 716.51071 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 284     Res: [    4.2804138 2.2652304 2.3548197 2.2313396 ]  CFL: 0.5      CPUTime: 718.70949 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 285     Res: [    4.2804823 2.2649608 2.3542806 2.2308538 ]  CFL: 0.5      CPUTime: 720.91066 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 286     Res: [    4.2805589 2.2647185 2.3537517 2.230404 ]  CFL: 0.5      CPUTime: 723.17736 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 287     Res: [    4.2806136 2.2644998 2.353227 2.2299178 ]  CFL: 0.5      CPUTime: 725.71852 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 288     Res: [    4.2807218 2.2642892 2.3526732 2.2295603 ]  CFL: 0.5      CPUTime: 728.08565 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 289     Res: [    4.2808396 2.2641332 2.35211 2.2292362 ]  CFL: 0.5      CPUTime: 730.70076 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 290     Res: [    4.2809595 2.2639696 2.3515364 2.2287199 ]  CFL: 0.5      CPUTime: 733.52066 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 291     Res: [    5.3763139 2.3241627 2.351129 2.2308002 ]  CFL: 0.5      CPUTime: 736.17184 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 292     Res: [    5.2904196 2.273352 2.3504093 2.2301428 ]  CFL: 0.5      CPUTime: 738.60251 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 293     Res: [    5.0768867 2.2889851 2.3503894 2.230897 ]  CFL: 0.5      CPUTime: 741.1772 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 294     Res: [    5.0379743 2.2727224 2.3494078 2.230317 ]  CFL: 0.5      CPUTime: 743.81292 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 295     Res: [    4.3029184 2.2707233 2.3488194 2.229624 ]  CFL: 0.5      CPUTime: 746.22656 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 296     Res: [    4.3073225 2.2690158 2.3482067 2.2287412 ]  CFL: 0.5      CPUTime: 748.76841 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 297     Res: [    4.3021428 2.2676651 2.3475906 2.2279115 ]  CFL: 0.5      CPUTime: 751.21769 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 298     Res: [    4.2983382 2.266619 2.3470072 2.2270345 ]  CFL: 0.5      CPUTime: 753.54367 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 299     Res: [    4.2898351 2.2659373 2.3464574 2.2263594 ]  CFL: 0.5      CPUTime: 755.96079 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 300     Res: [    4.2886163 2.2654904 2.3459206 2.2256044 ]  CFL: 0.5      CPUTime: 758.73926 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 301     Res: [    4.2875661 2.2650027 2.3453672 2.2249646 ]  CFL: 0.5      CPUTime: 761.77745 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 302     Res: [    4.286658 2.2646415 2.3448 2.2243974 ]  CFL: 0.5      CPUTime: 765.03172 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 303     Res: [    4.2859201 2.2643882 2.3442418 2.2237785 ]  CFL: 0.5      CPUTime: 768.08323 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 304     Res: [    4.2851052 2.2641237 2.3436654 2.2230392 ]  CFL: 0.5      CPUTime: 770.29716 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 305     Res: [    4.2843632 2.263777 2.3430871 2.2226294 ]  CFL: 0.5      CPUTime: 772.87825 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 306     Res: [    4.2815394 2.2635249 2.3425038 2.221966 ]  CFL: 0.5      CPUTime: 775.40857 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 307     Res: [    4.2814532 2.26333 2.3419218 2.2213977 ]  CFL: 0.5      CPUTime: 777.90757 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 308     Res: [    4.2813775 2.2631563 2.3413504 2.220787 ]  CFL: 0.5      CPUTime: 780.50253 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 309     Res: [    4.2814407 2.2630037 2.3407702 2.2205121 ]  CFL: 0.5      CPUTime: 783.1504 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 310     Res: [    4.2814191 2.2627745 2.3401717 2.2197 ]  CFL: 0.5      CPUTime: 786.00389 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 311     Res: [    4.281488 2.2625339 2.3395676 2.2193886 ]  CFL: 0.5      CPUTime: 788.47342 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 312     Res: [    4.2815745 2.2623199 2.3390011 2.2190095 ]  CFL: 0.5      CPUTime: 790.80654 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 313     Res: [    4.2816721 2.2621407 2.3384451 2.2185226 ]  CFL: 0.5      CPUTime: 793.44488 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 314     Res: [    4.2817655 2.2619947 2.3378802 2.2181767 ]  CFL: 0.5      CPUTime: 796.30465 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 315     Res: [    4.2819049 2.2618635 2.3373432 2.2179542 ]  CFL: 0.5      CPUTime: 798.73163 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 316     Res: [    5.3898563 2.3285593 2.3370185 2.2204222 ]  CFL: 0.5      CPUTime: 801.16613 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 317     Res: [    5.3038543 2.2723961 2.3362281 2.2198628 ]  CFL: 0.5      CPUTime: 803.59836 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 318     Res: [    5.0944089 2.2898565 2.3363366 2.2208485 ]  CFL: 0.5      CPUTime: 805.92384 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 319     Res: [    5.0471677 2.2715702 2.3353024 2.2202125 ]  CFL: 0.5      CPUTime: 808.37633 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 320     Res: [    4.3081995 2.2691586 2.3347158 2.2193876 ]  CFL: 0.5      CPUTime: 810.58532 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 321     Res: [    4.3086066 2.2673026 2.334121 2.2186739 ]  CFL: 0.5      CPUTime: 813.14163 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 322     Res: [    4.3030824 2.2658203 2.3335264 2.2178664 ]  CFL: 0.5      CPUTime: 815.98476 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 323     Res: [    4.2995387 2.2645818 2.3329194 2.2169357 ]  CFL: 0.5      CPUTime: 818.29568 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 324     Res: [    4.2910437 2.2637634 2.3323304 2.2162403 ]  CFL: 0.5      CPUTime: 820.78159 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 325     Res: [    4.2897439 2.2632413 2.3317433 2.2154711 ]  CFL: 0.5      CPUTime: 823.17409 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 326     Res: [    4.2886667 2.2629511 2.3311526 2.2148519 ]  CFL: 0.5      CPUTime: 825.64252 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 327     Res: [    4.2877151 2.2627179 2.330557 2.2141672 ]  CFL: 0.5      CPUTime: 828.04842 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 328     Res: [    4.2868929 2.2624722 2.3299492 2.2135721 ]  CFL: 0.5      CPUTime: 830.30488 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 329     Res: [    4.2861437 2.2622888 2.3293276 2.2129882 ]  CFL: 0.5      CPUTime: 832.54026 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 330     Res: [    4.2855112 2.262193 2.3287076 2.2123311 ]  CFL: 0.5      CPUTime: 834.75441 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 331     Res: [    4.282409 2.2620207 2.3280858 2.2118036 ]  CFL: 0.5      CPUTime: 837.28551 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 332     Res: [    4.2823263 2.2618685 2.327518 2.2111458 ]  CFL: 0.5      CPUTime: 839.79349 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 333     Res: [    4.2822683 2.2617456 2.3269712 2.2107624 ]  CFL: 0.5      CPUTime: 842.62269 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 334     Res: [    4.282258 2.2616373 2.3264146 2.2102412 ]  CFL: 0.5      CPUTime: 845.21029 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 335     Res: [    4.2823338 2.2615405 2.3258866 2.2099707 ]  CFL: 0.5      CPUTime: 848.02558 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 336     Res: [    4.2823611 2.2614314 2.3253526 2.2094966 ]  CFL: 0.5      CPUTime: 850.9413 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 337     Res: [    4.2824848 2.2612189 2.3247846 2.2091756 ]  CFL: 0.5      CPUTime: 853.59922 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 338     Res: [    4.2825585 2.2610092 2.3242129 2.2087628 ]  CFL: 0.5      CPUTime: 855.86091 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 339     Res: [    4.282651 2.2608144 2.3236425 2.208384 ]  CFL: 0.5      CPUTime: 858.31708 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 340     Res: [    4.2827576 2.2606504 2.3230749 2.2081457 ]  CFL: 0.5      CPUTime: 861.02638 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 341     Res: [    4.2829285 2.2605471 2.3225282 2.2079016 ]  CFL: 0.5      CPUTime: 863.51071 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 342     Res: [    5.3546429 2.3212633 2.3221821 2.2105226 ]  CFL: 0.5      CPUTime: 866.085  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 343     Res: [    5.2721806 2.2705451 2.3213532 2.2098964 ]  CFL: 0.5      CPUTime: 868.87954 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 344     Res: [    4.2972164 2.2680222 2.3208429 2.2096795 ]  CFL: 0.5      CPUTime: 871.27246 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 345     Res: [    4.9494587 2.278201 2.3205837 2.20977 ]  CFL: 0.5      CPUTime: 873.52344 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 346     Res: [    4.9254768 2.2670664 2.3196905 2.2090954 ]  CFL: 0.5      CPUTime: 875.72523 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 347     Res: [    4.3038028 2.2652542 2.3190655 2.2083859 ]  CFL: 0.5      CPUTime: 877.93578 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 348     Res: [    4.3033469 2.2638775 2.3184444 2.2077415 ]  CFL: 0.5      CPUTime: 880.15579 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 349     Res: [    4.2925542 2.2628191 2.3178258 2.2069523 ]  CFL: 0.5      CPUTime: 882.37109 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 350     Res: [    4.2910916 2.2621119 2.3172322 2.206118 ]  CFL: 0.5      CPUTime: 884.58984 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 351     Res: [    4.2897997 2.2616737 2.3166422 2.2054796 ]  CFL: 0.5      CPUTime: 886.80872 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 352     Res: [    4.288717 2.2614463 2.3160635 2.2049051 ]  CFL: 0.5      CPUTime: 889.0629 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 353     Res: [    4.2878229 2.2613962 2.3154878 2.2043657 ]  CFL: 0.5      CPUTime: 891.28303 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 354     Res: [    4.2870621 2.2612759 2.31492 2.2038326 ]  CFL: 0.5      CPUTime: 893.50929 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 355     Res: [    4.2863044 2.2612023 2.3143664 2.2032693 ]  CFL: 0.5      CPUTime: 895.72843 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 356     Res: [    4.2830803 2.2612057 2.3137652 2.2027424 ]  CFL: 0.5      CPUTime: 897.94398 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 357     Res: [    4.2829462 2.2613078 2.3131944 2.2022298 ]  CFL: 0.5      CPUTime: 900.17304 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 358     Res: [    4.282879 2.2612015 2.3126131 2.2017199 ]  CFL: 0.5      CPUTime: 902.388  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 359     Res: [    4.2828449 2.2611263 2.3120278 2.2013372 ]  CFL: 0.5      CPUTime: 904.60518 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 360     Res: [    4.2829055 2.2610613 2.3114462 2.2008165 ]  CFL: 0.5      CPUTime: 906.81839 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 361     Res: [    4.282952 2.2609799 2.3108654 2.200452 ]  CFL: 0.5      CPUTime: 909.05472 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 362     Res: [    4.2829805 2.2608861 2.310286 2.1999919 ]  CFL: 0.5      CPUTime: 911.24683 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 363     Res: [    4.2831167 2.2607549 2.3097068 2.1997067 ]  CFL: 0.5      CPUTime: 913.43549 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 364     Res: [    4.2831766 2.2605222 2.3091069 2.199326 ]  CFL: 0.5      CPUTime: 915.62591 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 365     Res: [    4.2833249 2.2603117 2.3085276 2.198951 ]  CFL: 0.5      CPUTime: 917.81323 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 366     Res: [    4.2834528 2.2601154 2.3079518 2.1987582 ]  CFL: 0.5      CPUTime: 920.00304 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 367     Res: [    4.2835852 2.2599619 2.3073819 2.1985609 ]  CFL: 0.5      CPUTime: 922.19137 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 368     Res: [    5.3189348 2.3150009 2.3070226 2.201047 ]  CFL: 0.5      CPUTime: 924.37924 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 369     Res: [    5.2407559 2.269361 2.306238 2.2006226 ]  CFL: 0.5      CPUTime: 926.56469 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 370     Res: [    4.2959656 2.2668934 2.3057523 2.200611 ]  CFL: 0.5      CPUTime: 928.75491 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 371     Res: [    4.8723785 2.2744623 2.3054258 2.200581 ]  CFL: 0.5      CPUTime: 930.94376 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 372     Res: [    4.8640528 2.2654542 2.304606 2.1997531 ]  CFL: 0.5      CPUTime: 933.13175 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 373     Res: [    4.3026012 2.2637024 2.3040072 2.1991055 ]  CFL: 0.5      CPUTime: 935.34009 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 374     Res: [    4.2939993 2.2625597 2.3033998 2.1985523 ]  CFL: 0.5      CPUTime: 937.53054 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 375     Res: [    4.2922578 2.2616839 2.3027827 2.1977189 ]  CFL: 0.5      CPUTime: 939.71546 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 376     Res: [    4.2908407 2.2610381 2.3021618 2.1970824 ]  CFL: 0.5      CPUTime: 941.90756 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 377     Res: [    4.2896246 2.2606425 2.3015636 2.1963818 ]  CFL: 0.5      CPUTime: 944.13694 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 378     Res: [    4.2886056 2.2604479 2.3009869 2.1958366 ]  CFL: 0.5      CPUTime: 946.37452 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 379     Res: [    4.2877253 2.2604239 2.3004013 2.1953156 ]  CFL: 0.5      CPUTime: 948.62009 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 380     Res: [    4.2838574 2.2605969 2.2998131 2.1947109 ]  CFL: 0.5      CPUTime: 950.8583 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 381     Res: [    4.2836381 2.2606686 2.2992572 2.1942856 ]  CFL: 0.5      CPUTime: 953.09654 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 382     Res: [    4.2834959 2.2608527 2.2986896 2.1937818 ]  CFL: 0.5      CPUTime: 955.33587 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 383     Res: [    4.2834518 2.2610544 2.2980986 2.19354 ]  CFL: 0.5      CPUTime: 957.58523 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 384     Res: [    4.2834012 2.2612205 2.2974989 2.1929541 ]  CFL: 0.5      CPUTime: 959.82576 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 385     Res: [    4.2834101 2.2611628 2.2968994 2.1925345 ]  CFL: 0.5      CPUTime: 962.02906 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 386     Res: [    4.2834508 2.261107 2.2962996 2.1919812 ]  CFL: 0.5      CPUTime: 964.2212 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 387     Res: [    4.2835404 2.2610334 2.2957033 2.1916594 ]  CFL: 0.5      CPUTime: 966.41589 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 388     Res: [    4.2835965 2.2609318 2.2951132 2.1912049 ]  CFL: 0.5      CPUTime: 968.61545 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 389     Res: [    4.2837248 2.2608145 2.2945332 2.1909458 ]  CFL: 0.5      CPUTime: 970.80438 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 390     Res: [    4.2838813 2.2606511 2.2939677 2.1908171 ]  CFL: 0.5      CPUTime: 972.99566 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 391     Res: [    4.2839978 2.2603963 2.2933761 2.190236 ]  CFL: 0.5      CPUTime: 975.18431 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 392     Res: [    4.2840733 2.2601419 2.2927885 2.1899575 ]  CFL: 0.5      CPUTime: 977.37613 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 393     Res: [    4.2842301 2.2599323 2.2922113 2.1897798 ]  CFL: 0.5      CPUTime: 979.56655 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 394     Res: [    5.284638 2.3100516 2.2918345 2.1926058 ]  CFL: 0.5      CPUTime: 981.76837 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 395     Res: [    5.210698 2.268724 2.2910351 2.1920755 ]  CFL: 0.5      CPUTime: 983.95544 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 396     Res: [    4.2958053 2.2662859 2.2905648 2.1919543 ]  CFL: 0.5      CPUTime: 986.1427 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 397     Res: [    4.7854961 2.2715401 2.2901861 2.1919035 ]  CFL: 0.5      CPUTime: 988.33625 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 398     Res: [    4.796941 2.2643088 2.2893954 2.1910367 ]  CFL: 0.5      CPUTime: 990.69517 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 399     Res: [    4.29541 2.2627499 2.2887859 2.1903822 ]  CFL: 0.5      CPUTime: 992.93453 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 400     Res: [    4.2936773 2.2617015 2.2881705 2.1896385 ]  CFL: 0.5      CPUTime: 995.17831 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 401     Res: [    4.291909 2.2609864 2.2875729 2.1890678 ]  CFL: 0.5      CPUTime: 997.4321 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 402     Res: [    4.2904955 2.2603528 2.286961 2.1883831 ]  CFL: 0.5      CPUTime: 999.66516 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 403     Res: [    4.2893342 2.2599582 2.286337 2.1877929 ]  CFL: 0.5      CPUTime: 1001.9071 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 404     Res: [    4.288328 2.2597537 2.2857151 2.1870948 ]  CFL: 0.5      CPUTime: 1004.1458 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 405     Res: [    4.2842125 2.2598193 2.285119 2.1866143 ]  CFL: 0.5      CPUTime: 1006.3893 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 406     Res: [    4.2839423 2.2600677 2.2845175 2.1861987 ]  CFL: 0.5      CPUTime: 1008.6471 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 407     Res: [    4.2837398 2.2603169 2.2839172 2.1856468 ]  CFL: 0.5      CPUTime: 1010.8861 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 408     Res: [    4.2835925 2.2604811 2.2833108 2.1851537 ]  CFL: 0.5      CPUTime: 1013.1315 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 409     Res: [    4.2835091 2.2607206 2.2827158 2.1847281 ]  CFL: 0.5      CPUTime: 1015.3908 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 410     Res: [    4.2834877 2.2610145 2.282127 2.1844094 ]  CFL: 0.5      CPUTime: 1017.6311 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 411     Res: [    4.2834965 2.2611575 2.2814969 2.184115 ]  CFL: 0.5      CPUTime: 1019.8751 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 412     Res: [    4.2835331 2.2610796 2.2808745 2.1836564 ]  CFL: 0.5      CPUTime: 1022.0915 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 413     Res: [    4.2835628 2.2609896 2.2802592 2.1831472 ]  CFL: 0.5      CPUTime: 1024.2841 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 414     Res: [    4.2836269 2.2608787 2.279649 2.1826625 ]  CFL: 0.5      CPUTime: 1026.476 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 415     Res: [    4.2837416 2.2607503 2.2790615 2.1824355 ]  CFL: 0.5      CPUTime: 1028.6705 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 416     Res: [    4.2838363 2.2606019 2.2784804 2.1819793 ]  CFL: 0.5      CPUTime: 1030.8669 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 417     Res: [    4.2839647 2.2604031 2.2778926 2.1817801 ]  CFL: 0.5      CPUTime: 1033.061 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 418     Res: [    4.2840362 2.2601094 2.2772831 2.1815551 ]  CFL: 0.5      CPUTime: 1035.2543 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 419     Res: [    4.2841276 2.259847 2.276682 2.1811596 ]  CFL: 0.5      CPUTime: 1037.4474 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 420     Res: [    5.2551505 2.3064041 2.2762835 2.18423 ]  CFL: 0.5      CPUTime: 1039.6392 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 421     Res: [    5.1842046 2.2681422 2.2754479 2.1834792 ]  CFL: 0.5      CPUTime: 1041.8309 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 422     Res: [    4.2954257 2.265757 2.2749817 2.183246 ]  CFL: 0.5      CPUTime: 1044.0251 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 423     Res: [    4.2999461 2.2637966 2.2743608 2.1826221 ]  CFL: 0.5      CPUTime: 1046.2174 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 424     Res: [    4.2965423 2.2623436 2.273747 2.1820256 ]  CFL: 0.5      CPUTime: 1048.4093 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 425     Res: [    4.3717936 2.2623747 2.2731684 2.1815438 ]  CFL: 0.5      CPUTime: 1050.6037 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 426     Res: [    4.4923731 2.2601982 2.2725086 2.1806986 ]  CFL: 0.5      CPUTime: 1052.8586 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 427     Res: [    4.2902181 2.2593883 2.2719155 2.180052 ]  CFL: 0.5      CPUTime: 1055.1012 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 428     Res: [    4.28878 2.2587182 2.2712784 2.1794108 ]  CFL: 0.5      CPUTime: 1057.3433 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 429     Res: [    4.2875115 2.2582368 2.2706383 2.178723 ]  CFL: 0.5      CPUTime: 1059.585 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 430     Res: [    4.2829497 2.2580693 2.2699959 2.1778484 ]  CFL: 0.5      CPUTime: 1061.8256 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 431     Res: [    4.2825725 2.2581127 2.269347 2.1774328 ]  CFL: 0.5      CPUTime: 1064.0721 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 432     Res: [    4.2822972 2.258329 2.2687029 2.1770639 ]  CFL: 0.5      CPUTime: 1066.3096 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 433     Res: [    4.2820597 2.2586782 2.2680611 2.1766342 ]  CFL: 0.5      CPUTime: 1068.5045 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 434     Res: [    4.2818892 2.2589426 2.2674209 2.1762702 ]  CFL: 0.5      CPUTime: 1070.7176 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 435     Res: [    4.2817963 2.259154 2.2667863 2.1759887 ]  CFL: 0.5      CPUTime: 1072.9131 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 436     Res: [    4.2817024 2.2594241 2.2661613 2.1755108 ]  CFL: 0.5      CPUTime: 1075.1095 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 437     Res: [    4.2817082 2.259751 2.2655558 2.1750925 ]  CFL: 0.5      CPUTime: 1077.3083 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 438     Res: [    4.281729 2.2600137 2.2649488 2.1748502 ]  CFL: 0.5      CPUTime: 1079.5021 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 439     Res: [    4.2818072 2.2599338 2.264309 2.1744495 ]  CFL: 0.5      CPUTime: 1081.6952 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 440     Res: [    4.2818741 2.25985 2.2636841 2.1740308 ]  CFL: 0.5      CPUTime: 1083.8882 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 441     Res: [    4.2820026 2.2597561 2.2630885 2.1735211 ]  CFL: 0.5      CPUTime: 1086.6733 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 442     Res: [    4.2821252 2.2596381 2.2625019 2.1733385 ]  CFL: 0.5      CPUTime: 1090.7517 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 443     Res: [    4.2822401 2.2595063 2.2619254 2.173244 ]  CFL: 0.5      CPUTime: 1093.3004 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 444     Res: [    4.2823293 2.259361 2.2613566 2.1726096 ]  CFL: 0.5      CPUTime: 1095.5005 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 445     Res: [    4.2824494 2.2590891 2.2607463 2.1725509 ]  CFL: 0.5      CPUTime: 1097.7393 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 446     Res: [    4.28253 2.2588496 2.2601438 2.1722076 ]  CFL: 0.5      CPUTime: 1099.9861 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 447     Res: [    5.1774417 2.2948696 2.2597018 2.1748199 ]  CFL: 0.5      CPUTime: 1102.234 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 448     Res: [    5.1153462 2.2655907 2.2588888 2.1741046 ]  CFL: 0.5      CPUTime: 1104.4846 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 449     Res: [    4.2930373 2.2634454 2.2584052 2.1740805 ]  CFL: 0.5      CPUTime: 1106.7377 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 450     Res: [    4.2955415 2.2617425 2.257772 2.1734301 ]  CFL: 0.5      CPUTime: 1108.9919 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 451     Res: [    4.2932032 2.2604845 2.2571451 2.1725301 ]  CFL: 0.5      CPUTime: 1111.2554 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 452     Res: [    4.290996 2.2595815 2.2565174 2.1719537 ]  CFL: 0.5      CPUTime: 1113.5071 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 453     Res: [    4.2893609 2.2590022 2.2559486 2.1714665 ]  CFL: 0.5      CPUTime: 1115.7672 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 454     Res: [    4.2880024 2.2586416 2.2553459 2.170897 ]  CFL: 0.5      CPUTime: 1118.0148 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 455     Res: [    4.2869067 2.25817 2.2546703 2.1703057 ]  CFL: 0.5      CPUTime: 1120.2655 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 456     Res: [    4.2824335 2.2580002 2.2540151 2.169855 ]  CFL: 0.5      CPUTime: 1122.5416 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 457     Res: [    4.2822454 2.2580333 2.253364 2.1694637 ]  CFL: 0.5      CPUTime: 1124.791 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 458     Res: [    4.2820463 2.2582044 2.2527064 2.1689868 ]  CFL: 0.5      CPUTime: 1127.0225 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 459     Res: [    4.2818876 2.258478 2.2520277 2.1685784 ]  CFL: 0.5      CPUTime: 1129.2244 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 460     Res: [    4.2818272 2.2588638 2.2513576 2.1683667 ]  CFL: 0.5      CPUTime: 1131.4276 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 461     Res: [    4.2817105 2.259154 2.2506903 2.1679292 ]  CFL: 0.5      CPUTime: 1133.6352 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 462     Res: [    4.2816825 2.2593175 2.2500291 2.1675446 ]  CFL: 0.5      CPUTime: 1135.8313 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 463     Res: [    4.2816796 2.2595341 2.2493842 2.167188 ]  CFL: 0.5      CPUTime: 1138.0239 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 464     Res: [    4.2816946 2.2597933 2.2487607 2.1667615 ]  CFL: 0.5      CPUTime: 1140.2182 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 465     Res: [    4.2817592 2.2601032 2.2481594 2.1666582 ]  CFL: 0.5      CPUTime: 1142.4128 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 466     Res: [    4.2818087 2.2601038 2.2475651 2.1662875 ]  CFL: 0.5      CPUTime: 1144.6108 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 467     Res: [    4.2818536 2.2599617 2.2469384 2.1657755 ]  CFL: 0.5      CPUTime: 1146.8073 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 468     Res: [    4.2819459 2.2598192 2.246346 2.1655127 ]  CFL: 0.5      CPUTime: 1149.0031 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 469     Res: [    4.2820438 2.2596728 2.2457733 2.1652447 ]  CFL: 0.5      CPUTime: 1151.1994 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 470     Res: [    4.2821244 2.2595248 2.245226 2.1648753 ]  CFL: 0.5      CPUTime: 1153.3951 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 471     Res: [    4.2821289 2.2593836 2.2446912 2.1645624 ]  CFL: 0.5      CPUTime: 1155.5937 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 472     Res: [    4.2821352 2.2591231 2.2441082 2.1643576 ]  CFL: 0.5      CPUTime: 1157.8315 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 473     Res: [    4.2821577 2.258869 2.2435207 2.1641477 ]  CFL: 0.5      CPUTime: 1160.074 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 474     Res: [    5.1105836 2.2879243 2.2430653 2.166182 ]  CFL: 0.5      CPUTime: 1162.3133 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 475     Res: [    5.0563018 2.2644775 2.2422862 2.1657602 ]  CFL: 0.5      CPUTime: 1164.5557 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 476     Res: [    4.2907326 2.2624787 2.2417975 2.1657806 ]  CFL: 0.5      CPUTime: 1166.8169 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 477     Res: [    4.2934879 2.2609069 2.2411607 2.1648808 ]  CFL: 0.5      CPUTime: 1169.0664 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 478     Res: [    4.2908945 2.2597418 2.2405194 2.1642892 ]  CFL: 0.5      CPUTime: 1171.3097 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 479     Res: [    4.2890966 2.2589032 2.2398772 2.1634175 ]  CFL: 0.5      CPUTime: 1173.5524 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 480     Res: [    4.2872648 2.2583601 2.2392326 2.1630777 ]  CFL: 0.5      CPUTime: 1175.7953 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 481     Res: [    4.2819753 2.258111 2.2386232 2.1624921 ]  CFL: 0.5      CPUTime: 1178.0254 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 482     Res: [    4.2816151 2.2578884 2.237976 2.1616816 ]  CFL: 0.5      CPUTime: 1180.2218 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 483     Res: [    4.2814092 2.2578227 2.2373194 2.1613925 ]  CFL: 0.5      CPUTime: 1182.411 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 484     Res: [    4.2812455 2.2578546 2.2366233 2.1610894 ]  CFL: 0.5      CPUTime: 1184.6051 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 485     Res: [    4.2810499 2.2579959 2.2359313 2.1604907 ]  CFL: 0.5      CPUTime: 1186.8018 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 486     Res: [    4.2809164 2.2582352 2.2352469 2.1603599 ]  CFL: 0.5      CPUTime: 1188.9965 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 487     Res: [    4.280854 2.258572 2.2345691 2.1600313 ]  CFL: 0.5      CPUTime: 1191.1925 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 488     Res: [    4.2807994 2.2587701 2.2338672 2.1599248 ]  CFL: 0.5      CPUTime: 1193.3871 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 489     Res: [    4.2806993 2.2588172 2.2331731 2.1593149 ]  CFL: 0.5      CPUTime: 1195.5863 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 490     Res: [    4.2806599 2.2589229 2.2325045 2.1588749 ]  CFL: 0.5      CPUTime: 1197.7823 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 491     Res: [    4.2806804 2.2590794 2.2318606 2.1587184 ]  CFL: 0.5      CPUTime: 1199.9804 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 492     Res: [    4.2806935 2.2592844 2.2312458 2.1583934 ]  CFL: 0.5      CPUTime: 1202.1759 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 493     Res: [    4.2807234 2.2595002 2.2306654 2.1581427 ]  CFL: 0.5      CPUTime: 1204.3698 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 494     Res: [    4.2807748 2.2594034 2.2301176 2.1580361 ]  CFL: 0.5      CPUTime: 1206.5776 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 495     Res: [    4.2807682 2.2592074 2.2295177 2.1574929 ]  CFL: 0.5      CPUTime: 1208.7797 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 496     Res: [    4.280775 2.2590309 2.228964 2.1573029 ]  CFL: 0.5      CPUTime: 1210.975 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 497     Res: [    4.2807955 2.2588728 2.2284334 2.1570623 ]  CFL: 0.5      CPUTime: 1213.1953 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 498     Res: [    4.2807877 2.2587401 2.2279336 2.1566538 ]  CFL: 0.5      CPUTime: 1215.44  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 499     Res: [    4.2807448 2.2586106 2.2274365 2.1566092 ]  CFL: 0.5      CPUTime: 1217.6798 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 500     Res: [    4.2806425 2.2583742 2.2268898 2.1562113 ]  CFL: 0.5      CPUTime: 1219.9222 Mem: 98.4102 MB
+
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_500.plt
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_500.surf.plt
+Writing took 0.73524s
+KSP convergence reached at iteration: 1
+Iter: 501     Res: [    5.0573816 2.28325 2.2264549 2.1584614 ]  CFL: 0.5      CPUTime: 1222.9033 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 502     Res: [    5.0102515 2.2633191 2.2257087 2.1577513 ]  CFL: 0.5      CPUTime: 1225.1421 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 503     Res: [    4.2881741 2.2613988 2.2252375 2.1575571 ]  CFL: 0.5      CPUTime: 1227.3884 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 504     Res: [    4.2905512 2.2598819 2.2246051 2.156625 ]  CFL: 0.5      CPUTime: 1229.6228 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 505     Res: [    4.2881596 2.2587492 2.2239611 2.1560881 ]  CFL: 0.5      CPUTime: 1231.8345 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 506     Res: [    4.2863017 2.2579295 2.2233074 2.1551254 ]  CFL: 0.5      CPUTime: 1234.0318 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 507     Res: [    4.2804142 2.2575603 2.2226279 2.1547355 ]  CFL: 0.5      CPUTime: 1236.2174 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 508     Res: [    4.2800687 2.2573105 2.2219385 2.15398 ]  CFL: 0.5      CPUTime: 1238.4011 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 509     Res: [    4.2797632 2.2570578 2.221219 2.1535449 ]  CFL: 0.5      CPUTime: 1240.5843 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 510     Res: [    4.2795915 2.2569604 2.2205307 2.1532454 ]  CFL: 0.5      CPUTime: 1242.7693 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 511     Res: [    4.2793833 2.2569788 2.2198822 2.1526152 ]  CFL: 0.5      CPUTime: 1244.9536 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 512     Res: [    4.2792054 2.2570426 2.2191724 2.1522315 ]  CFL: 0.5      CPUTime: 1247.1881 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 513     Res: [    4.2791264 2.2571484 2.2184304 2.1519968 ]  CFL: 0.5      CPUTime: 1249.3932 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 514     Res: [    4.278971 2.2573426 2.2177063 2.1515562 ]  CFL: 0.5      CPUTime: 1251.6824 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 515     Res: [    4.278911 2.2574742 2.2170002 2.1514247 ]  CFL: 0.5      CPUTime: 1253.8655 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 516     Res: [    4.2788327 2.2574081 2.2163104 2.1511508 ]  CFL: 0.5      CPUTime: 1256.0456 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 517     Res: [    4.2788017 2.2573824 2.2156174 2.1508064 ]  CFL: 0.5      CPUTime: 1258.2256 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 518     Res: [    4.2787326 2.2573986 2.2149464 2.1504353 ]  CFL: 0.5      CPUTime: 1260.4187 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 519     Res: [    4.2787115 2.2574741 2.2143127 2.1502109 ]  CFL: 0.5      CPUTime: 1262.6504 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 520     Res: [    4.2786782 2.2576174 2.2137175 2.1499834 ]  CFL: 0.5      CPUTime: 1264.9019 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 521     Res: [    4.278652 2.2577897 2.2131631 2.1499668 ]  CFL: 0.5      CPUTime: 1267.1675 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 522     Res: [    4.2786242 2.2576676 2.2126571 2.1498544 ]  CFL: 0.5      CPUTime: 1269.4023 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 523     Res: [    4.2785173 2.2575387 2.2121482 2.1493212 ]  CFL: 0.5      CPUTime: 1271.6582 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 524     Res: [    4.2784681 2.2573835 2.2116291 2.1489864 ]  CFL: 0.5      CPUTime: 1273.915 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 525     Res: [    4.2784386 2.2572835 2.2111604 2.1490282 ]  CFL: 0.5      CPUTime: 1276.1428 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 526     Res: [    4.2783153 2.2572384 2.2107151 2.1486993 ]  CFL: 0.5      CPUTime: 1278.376 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 527     Res: [    4.2782156 2.2571693 2.2102578 2.1485129 ]  CFL: 0.5      CPUTime: 1280.6107 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 528     Res: [    4.2781133 2.2570561 2.2097697 2.1483947 ]  CFL: 0.5      CPUTime: 1282.8398 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 529     Res: [    4.9454302 2.2743334 2.209349 2.1498658 ]  CFL: 0.5      CPUTime: 1285.0824 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 530     Res: [    4.9147769 2.2605225 2.2086314 2.1490457 ]  CFL: 0.5      CPUTime: 1287.319 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 531     Res: [    4.2841915 2.2589855 2.2082013 2.1490008 ]  CFL: 0.5      CPUTime: 1289.5417 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 532     Res: [    4.2857583 2.2577682 2.207577 2.1481323 ]  CFL: 0.5      CPUTime: 1291.7249 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 533     Res: [    4.2782747 2.2571117 2.2069129 2.1474382 ]  CFL: 0.5      CPUTime: 1293.9142 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 534     Res: [    4.2778921 2.2567719 2.2062478 2.1466583 ]  CFL: 0.5      CPUTime: 1296.1475 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 535     Res: [    4.2776184 2.2565146 2.2055401 2.1463976 ]  CFL: 0.5      CPUTime: 1298.3303 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 536     Res: [    4.2773476 2.2561612 2.2047759 2.1455509 ]  CFL: 0.5      CPUTime: 1300.523 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 537     Res: [    4.2771313 2.2559125 2.2039967 2.1447884 ]  CFL: 0.5      CPUTime: 1302.7071 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 538     Res: [    4.2769559 2.2557379 2.2032038 2.1442418 ]  CFL: 0.5      CPUTime: 1304.8899 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 539     Res: [    4.2767939 2.2556382 2.2024123 2.1440134 ]  CFL: 0.5      CPUTime: 1307.0755 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 540     Res: [    4.2767126 2.2556328 2.2016822 2.143695 ]  CFL: 0.5      CPUTime: 1309.2572 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 541     Res: [    4.276544 2.2556837 2.2009412 2.1431543 ]  CFL: 0.5      CPUTime: 1311.4481 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 542     Res: [    4.276513 2.255781 2.2001756 2.1431174 ]  CFL: 0.5      CPUTime: 1313.6719 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 543     Res: [    4.2763887 2.2554938 2.1994161 2.1427804 ]  CFL: 0.5      CPUTime: 1315.8859 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 544     Res: [    4.2763234 2.2552943 2.1986956 2.1424276 ]  CFL: 0.5      CPUTime: 1318.0729 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 545     Res: [    4.2762192 2.2551579 2.1980211 2.142207 ]  CFL: 0.5      CPUTime: 1321.6598 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 546     Res: [    4.2761319 2.2550945 2.1973982 2.1421654 ]  CFL: 0.5      CPUTime: 1325.6962 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 547     Res: [    4.2760455 2.2550914 2.1967832 2.1420611 ]  CFL: 0.5      CPUTime: 1329.7321 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 548     Res: [    4.2759345 2.2551825 2.1962111 2.1419319 ]  CFL: 0.5      CPUTime: 1333.7684 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 549     Res: [    4.2758544 2.2553897 2.1956931 2.1419512 ]  CFL: 0.5      CPUTime: 1337.8042 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 550     Res: [    4.2757071 2.2553739 2.1952284 2.1416706 ]  CFL: 0.5      CPUTime: 1341.84  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 551     Res: [    4.2755641 2.2553425 2.1948202 2.141459 ]  CFL: 0.5      CPUTime: 1345.8797 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 552     Res: [    4.2753766 2.2552991 2.1943875 2.1412679 ]  CFL: 0.5      CPUTime: 1349.9159 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 553     Res: [    4.2752367 2.2552952 2.193968 2.1411068 ]  CFL: 0.5      CPUTime: 1352.5476 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 554     Res: [    4.275063 2.2553781 2.1935991 2.1410506 ]  CFL: 0.5      CPUTime: 1354.7249 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 555     Res: [    4.2749052 2.2554632 2.1932218 2.1406637 ]  CFL: 0.5      CPUTime: 1356.9019 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 556     Res: [    4.2747861 2.2554904 2.192793 2.1406831 ]  CFL: 0.5      CPUTime: 1359.0791 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 557     Res: [    4.2746255 2.2554478 2.1923278 2.1403202 ]  CFL: 0.5      CPUTime: 1361.2599 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 558     Res: [    4.2744889 2.2553048 2.1918079 2.1399326 ]  CFL: 0.5      CPUTime: 1363.4484 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 559     Res: [    4.6129224 2.2604471 2.1912562 2.1402976 ]  CFL: 0.5      CPUTime: 1365.634 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 1
+Iter: 560     Res: [    4.6524964 2.2560036 2.1905793 2.1391097 ]  CFL: 0.5      CPUTime: 1367.8193 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 561     Res: [    4.2745053 2.2553998 2.1900827 2.1390542 ]  CFL: 0.5      CPUTime: 1369.9982 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 562     Res: [    4.274136 2.2550748 2.189416 2.1382362 ]  CFL: 0.5      CPUTime: 1372.1901 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 563     Res: [    4.2738104 2.2545139 2.1886369 2.1376866 ]  CFL: 0.5      CPUTime: 1374.4355 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 564     Res: [    4.2735462 2.2540742 2.1878226 2.1367361 ]  CFL: 0.5      CPUTime: 1376.6784 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 565     Res: [    4.2733421 2.2537024 2.1869752 2.1362389 ]  CFL: 0.5      CPUTime: 1378.9179 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 566     Res: [    4.2731372 2.2533813 2.186105 2.1354277 ]  CFL: 0.5      CPUTime: 1381.1481 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 567     Res: [    4.2730277 2.2531113 2.1852242 2.1351708 ]  CFL: 0.5      CPUTime: 1383.4218 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 568     Res: [    4.2728509 2.2529121 2.1843576 2.1345485 ]  CFL: 0.5      CPUTime: 1385.679 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 569     Res: [    4.2727478 2.2528075 2.1835146 2.1345161 ]  CFL: 0.5      CPUTime: 1387.9142 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 570     Res: [    4.2725672 2.252651 2.1826978 2.1343742 ]  CFL: 0.5      CPUTime: 1390.1115 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 571     Res: [    4.2724518 2.2522335 2.1819023 2.1338727 ]  CFL: 0.5      CPUTime: 1392.3043 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 572     Res: [    4.2723481 2.2518529 2.1810955 2.1337132 ]  CFL: 0.5      CPUTime: 1394.4976 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 573     Res: [    4.2721988 2.2515627 2.1803901 2.1333633 ]  CFL: 0.5      CPUTime: 1396.7029 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 574     Res: [    4.2720521 2.2513514 2.1797288 2.1331548 ]  CFL: 0.5      CPUTime: 1398.8901 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 575     Res: [    4.2718729 2.2512454 2.1791596 2.1334711 ]  CFL: 0.5      CPUTime: 1401.0734 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 576     Res: [    4.2716944 2.2512689 2.1786581 2.1334214 ]  CFL: 0.5      CPUTime: 1403.2637 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 577     Res: [    4.2714854 2.2514307 2.1782062 2.1333561 ]  CFL: 0.5      CPUTime: 1405.5028 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 578     Res: [    4.2713221 2.251738 2.1777764 2.1334429 ]  CFL: 0.5      CPUTime: 1407.6866 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 579     Res: [    4.2710873 2.2518591 2.1774152 2.1334094 ]  CFL: 0.5      CPUTime: 1409.8691 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 580     Res: [    4.2708819 2.2520209 2.1771196 2.1333542 ]  CFL: 0.5      CPUTime: 1412.0529 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 581     Res: [    4.2706528 2.2522336 2.176824 2.1333344 ]  CFL: 0.5      CPUTime: 1414.2557 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 582     Res: [    4.2704508 2.2524883 2.1765177 2.1330099 ]  CFL: 0.5      CPUTime: 1416.4496 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 583     Res: [    4.2702779 2.2528453 2.1762501 2.1328933 ]  CFL: 0.5      CPUTime: 1418.6691 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 584     Res: [    4.2701319 2.2530625 2.1758925 2.132828 ]  CFL: 0.5      CPUTime: 1420.9152 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 585     Res: [    4.2700076 2.253088 2.1754739 2.1321507 ]  CFL: 0.5      CPUTime: 1423.1525 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 586     Res: [    4.2698957 2.253081 2.1750181 2.1320056 ]  CFL: 0.5      CPUTime: 1425.4111 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 587     Res: [    4.2698552 2.2530937 2.1745275 2.1314493 ]  CFL: 0.5      CPUTime: 1427.66  Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 588     Res: [    4.2697319 2.2531131 2.1739905 2.1307969 ]  CFL: 0.5      CPUTime: 1429.8968 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 589     Res: [    4.2697313 2.2531442 2.1733995 2.1304236 ]  CFL: 0.5      CPUTime: 1432.1316 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 590     Res: [    4.2696401 2.2530082 2.1727214 2.1297027 ]  CFL: 0.5      CPUTime: 1434.3783 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 591     Res: [    4.2696185 2.2525946 2.1719497 2.1290752 ]  CFL: 0.5      CPUTime: 1436.6184 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 592     Res: [    4.26956 2.2521581 2.1711233 2.1283361 ]  CFL: 0.5      CPUTime: 1438.8551 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 593     Res: [    4.269501 2.2516906 2.1702462 2.1275648 ]  CFL: 0.5      CPUTime: 1441.0443 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 594     Res: [    4.2694397 2.2512057 2.1693126 2.1272992 ]  CFL: 0.5      CPUTime: 1443.2312 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 595     Res: [    4.2693092 2.2507312 2.1683505 2.1265945 ]  CFL: 0.5      CPUTime: 1445.4233 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 596     Res: [    4.2692401 2.2503002 2.1673856 2.1260423 ]  CFL: 0.5      CPUTime: 1447.6102 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 597     Res: [    4.2690605 2.2499358 2.1664321 2.1255676 ]  CFL: 0.5      CPUTime: 1449.796 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 598     Res: [    4.2689562 2.2495787 2.1655069 2.1257201 ]  CFL: 0.5      CPUTime: 1451.9849 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 599     Res: [    4.2688102 2.2489317 2.1646123 2.1252996 ]  CFL: 0.5      CPUTime: 1454.1698 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 600     Res: [    4.2685942 2.2483934 2.1637848 2.1249255 ]  CFL: 0.5      CPUTime: 1456.3501 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 601     Res: [    4.2684008 2.2479389 2.1630088 2.1247757 ]  CFL: 0.5      CPUTime: 1458.5484 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 602     Res: [    4.2681629 2.2475254 2.1622275 2.1249653 ]  CFL: 0.5      CPUTime: 1460.7428 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 603     Res: [    4.2679207 2.2472555 2.1615695 2.1249656 ]  CFL: 0.5      CPUTime: 1462.9253 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 604     Res: [    4.2676308 2.2471161 2.1609887 2.1248616 ]  CFL: 0.5      CPUTime: 1465.1123 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 605     Res: [    4.267298 2.247146 2.1604995 2.1250454 ]  CFL: 0.5      CPUTime: 1467.3007 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 606     Res: [    4.2669744 2.2473728 2.1601068 2.1252354 ]  CFL: 0.5      CPUTime: 1469.5322 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 607     Res: [    4.2666655 2.2478297 2.159846 2.1251922 ]  CFL: 0.5      CPUTime: 1471.8009 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 608     Res: [    4.2663946 2.2483841 2.1596261 2.1254693 ]  CFL: 0.5      CPUTime: 1474.0476 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 609     Res: [    4.266104 2.2487222 2.1594298 2.125418 ]  CFL: 0.5      CPUTime: 1476.272 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 610     Res: [    4.265871 2.2492447 2.1593291 2.1256724 ]  CFL: 0.5      CPUTime: 1478.5081 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 611     Res: [    4.2656542 2.2497603 2.1591469 2.1253282 ]  CFL: 0.5      CPUTime: 1480.737 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 612     Res: [    4.2654537 2.2503215 2.1589711 2.1250778 ]  CFL: 0.5      CPUTime: 1482.962 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 613     Res: [    4.2653033 2.2504865 2.1586303 2.1248344 ]  CFL: 0.5      CPUTime: 1485.1824 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 614     Res: [    4.2651815 2.2506242 2.1582612 2.1243976 ]  CFL: 0.5      CPUTime: 1487.4139 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 615     Res: [    4.2650777 2.2507535 2.1578588 2.1236581 ]  CFL: 0.5      CPUTime: 1489.6479 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 616     Res: [    4.2650355 2.2508479 2.1574004 2.123237 ]  CFL: 0.5      CPUTime: 1491.8736 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 617     Res: [    4.2650431 2.2509148 2.1568918 2.1224912 ]  CFL: 0.5      CPUTime: 1494.1059 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 618     Res: [    4.2650016 2.2507653 2.1562753 2.1218717 ]  CFL: 0.5      CPUTime: 1496.3276 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 619     Res: [    4.2649453 2.2502608 2.1555321 2.1209552 ]  CFL: 0.5      CPUTime: 1498.5563 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 620     Res: [    4.2649195 2.2496873 2.1547097 2.1200156 ]  CFL: 0.5      CPUTime: 1500.7818 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 621     Res: [    4.2648911 2.2490342 2.1538084 2.1193719 ]  CFL: 0.5      CPUTime: 1503.007 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 622     Res: [    4.2647346 2.2483222 2.1528433 2.1185797 ]  CFL: 0.5      CPUTime: 1505.2339 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 623     Res: [    4.2646192 2.2475764 2.1518311 2.1180342 ]  CFL: 0.5      CPUTime: 1507.4626 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 624     Res: [    4.2644986 2.246871 2.1508033 2.1176524 ]  CFL: 0.5      CPUTime: 1509.6966 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 625     Res: [    4.2643135 2.2462106 2.1497664 2.1171461 ]  CFL: 0.5      CPUTime: 1511.921 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 626     Res: [    4.2641789 2.2456826 2.1487477 2.1172254 ]  CFL: 0.5      CPUTime: 1514.145 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 627     Res: [    4.2639249 2.2449073 2.1477272 2.1168068 ]  CFL: 0.5      CPUTime: 1516.3696 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 628     Res: [    4.2636111 2.2440782 2.1467593 2.116333 ]  CFL: 0.5      CPUTime: 1518.5993 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 629     Res: [    4.2633621 2.2433858 2.145867 2.1162977 ]  CFL: 0.5      CPUTime: 1520.8723 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 630     Res: [    4.2629931 2.242814 2.1450633 2.1161633 ]  CFL: 0.5      CPUTime: 1523.1019 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 631     Res: [    4.2626218 2.2423752 2.1443634 2.1161154 ]  CFL: 0.5      CPUTime: 1525.2808 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 632     Res: [    4.2622532 2.2420376 2.1436907 2.1161313 ]  CFL: 0.5      CPUTime: 1527.5495 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 633     Res: [    4.2618402 2.2418315 2.1430802 2.1161796 ]  CFL: 0.5      CPUTime: 1529.7343 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 634     Res: [    4.2614078 2.2418277 2.1425835 2.1163672 ]  CFL: 0.5      CPUTime: 1531.9252 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 635     Res: [    4.2609849 2.2420441 2.1421957 2.1166183 ]  CFL: 0.5      CPUTime: 1534.4953 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 636     Res: [    4.260597 2.2425134 2.1419325 2.1166399 ]  CFL: 0.5      CPUTime: 1536.7413 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 637     Res: [    4.2602441 2.2432416 2.1417678 2.1171283 ]  CFL: 0.5      CPUTime: 1538.9228 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 638     Res: [    4.2599903 2.2441868 2.1417048 2.1174478 ]  CFL: 0.5      CPUTime: 1541.1021 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 639     Res: [    4.2597051 2.244924 2.14173 2.1172807 ]  CFL: 0.5      CPUTime: 1543.2942 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 640     Res: [    4.2594434 2.2458285 2.1417605 2.1174293 ]  CFL: 0.5      CPUTime: 1545.4777 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 641     Res: [    4.2593423 2.2464925 2.1416061 2.1172186 ]  CFL: 0.5      CPUTime: 1547.6927 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 642     Res: [    4.2592212 2.246831 2.1413354 2.1166538 ]  CFL: 0.5      CPUTime: 1549.8744 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 643     Res: [    4.2591851 2.2471658 2.141037 2.1161802 ]  CFL: 0.5      CPUTime: 1552.0871 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 644     Res: [    4.2591769 2.2474621 2.1407084 2.1153601 ]  CFL: 0.5      CPUTime: 1554.3286 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 645     Res: [    4.2592103 2.2476811 2.1403124 2.1148635 ]  CFL: 0.5      CPUTime: 1556.5628 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 646     Res: [    4.2592259 2.2478126 2.1398394 2.1140775 ]  CFL: 0.5      CPUTime: 1558.7994 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 647     Res: [    4.2592501 2.2473702 2.139218 2.112884 ]  CFL: 0.5      CPUTime: 1561.0303 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 648     Res: [    4.2591968 2.2467763 2.1384904 2.1117372 ]  CFL: 0.5      CPUTime: 1563.2661 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 649     Res: [    4.2591924 2.2460477 2.1376518 2.1110627 ]  CFL: 0.5      CPUTime: 1565.5002 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 650     Res: [    4.2591201 2.2451996 2.136735 2.1101125 ]  CFL: 0.5      CPUTime: 1567.7419 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 651     Res: [    4.2589823 2.2442586 2.135735 2.1092701 ]  CFL: 0.5      CPUTime: 1569.9716 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 652     Res: [    4.2588341 2.2432773 2.1346717 2.1087133 ]  CFL: 0.5      CPUTime: 1572.1865 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 653     Res: [    4.2586363 2.2423056 2.13357 2.1081349 ]  CFL: 0.5      CPUTime: 1574.3715 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 654     Res: [    4.2584215 2.2414014 2.1324587 2.1076901 ]  CFL: 0.5      CPUTime: 1576.5548 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 655     Res: [    4.2581634 2.2406091 2.1313577 2.1075765 ]  CFL: 0.5      CPUTime: 1578.737 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 656     Res: [    4.2578633 2.2396172 2.1302768 2.107413 ]  CFL: 0.5      CPUTime: 1580.9202 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 657     Res: [    4.2575056 2.238562 2.1292383 2.1070624 ]  CFL: 0.5      CPUTime: 1583.1032 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 658     Res: [    4.2571406 2.2376634 2.1282795 2.1068026 ]  CFL: 0.5      CPUTime: 1585.289 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 659     Res: [    4.2567244 2.2369179 2.1274094 2.1068035 ]  CFL: 0.5      CPUTime: 1587.4785 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 660     Res: [    4.2562364 2.2362959 2.1266126 2.107005 ]  CFL: 0.5      CPUTime: 1589.6596 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 661     Res: [    4.2557623 2.2358665 2.1259338 2.1070768 ]  CFL: 0.5      CPUTime: 1591.8764 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 662     Res: [    4.2552212 2.2356183 2.1253792 2.1071513 ]  CFL: 0.5      CPUTime: 1594.0648 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 663     Res: [    4.2547336 2.2355372 2.1248863 2.1074467 ]  CFL: 0.5      CPUTime: 1596.2465 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 664     Res: [    4.2541629 2.2356296 2.1244421 2.1074706 ]  CFL: 0.5      CPUTime: 1598.4267 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 665     Res: [    4.2536921 2.2359889 2.1241242 2.1078682 ]  CFL: 0.5      CPUTime: 1600.6171 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 666     Res: [    4.2532721 2.2366305 2.1239331 2.1081947 ]  CFL: 0.5      CPUTime: 1602.8325 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 667     Res: [    4.2528894 2.2375695 2.1238545 2.1084449 ]  CFL: 0.5      CPUTime: 1605.0582 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 668     Res: [    4.2526451 2.2388119 2.1238826 2.1088535 ]  CFL: 0.5      CPUTime: 1607.2886 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 669     Res: [    4.2524716 2.2402154 2.1240082 2.1092684 ]  CFL: 0.5      CPUTime: 1609.5244 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 670     Res: [    4.2522874 2.2412126 2.124134 2.108895 ]  CFL: 0.5      CPUTime: 1611.7539 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 671     Res: [    4.2522542 2.2419211 2.1240574 2.1085522 ]  CFL: 0.5      CPUTime: 1613.9925 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 672     Res: [    4.2522628 2.242506 2.123852 2.1080126 ]  CFL: 0.5      CPUTime: 1616.2236 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 673     Res: [    4.2523361 2.2430422 2.1235801 2.1071432 ]  CFL: 0.5      CPUTime: 1618.448 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 674     Res: [    4.2523952 2.2434728 2.1232531 2.1064123 ]  CFL: 0.5      CPUTime: 1620.6795 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 675     Res: [    4.252497 2.2437501 2.1228455 2.1053457 ]  CFL: 0.5      CPUTime: 1622.9199 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 676     Res: [    4.2525295 2.2433872 2.1222622 2.104229 ]  CFL: 0.5      CPUTime: 1625.1469 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 677     Res: [    4.2525594 2.242826 2.1215654 2.1032437 ]  CFL: 0.5      CPUTime: 1627.3832 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 678     Res: [    4.2525673 2.2420645 2.1207613 2.1020836 ]  CFL: 0.5      CPUTime: 1629.587 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 679     Res: [    4.2525222 2.2411206 2.119883 2.1010405 ]  CFL: 0.5      CPUTime: 1631.819 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 680     Res: [    4.2523521 2.240018 2.1188838 2.1001185 ]  CFL: 0.5      CPUTime: 1634.0222 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 681     Res: [    4.2521955 2.2388212 2.1178082 2.0991879 ]  CFL: 0.5      CPUTime: 1636.2034 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 682     Res: [    4.2519099 2.2375711 2.1166724 2.0987492 ]  CFL: 0.5      CPUTime: 1638.3858 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 683     Res: [    4.2516456 2.2363821 2.1155065 2.0985382 ]  CFL: 0.5      CPUTime: 1640.5684 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 684     Res: [    4.2512808 2.2352936 2.1143443 2.097763 ]  CFL: 0.5      CPUTime: 1642.8091 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 685     Res: [    4.2509562 2.2343273 2.113197 2.097784 ]  CFL: 0.5      CPUTime: 1644.9917 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 686     Res: [    4.2505009 2.2329674 2.1120572 2.0973422 ]  CFL: 0.5      CPUTime: 1647.263 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 687     Res: [    4.2500473 2.2317925 2.1110128 2.0973503 ]  CFL: 0.5      CPUTime: 1649.4565 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 688     Res: [    4.2495631 2.2307697 2.1100384 2.0971252 ]  CFL: 0.5      CPUTime: 1651.6495 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 689     Res: [    4.2490053 2.2299021 2.109153 2.0971435 ]  CFL: 0.5      CPUTime: 1653.8404 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 690     Res: [    4.2484215 2.2291959 2.1083723 2.0971833 ]  CFL: 0.5      CPUTime: 1656.0189 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 691     Res: [    4.2478233 2.2286886 2.107718 2.0973803 ]  CFL: 0.5      CPUTime: 1658.2598 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 692     Res: [    4.2472711 2.2283845 2.1071923 2.097673 ]  CFL: 0.5      CPUTime: 1660.5099 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 693     Res: [    4.2466574 2.2283183 2.1067977 2.0981704 ]  CFL: 0.5      CPUTime: 1662.7597 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 694     Res: [    4.2461004 2.2285119 2.1065186 2.0983966 ]  CFL: 0.5      CPUTime: 1665.0231 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 695     Res: [    4.2455682 2.228909 2.1062516 2.0986211 ]  CFL: 0.5      CPUTime: 1667.2656 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 696     Res: [    4.2450999 2.2295679 2.1060713 2.0991087 ]  CFL: 0.5      CPUTime: 1669.538 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 697     Res: [    4.2446999 2.2305406 2.1060191 2.0990209 ]  CFL: 0.5      CPUTime: 1671.9328 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 698     Res: [    4.2444106 2.2318169 2.1060875 2.0994968 ]  CFL: 0.5      CPUTime: 1674.1721 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 699     Res: [    4.2442101 2.2332518 2.1062124 2.0999144 ]  CFL: 0.5      CPUTime: 1676.4293 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 700     Res: [    4.244182 2.2347024 2.1063341 2.1001669 ]  CFL: 0.5      CPUTime: 1678.6811 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 701     Res: [    4.2442287 2.2359669 2.106397 2.0995672 ]  CFL: 0.5      CPUTime: 1680.9727 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 702     Res: [    4.2442867 2.2367629 2.1062631 2.0989464 ]  CFL: 0.5      CPUTime: 1683.1966 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 703     Res: [    4.2444297 2.2375311 2.1060832 2.0982671 ]  CFL: 0.5      CPUTime: 1685.4023 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 704     Res: [    4.244581 2.2382157 2.1058578 2.0976159 ]  CFL: 0.5      CPUTime: 1687.6029 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 705     Res: [    4.2447696 2.2384144 2.1054565 2.0964191 ]  CFL: 0.5      CPUTime: 1689.8152 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 706     Res: [    4.2448105 2.2381571 2.1048554 2.0949392 ]  CFL: 0.5      CPUTime: 1692.0026 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 707     Res: [    4.2448957 2.2376505 2.1041581 2.0937403 ]  CFL: 0.5      CPUTime: 1694.192 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 708     Res: [    4.244882 2.2368683 2.1033525 2.0923462 ]  CFL: 0.5      CPUTime: 1696.3826 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 709     Res: [    4.244786 2.2358333 2.1024309 2.091189 ]  CFL: 0.5      CPUTime: 1698.5662 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 710     Res: [    4.2446073 2.2345898 2.1014027 2.0901585 ]  CFL: 0.5      CPUTime: 1700.7525 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 711     Res: [    4.2443576 2.2331986 2.1002916 2.0891135 ]  CFL: 0.5      CPUTime: 1702.9369 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 712     Res: [    4.2440239 2.2317464 2.0991149 2.0884776 ]  CFL: 0.5      CPUTime: 1705.119 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 713     Res: [    4.243632 2.2303058 2.0979123 2.0879068 ]  CFL: 0.5      CPUTime: 1707.3002 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 714     Res: [    4.243232 2.2289682 2.0967031 2.0878656 ]  CFL: 0.5      CPUTime: 1709.4839 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 715     Res: [    4.242781 2.227801 2.0955111 2.0875334 ]  CFL: 0.5      CPUTime: 1711.6638 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 716     Res: [    4.242222 2.2263061 2.0943285 2.0871735 ]  CFL: 0.5      CPUTime: 1713.8456 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 717     Res: [    4.2416619 2.2248827 2.0931953 2.0870313 ]  CFL: 0.5      CPUTime: 1716.0319 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 718     Res: [    4.241096 2.2236476 2.0921771 2.0870149 ]  CFL: 0.5      CPUTime: 1718.2187 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 719     Res: [    4.2404214 2.2225776 2.0912405 2.0867462 ]  CFL: 0.5      CPUTime: 1720.4131 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 720     Res: [    4.23978 2.2216926 2.0904069 2.0869418 ]  CFL: 0.5      CPUTime: 1722.5962 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 721     Res: [    4.2390923 2.2209799 2.0896854 2.0869865 ]  CFL: 0.5      CPUTime: 1724.8277 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 722     Res: [    4.2384532 2.2204779 2.0890875 2.0872574 ]  CFL: 0.5      CPUTime: 1727.0889 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 723     Res: [    4.2377899 2.2202041 2.0886164 2.0875331 ]  CFL: 0.5      CPUTime: 1729.3913 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 724     Res: [    4.2371574 2.2201845 2.0882732 2.087885 ]  CFL: 0.5      CPUTime: 1731.6294 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 725     Res: [    4.2365633 2.2204465 2.0880704 2.0884283 ]  CFL: 0.5      CPUTime: 1733.8645 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 726     Res: [    4.2360551 2.2210286 2.0880203 2.0888717 ]  CFL: 0.5      CPUTime: 1736.104 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 727     Res: [    4.235643 2.2218821 2.0880431 2.0891001 ]  CFL: 0.5      CPUTime: 1738.342 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 728     Res: [    4.2352974 2.2229774 2.0880865 2.0895823 ]  CFL: 0.5      CPUTime: 1740.6033 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 729     Res: [    4.235044 2.2241859 2.0881791 2.0897216 ]  CFL: 0.5      CPUTime: 1742.865 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 730     Res: [    4.2348939 2.2254316 2.0882618 2.0897101 ]  CFL: 0.5      CPUTime: 1745.0794 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 731     Res: [    4.2349161 2.2268955 2.088419 2.0899515 ]  CFL: 0.5      CPUTime: 1747.2631 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 732     Res: [    4.2349599 2.2282427 2.0884335 2.0893291 ]  CFL: 0.5      CPUTime: 1749.4466 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 733     Res: [    4.2351754 2.2296388 2.0884009 2.0893966 ]  CFL: 0.5      CPUTime: 1751.6283 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 734     Res: [    4.2354203 2.2307464 2.088193 2.0885639 ]  CFL: 0.5      CPUTime: 1753.8116 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 735     Res: [    4.2355995 2.2312403 2.0878782 2.0872615 ]  CFL: 0.5      CPUTime: 1755.9949 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 736     Res: [    4.235834 2.2313347 2.0874318 2.086349 ]  CFL: 0.5      CPUTime: 1758.1801 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 737     Res: [    4.2358972 2.2311782 2.0868769 2.0847233 ]  CFL: 0.5      CPUTime: 1760.3647 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 738     Res: [    4.2359458 2.2307228 2.0862122 2.0833465 ]  CFL: 0.5      CPUTime: 1762.5487 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 739     Res: [    4.2358692 2.2299281 2.0853414 2.0818251 ]  CFL: 0.5      CPUTime: 1764.7532 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 740     Res: [    4.2357301 2.2288403 2.0843315 2.080697 ]  CFL: 0.5      CPUTime: 1766.9516 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 741     Res: [    4.2354758 2.2275295 2.0832308 2.0796697 ]  CFL: 0.5      CPUTime: 1769.1332 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 742     Res: [    4.2350862 2.2260399 2.0820517 2.0783351 ]  CFL: 0.5      CPUTime: 1771.3158 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 743     Res: [    4.2346865 2.2244671 2.0808276 2.0778346 ]  CFL: 0.5      CPUTime: 1773.4971 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 744     Res: [    4.2341405 2.2228915 2.0795813 2.077146 ]  CFL: 0.5      CPUTime: 1775.6787 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 745     Res: [    4.2335891 2.2214188 2.0783574 2.0763571 ]  CFL: 0.5      CPUTime: 1777.8592 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 746     Res: [    4.2331019 2.2201021 2.0771588 2.0766711 ]  CFL: 0.5      CPUTime: 1780.0407 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 747     Res: [    4.2324217 2.2184559 2.0759849 2.0763065 ]  CFL: 0.5      CPUTime: 1782.2238 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 748     Res: [    4.2317813 2.2169097 2.0748734 2.0762108 ]  CFL: 0.5      CPUTime: 1784.4057 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 749     Res: [    4.231043 2.2155154 2.0738361 2.0757834 ]  CFL: 0.5      CPUTime: 1786.6125 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 750     Res: [    4.2303371 2.2142934 2.0728916 2.0758853 ]  CFL: 0.5      CPUTime: 1788.8409 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 751     Res: [    4.2296055 2.2132459 2.0720543 2.0759869 ]  CFL: 0.5      CPUTime: 1791.0876 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 752     Res: [    4.2288394 2.2123943 2.0713308 2.0760521 ]  CFL: 0.5      CPUTime: 1793.3364 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 753     Res: [    4.2280803 2.2117402 2.0707208 2.0764023 ]  CFL: 0.5      CPUTime: 1795.5869 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 754     Res: [    4.2273806 2.2113198 2.0702391 2.0766762 ]  CFL: 0.5      CPUTime: 1797.8363 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 755     Res: [    4.2266905 2.2111417 2.0698809 2.0770383 ]  CFL: 0.5      CPUTime: 1800.0795 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 756     Res: [    4.226102 2.2112525 2.0696569 2.07738 ]  CFL: 0.5      CPUTime: 1802.3137 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 757     Res: [    4.225549 2.2116631 2.0695667 2.0776355 ]  CFL: 0.5      CPUTime: 1804.5451 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 758     Res: [    4.2251214 2.2124071 2.0696224 2.0782441 ]  CFL: 0.5      CPUTime: 1806.7779 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 759     Res: [    4.2247652 2.213474 2.0698184 2.0787018 ]  CFL: 0.5      CPUTime: 1809.0059 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 760     Res: [    4.2245403 2.2143924 2.0699512 2.0790707 ]  CFL: 0.5      CPUTime: 1811.2915 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 761     Res: [    4.2243745 2.2154558 2.070025 2.0786313 ]  CFL: 0.5      CPUTime: 1813.5241 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 762     Res: [    4.2243143 2.2167289 2.0701805 2.0784554 ]  CFL: 0.5      CPUTime: 1815.7526 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 763     Res: [    4.2243216 2.2179509 2.0702417 2.0785209 ]  CFL: 0.5      CPUTime: 1817.9821 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 764     Res: [    4.2244341 2.2192055 2.0702553 2.0782309 ]  CFL: 0.5      CPUTime: 1820.2109 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 765     Res: [    4.2246046 2.220511 2.0702194 2.0776141 ]  CFL: 0.5      CPUTime: 1822.4416 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 766     Res: [    4.2247922 2.2212475 2.0698389 2.0766726 ]  CFL: 0.5      CPUTime: 1824.6272 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 767     Res: [    4.2249991 2.2217532 2.0693521 2.0758209 ]  CFL: 0.5      CPUTime: 1826.8124 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 768     Res: [    4.2252385 2.2221237 2.068774 2.0747246 ]  CFL: 0.5      CPUTime: 1828.9976 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 769     Res: [    4.2252498 2.2218334 2.0680785 2.073163 ]  CFL: 0.5      CPUTime: 1831.2051 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 770     Res: [    4.2251995 2.2213158 2.0672643 2.0720703 ]  CFL: 0.5      CPUTime: 1833.3889 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 771     Res: [    4.2251108 2.220563 2.0663444 2.0705097 ]  CFL: 0.5      CPUTime: 1835.5711 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 772     Res: [    4.2248353 2.2195421 2.0653351 2.0694523 ]  CFL: 0.5      CPUTime: 1837.7539 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 773     Res: [    4.224493 2.2183254 2.0642448 2.0681694 ]  CFL: 0.5      CPUTime: 1839.9374 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 774     Res: [    4.2239949 2.2168865 2.0629804 2.0672722 ]  CFL: 0.5      CPUTime: 1842.1205 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 775     Res: [    4.223478 2.2153871 2.0617275 2.0664615 ]  CFL: 0.5      CPUTime: 1844.3046 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 776     Res: [    4.2228417 2.213881 2.060465 2.0658403 ]  CFL: 0.5      CPUTime: 1846.488 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 777     Res: [    4.2221828 2.2124382 2.059224 2.0655068 ]  CFL: 0.5      CPUTime: 1848.6707 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 778     Res: [    4.221565 2.2111599 2.0580416 2.0654254 ]  CFL: 0.5      CPUTime: 1850.8528 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 779     Res: [    4.2208208 2.2094551 2.056882 2.0650118 ]  CFL: 0.5      CPUTime: 1853.0337 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 780     Res: [    4.2200717 2.2078642 2.055801 2.065057 ]  CFL: 0.5      CPUTime: 1855.2284 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 781     Res: [    4.2192451 2.2064182 2.0548113 2.0650285 ]  CFL: 0.5      CPUTime: 1857.411 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 782     Res: [    4.2184145 2.2051293 2.0539245 2.0647344 ]  CFL: 0.5      CPUTime: 1859.5921 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 783     Res: [    4.2176067 2.2039856 2.0531447 2.0647191 ]  CFL: 0.5      CPUTime: 1861.7755 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 784     Res: [    4.2167766 2.2030081 2.0524718 2.0649346 ]  CFL: 0.5      CPUTime: 1863.9568 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 785     Res: [    4.2160219 2.2022357 2.051941 2.0652434 ]  CFL: 0.5      CPUTime: 1866.1444 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 786     Res: [    4.2152915 2.2016828 2.0515245 2.0653089 ]  CFL: 0.5      CPUTime: 1868.3417 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 787     Res: [    4.2145312 2.2013597 2.0512229 2.0657089 ]  CFL: 0.5      CPUTime: 1870.5463 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 788     Res: [    4.2138903 2.2013099 2.0510487 2.0660036 ]  CFL: 0.5      CPUTime: 1872.7536 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 789     Res: [    4.2133853 2.2015653 2.050998 2.0664386 ]  CFL: 0.5      CPUTime: 1874.9554 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 790     Res: [    4.2128869 2.2021342 2.051073 2.066812 ]  CFL: 0.5      CPUTime: 1877.1586 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 791     Res: [    4.2125301 2.2027815 2.0511788 2.0671234 ]  CFL: 0.5      CPUTime: 1879.3641 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 792     Res: [    4.2123055 2.203491 2.0513035 2.0676206 ]  CFL: 0.5      CPUTime: 1881.567 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 793     Res: [    4.2120979 2.204454 2.0515196 2.0675949 ]  CFL: 0.5      CPUTime: 1883.7718 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 794     Res: [    4.2120296 2.2055593 2.0517267 2.0676502 ]  CFL: 0.5      CPUTime: 1885.9745 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 795     Res: [    4.2119911 2.2065948 2.0517567 2.0673554 ]  CFL: 0.5      CPUTime: 1888.1808 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 796     Res: [    4.2119856 2.2075824 2.0516986 2.0667484 ]  CFL: 0.5      CPUTime: 1890.3912 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 797     Res: [    4.2121108 2.208648 2.051643 2.0664175 ]  CFL: 0.5      CPUTime: 1892.5949 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 798     Res: [    4.2121089 2.2092048 2.0514511 2.0654776 ]  CFL: 0.5      CPUTime: 1894.8019 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 799     Res: [    4.2121585 2.2094686 2.0509619 2.0645124 ]  CFL: 0.5      CPUTime: 1897.0066 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 800     Res: [    4.2121516 2.2096189 2.0503896 2.0630382 ]  CFL: 0.5      CPUTime: 1899.2125 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 801     Res: [    4.2121533 2.2096156 2.0497026 2.0622139 ]  CFL: 0.5      CPUTime: 1901.4342 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 802     Res: [    4.21204 2.2094606 2.0488592 2.0610647 ]  CFL: 0.5      CPUTime: 1903.6446 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 803     Res: [    4.2118846 2.2091581 2.0478933 2.0600513 ]  CFL: 0.5      CPUTime: 1905.8499 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 804     Res: [    4.2117295 2.2087479 2.0468713 2.0590671 ]  CFL: 0.5      CPUTime: 1908.0537 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 805     Res: [    4.2113247 2.2077756 2.0457524 2.0578235 ]  CFL: 0.5      CPUTime: 1910.2561 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 806     Res: [    4.2109382 2.2067415 2.0445842 2.0570935 ]  CFL: 0.5      CPUTime: 1912.4608 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 807     Res: [    4.2103172 2.2056322 2.0433849 2.0559277 ]  CFL: 0.5      CPUTime: 1914.6705 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 808     Res: [    4.2096815 2.2044751 2.0421839 2.0550439 ]  CFL: 0.5      CPUTime: 1916.8807 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 809     Res: [    4.2090418 2.2033024 2.0409116 2.0545789 ]  CFL: 0.5      CPUTime: 1919.1061 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 810     Res: [    4.2083286 2.2021846 2.0396496 2.05404 ]  CFL: 0.5      CPUTime: 1921.2917 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 811     Res: [    4.2076837 2.2011715 2.0384567 2.0535482 ]  CFL: 0.5      CPUTime: 1923.4732 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 812     Res: [    4.2068928 2.1996908 2.0373043 2.0532786 ]  CFL: 0.5      CPUTime: 1925.6555 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 813     Res: [    4.2060516 2.1982571 2.0362404 2.0528256 ]  CFL: 0.5      CPUTime: 1927.8387 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 814     Res: [    4.2051944 2.1969105 2.035284 2.052357 ]  CFL: 0.5      CPUTime: 1930.0217 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 815     Res: [    4.2043362 2.1956373 2.0344343 2.0519618 ]  CFL: 0.5      CPUTime: 1932.2043 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 816     Res: [    4.2035011 2.194463 2.0336979 2.0520234 ]  CFL: 0.5      CPUTime: 1934.3876 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 817     Res: [    4.2026519 2.1934082 2.0330821 2.0517984 ]  CFL: 0.5      CPUTime: 1936.5715 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 818     Res: [    4.2018058 2.1924844 2.0325716 2.0516964 ]  CFL: 0.5      CPUTime: 1938.755 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 819     Res: [    4.2010634 2.1917503 2.0321838 2.051997 ]  CFL: 0.5      CPUTime: 1940.9377 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 820     Res: [    4.2003286 2.1912253 2.0319154 2.0521505 ]  CFL: 0.5      CPUTime: 1943.1208 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 821     Res: [    4.1997014 2.1909608 2.0317692 2.0524023 ]  CFL: 0.5      CPUTime: 1945.3013 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 822     Res: [    4.1991432 2.1909691 2.0317393 2.0526902 ]  CFL: 0.5      CPUTime: 1947.484 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 823     Res: [    4.1987046 2.1910839 2.0317657 2.0528037 ]  CFL: 0.5      CPUTime: 1949.6849 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 824     Res: [    4.1982982 2.1911933 2.0317719 2.0534059 ]  CFL: 0.5      CPUTime: 1951.9176 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 825     Res: [    4.1979801 2.1915592 2.0318669 2.0532165 ]  CFL: 0.5      CPUTime: 1954.1526 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 826     Res: [    4.197792 2.1921324 2.032028 2.052945 ]  CFL: 0.5      CPUTime: 1956.3805 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 827     Res: [    4.1975982 2.1928905 2.0322678 2.052849 ]  CFL: 0.5      CPUTime: 1958.6074 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 828     Res: [    4.197523 2.1936161 2.0324055 2.0527495 ]  CFL: 0.5      CPUTime: 1960.8355 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 829     Res: [    4.1974971 2.1942293 2.0322983 2.0523858 ]  CFL: 0.5      CPUTime: 1963.066 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 830     Res: [    4.1974761 2.194708 2.0321083 2.051695 ]  CFL: 0.5      CPUTime: 1965.2966 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 831     Res: [    4.1974155 2.1948376 2.0318218 2.0506823 ]  CFL: 0.5      CPUTime: 1967.5265 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 832     Res: [    4.1973988 2.1948785 2.0314305 2.0499951 ]  CFL: 0.5      CPUTime: 1969.7573 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 833     Res: [    4.1972859 2.1946677 2.0307742 2.0485085 ]  CFL: 0.5      CPUTime: 1971.9865 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 834     Res: [    4.1971494 2.1943219 2.0300253 2.0474875 ]  CFL: 0.5      CPUTime: 1974.2199 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 835     Res: [    4.1969285 2.1938663 2.0291787 2.0464543 ]  CFL: 0.5      CPUTime: 1976.448 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 836     Res: [    4.1965826 2.1932844 2.0282271 2.0453459 ]  CFL: 0.5      CPUTime: 1978.6787 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 837     Res: [    4.1961957 2.192618 2.0271882 2.0440204 ]  CFL: 0.5      CPUTime: 1980.9119 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 838     Res: [    4.1957089 2.191893 2.0260735 2.0431675 ]  CFL: 0.5      CPUTime: 1983.1406 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 839     Res: [    4.195252 2.1911803 2.024902 2.0423965 ]  CFL: 0.5      CPUTime: 1985.3425 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 840     Res: [    4.1946975 2.1904867 2.0236453 2.0418808 ]  CFL: 0.5      CPUTime: 1987.5285 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 841     Res: [    4.1942051 2.189909 2.022379 2.04138 ]  CFL: 0.5      CPUTime: 1989.7151 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 842     Res: [    4.1936806 2.1894621 2.0211273 2.0408014 ]  CFL: 0.5      CPUTime: 1991.9004 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 843     Res: [    4.1930584 2.1887853 2.0199203 2.040572 ]  CFL: 0.5      CPUTime: 1994.0865 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 844     Res: [    4.1923988 2.1882241 2.0187847 2.0395248 ]  CFL: 0.5      CPUTime: 1996.2725 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 845     Res: [    4.1918533 2.1877814 2.0176612 2.0393904 ]  CFL: 0.5      CPUTime: 1998.4595 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 846     Res: [    4.1911128 2.1869127 2.0165297 2.0387857 ]  CFL: 0.5      CPUTime: 2000.6465 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 847     Res: [    4.1903848 2.1860145 2.0154984 2.0380856 ]  CFL: 0.5      CPUTime: 2002.8342 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 848     Res: [    4.1896436 2.1851254 2.0145778 2.0373956 ]  CFL: 0.5      CPUTime: 2005.0428 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 849     Res: [    4.1888416 2.184249 2.0137803 2.0368153 ]  CFL: 0.5      CPUTime: 2007.2442 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 850     Res: [    4.1880852 2.183373 2.0131042 2.0363207 ]  CFL: 0.5      CPUTime: 2009.429 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 851     Res: [    4.187316 2.182525 2.0125837 2.0359328 ]  CFL: 0.5      CPUTime: 2011.6151 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 852     Res: [    4.1865472 2.1817101 2.0121622 2.0354636 ]  CFL: 0.5      CPUTime: 2013.8253 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 853     Res: [    4.185774 2.1809738 2.011861 2.0353567 ]  CFL: 0.5      CPUTime: 2016.0549 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 854     Res: [    4.1851221 2.1803817 2.0116818 2.035389 ]  CFL: 0.5      CPUTime: 2018.2859 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 855     Res: [    4.1845149 2.1799688 2.0116194 2.0350517 ]  CFL: 0.5      CPUTime: 2020.5169 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 856     Res: [    4.1839885 2.1795602 2.0115847 2.0351221 ]  CFL: 0.5      CPUTime: 2022.7462 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 857     Res: [    4.1834919 2.1790878 2.0115127 2.0350967 ]  CFL: 0.5      CPUTime: 2024.9787 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 858     Res: [    4.1830388 2.1788266 2.0115225 2.0349631 ]  CFL: 0.5      CPUTime: 2027.2092 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 859     Res: [    4.1826678 2.1787386 2.011591 2.0346733 ]  CFL: 0.5      CPUTime: 2029.4421 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 860     Res: [    4.1823961 2.178824 2.0117032 2.0345869 ]  CFL: 0.5      CPUTime: 2031.6721 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 861     Res: [    4.1821291 2.1790785 2.0118576 2.0343458 ]  CFL: 0.5      CPUTime: 2033.9068 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 862     Res: [    4.1819031 2.1792044 2.0118304 2.034145 ]  CFL: 0.5      CPUTime: 2036.1368 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 863     Res: [    4.1817894 2.1794393 2.0117999 2.0339468 ]  CFL: 0.5      CPUTime: 2038.3565 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 864     Res: [    4.1816098 2.1793142 2.0116167 2.0330689 ]  CFL: 0.5      CPUTime: 2040.5444 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 865     Res: [    4.1814401 2.1789698 2.0112147 2.0321204 ]  CFL: 0.5      CPUTime: 2042.7308 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 866     Res: [    4.1812528 2.1786197 2.0107811 2.0312366 ]  CFL: 0.5      CPUTime: 2044.9174 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 867     Res: [    4.1810404 2.1780748 2.0101446 2.030342 ]  CFL: 0.5      CPUTime: 2047.1043 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 868     Res: [    4.1807324 2.1773421 2.0093085 2.0293079 ]  CFL: 0.5      CPUTime: 2049.291 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 869     Res: [    4.180381 2.1765229 2.0083932 2.0281887 ]  CFL: 0.5      CPUTime: 2051.4766 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 870     Res: [    4.1799922 2.1756105 2.0073852 2.0271981 ]  CFL: 0.5      CPUTime: 2053.6642 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 871     Res: [    4.1795002 2.1746599 2.0063134 2.0261844 ]  CFL: 0.5      CPUTime: 2055.8501 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 872     Res: [    4.1790048 2.1736633 2.0051603 2.0254543 ]  CFL: 0.5      CPUTime: 2058.0449 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 873     Res: [    4.1784334 2.1726943 2.0039492 2.0249166 ]  CFL: 0.5      CPUTime: 2060.3016 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 874     Res: [    4.1777406 2.1717661 2.0026968 2.0240959 ]  CFL: 0.5      CPUTime: 2062.4897 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 875     Res: [    4.1771151 2.1709415 2.0014373 2.0235035 ]  CFL: 0.5      CPUTime: 2064.6745 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 876     Res: [    4.176427 2.17025 2.0002135 2.0231026 ]  CFL: 0.5      CPUTime: 2066.9516 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 877     Res: [    4.1757169 2.1697189 1.9990056 2.0231427 ]  CFL: 0.5      CPUTime: 2069.2042 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 878     Res: [    4.1750646 2.1694167 1.9978621 2.0227708 ]  CFL: 0.5      CPUTime: 2071.4138 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 879     Res: [    4.1744789 2.1693352 1.9967562 2.0227745 ]  CFL: 0.5      CPUTime: 2073.6256 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 880     Res: [    4.173891 2.1694764 1.9957213 2.0225771 ]  CFL: 0.5      CPUTime: 2075.8356 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 881     Res: [    4.1733891 2.1696395 1.9947901 2.0225825 ]  CFL: 0.5      CPUTime: 2078.0453 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 882     Res: [    4.1728688 2.1696612 1.9939645 2.0221483 ]  CFL: 0.5      CPUTime: 2080.2668 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 883     Res: [    4.1723339 2.1695938 1.9931128 2.0215866 ]  CFL: 0.5      CPUTime: 2082.4698 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 884     Res: [    4.1717666 2.1693668 1.9923866 2.021204 ]  CFL: 0.5      CPUTime: 2084.6738 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 885     Res: [    4.1711803 2.1691827 1.9917946 2.0206468 ]  CFL: 0.5      CPUTime: 2086.8811 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 886     Res: [    4.1706233 2.1689877 1.9913356 2.0202332 ]  CFL: 0.5      CPUTime: 2089.0878 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 887     Res: [    4.1699597 2.1687916 1.9910023 2.0193902 ]  CFL: 0.5      CPUTime: 2091.2935 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 888     Res: [    4.1693691 2.1685931 1.9907853 2.0189558 ]  CFL: 0.5      CPUTime: 2093.5107 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 889     Res: [    4.1687974 2.168404 1.9906935 2.0188576 ]  CFL: 0.5      CPUTime: 2095.7412 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 890     Res: [    4.1682916 2.1682238 1.9906903 2.0183991 ]  CFL: 0.5      CPUTime: 2097.9492 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 891     Res: [    4.1677241 2.1676847 1.9906011 2.0178928 ]  CFL: 0.5      CPUTime: 2100.1547 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 892     Res: [    4.1672477 2.1672178 1.9905882 2.0173013 ]  CFL: 0.5      CPUTime: 2102.361 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 893     Res: [    4.1667515 2.1667931 1.9906287 2.0169061 ]  CFL: 0.5      CPUTime: 2104.581 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 894     Res: [    4.1663056 2.1664548 1.9907214 2.0167397 ]  CFL: 0.5      CPUTime: 2106.7906 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 895     Res: [    4.165909 2.1661983 1.9908492 2.0163336 ]  CFL: 0.5      CPUTime: 2109.007 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 896     Res: [    4.165565 2.1660514 1.9910072 2.0161047 ]  CFL: 0.5      CPUTime: 2111.214 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 897     Res: [    4.1651516 2.1657299 1.9909806 2.0155224 ]  CFL: 0.5      CPUTime: 2113.4154 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 898     Res: [    4.1648924 2.165467 1.990912 2.0148426 ]  CFL: 0.5      CPUTime: 2115.6279 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 899     Res: [    4.1645941 2.1648783 1.9907536 2.0142084 ]  CFL: 0.5      CPUTime: 2117.8258 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 900     Res: [    4.1642802 2.1641903 1.9905495 2.013644 ]  CFL: 0.5      CPUTime: 2120.0145 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 901     Res: [    4.1639194 2.1634453 1.9902211 2.012878 ]  CFL: 0.5      CPUTime: 2122.2183 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 902     Res: [    4.1635022 2.162584 1.9897138 2.011881 ]  CFL: 0.5      CPUTime: 2124.4136 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 903     Res: [    4.1631196 2.1615516 1.988997 2.0110856 ]  CFL: 0.5      CPUTime: 2126.6025 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 904     Res: [    4.1626587 2.1603689 1.9881035 2.0100223 ]  CFL: 0.5      CPUTime: 2128.8376 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 905     Res: [    4.1620817 2.1591306 1.9871299 2.009148 ]  CFL: 0.5      CPUTime: 2131.0647 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 906     Res: [    4.1615411 2.1578519 1.9860724 2.0090071 ]  CFL: 0.5      CPUTime: 2133.2559 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 907     Res: [    4.1609679 2.15657 1.9849402 2.007882 ]  CFL: 0.5      CPUTime: 2135.4446 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 908     Res: [    4.1603073 2.155291 1.9837352 2.0073029 ]  CFL: 0.5      CPUTime: 2137.6302 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 909     Res: [    4.1596325 2.1540522 1.9824746 2.0067399 ]  CFL: 0.5      CPUTime: 2139.8237 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 910     Res: [    4.1589408 2.1529145 1.9811738 2.0064922 ]  CFL: 0.5      CPUTime: 2142.0217 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 911     Res: [    4.1581837 2.1518945 1.9798636 2.0057215 ]  CFL: 0.5      CPUTime: 2144.286 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 912     Res: [    4.1575062 2.1510261 1.9785533 2.0056101 ]  CFL: 0.5      CPUTime: 2146.5233 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 913     Res: [    4.156796 2.1503408 1.9772775 2.0057105 ]  CFL: 0.5      CPUTime: 2148.7686 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 914     Res: [    4.1561059 2.1498836 1.976052 2.0055652 ]  CFL: 0.5      CPUTime: 2150.9996 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 915     Res: [    4.1554059 2.1496496 1.9749005 2.0053345 ]  CFL: 0.5      CPUTime: 2153.2722 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 916     Res: [    4.1548137 2.1496586 1.9738432 2.0053929 ]  CFL: 0.5      CPUTime: 2155.5236 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 917     Res: [    4.1543016 2.149913 1.9729157 2.0055359 ]  CFL: 0.5      CPUTime: 2157.7672 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 918     Res: [    4.1538171 2.1502639 1.9721113 2.0054356 ]  CFL: 0.5      CPUTime: 2160.0308 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 919     Res: [    4.1532434 2.1503925 1.9714151 2.0054023 ]  CFL: 0.5      CPUTime: 2162.2641 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 920     Res: [    4.1527485 2.150679 1.9708326 2.0049441 ]  CFL: 0.5      CPUTime: 2164.4537 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 921     Res: [    4.1522523 2.1510607 1.9703595 2.0047408 ]  CFL: 0.5      CPUTime: 2166.6448 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 922     Res: [    4.1518028 2.1514772 1.9698769 2.0043378 ]  CFL: 0.5      CPUTime: 2168.8337 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 923     Res: [    4.1513313 2.1519569 1.9695417 2.0038903 ]  CFL: 0.5      CPUTime: 2171.0525 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 924     Res: [    4.1509389 2.1525057 1.9693492 2.003426 ]  CFL: 0.5      CPUTime: 2173.671 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 925     Res: [    4.1506547 2.1531538 1.9692954 2.0034802 ]  CFL: 0.5      CPUTime: 2175.8609 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 926     Res: [    4.1504119 2.1536177 1.9692495 2.0028628 ]  CFL: 0.5      CPUTime: 2178.0524 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 927     Res: [    4.1499848 2.1535794 1.9692044 2.0019526 ]  CFL: 0.5      CPUTime: 2180.2438 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 928     Res: [    4.1496635 2.1535681 1.9692402 2.0013637 ]  CFL: 0.5      CPUTime: 2182.4345 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 929     Res: [    4.1492505 2.1535368 1.9693286 2.0006296 ]  CFL: 0.5      CPUTime: 2184.6334 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 930     Res: [    4.1488667 2.1534876 1.9694614 1.9998972 ]  CFL: 0.5      CPUTime: 2186.8302 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 931     Res: [    4.148463 2.1534164 1.9696342 1.999113 ]  CFL: 0.5      CPUTime: 2189.0181 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 932     Res: [    4.1480465 2.1533268 1.9698407 1.9985011 ]  CFL: 0.5      CPUTime: 2191.219 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 933     Res: [    4.1476692 2.1530752 1.9699373 1.9978697 ]  CFL: 0.5      CPUTime: 2193.4513 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 934     Res: [    4.1473458 2.1526602 1.9698905 1.9973299 ]  CFL: 0.5      CPUTime: 2196.1333 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 935     Res: [    4.1470364 2.1521636 1.9698173 1.9970754 ]  CFL: 0.5      CPUTime: 2198.4017 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 936     Res: [    4.1465611 2.1512308 1.9696407 1.9957742 ]  CFL: 0.5      CPUTime: 2200.6491 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 937     Res: [    4.1461059 2.1502401 1.9694204 1.9949089 ]  CFL: 0.5      CPUTime: 2202.8922 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 938     Res: [    4.1456219 2.1491915 1.9691641 1.9939592 ]  CFL: 0.5      CPUTime: 2205.1992 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 939     Res: [    4.1450737 2.1480356 1.9688014 1.9929945 ]  CFL: 0.5      CPUTime: 2207.4559 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 940     Res: [    4.1445158 2.1466252 1.9681069 1.992437 ]  CFL: 0.5      CPUTime: 2209.6953 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 941     Res: [    4.1438772 2.1450122 1.9671784 1.9912409 ]  CFL: 0.5      CPUTime: 2212.0072 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 942     Res: [    4.1432409 2.1433499 1.9661831 1.9903732 ]  CFL: 0.5      CPUTime: 2214.2571 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 943     Res: [    4.1425848 2.1416534 1.9651025 1.9897647 ]  CFL: 0.5      CPUTime: 2216.5004 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 944     Res: [    4.1418309 2.1399624 1.96395 1.9894234 ]  CFL: 0.5      CPUTime: 2218.7596 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 945     Res: [    4.1410964 2.1383155 1.9627325 1.9886885 ]  CFL: 0.5      CPUTime: 2220.9729 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 946     Res: [    4.1403187 2.1367291 1.9614495 1.988081 ]  CFL: 0.5      CPUTime: 2223.1893 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 947     Res: [    4.1395441 2.1352244 1.9601167 1.9875305 ]  CFL: 0.5      CPUTime: 2225.4006 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 948     Res: [    4.1387696 2.1338644 1.958757 1.9876081 ]  CFL: 0.5      CPUTime: 2227.6138 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 949     Res: [    4.1380126 2.1326679 1.9573975 1.9874854 ]  CFL: 0.5      CPUTime: 2229.8291 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 950     Res: [    4.1372502 2.1316488 1.9560351 1.9875376 ]  CFL: 0.5      CPUTime: 2232.0487 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 951     Res: [    4.1364921 2.1308445 1.9547117 1.9874626 ]  CFL: 0.5      CPUTime: 2234.2593 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 952     Res: [    4.135812 2.1302594 1.9534402 1.987388 ]  CFL: 0.5      CPUTime: 2236.4653 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 953     Res: [    4.135094 2.1299086 1.9522415 1.987379 ]  CFL: 0.5      CPUTime: 2238.6787 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 954     Res: [    4.1345482 2.1298161 1.9511471 1.9876155 ]  CFL: 0.5      CPUTime: 2240.9091 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 955     Res: [    4.1339908 2.1299686 1.9501916 1.9875082 ]  CFL: 0.5      CPUTime: 2243.1204 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 956     Res: [    4.1335265 2.1303746 1.9493594 1.9876481 ]  CFL: 0.5      CPUTime: 2245.3338 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 957     Res: [    4.1331362 2.1308858 1.9486636 1.9876594 ]  CFL: 0.5      CPUTime: 2247.5511 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 958     Res: [    4.1326497 2.1311497 1.9480927 1.9871562 ]  CFL: 0.5      CPUTime: 2249.7577 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 959     Res: [    4.1322278 2.1315558 1.9476785 1.987267 ]  CFL: 0.5      CPUTime: 2252.0198 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 960     Res: [    4.1318114 2.1321014 1.9474366 1.9869984 ]  CFL: 0.5      CPUTime: 2254.2286 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 961     Res: [    4.1314211 2.1327353 1.9473702 1.9864956 ]  CFL: 0.5      CPUTime: 2256.4389 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 962     Res: [    4.1309921 2.1333598 1.9473341 1.9861286 ]  CFL: 0.5      CPUTime: 2258.6487 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 963     Res: [    4.130619 2.1336989 1.9471684 1.9854697 ]  CFL: 0.5      CPUTime: 2260.8406 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 964     Res: [    4.1302348 2.1338735 1.9470347 1.9846856 ]  CFL: 0.5      CPUTime: 2263.048 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 965     Res: [    4.1298304 2.1340537 1.9470127 1.9843109 ]  CFL: 0.5      CPUTime: 2265.2477 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 966     Res: [    4.1293695 2.1342316 1.9470649 1.9837506 ]  CFL: 0.5      CPUTime: 2267.4376 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 967     Res: [    4.1289464 2.134405 1.9471843 1.982978 ]  CFL: 0.5      CPUTime: 2269.6263 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 968     Res: [    4.1285112 2.1345774 1.9473498 1.9821649 ]  CFL: 0.5      CPUTime: 2271.8906 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 969     Res: [    4.1281126 2.1347919 1.9475602 1.981778 ]  CFL: 0.5      CPUTime: 2274.104 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 970     Res: [    4.1276824 2.1350589 1.9478051 1.9808841 ]  CFL: 0.5      CPUTime: 2276.3565 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 971     Res: [    4.1273937 2.1351315 1.9478631 1.9807488 ]  CFL: 0.5      CPUTime: 2278.5647 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 972     Res: [    4.1270509 2.1352016 1.9478769 1.9799894 ]  CFL: 0.5      CPUTime: 2280.772 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 973     Res: [    4.1268419 2.1353244 1.9478774 1.9794167 ]  CFL: 0.5      CPUTime: 2283.036 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 974     Res: [    4.1265063 2.1348425 1.947741 1.9783172 ]  CFL: 0.5      CPUTime: 2285.3488 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 975     Res: [    4.1260323 2.1341561 1.9475603 1.9773797 ]  CFL: 0.5      CPUTime: 2287.5579 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 976     Res: [    4.1255484 2.1334244 1.9473469 1.9764354 ]  CFL: 0.5      CPUTime: 2289.7481 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 977     Res: [    4.124977 2.1325797 1.9470909 1.9752068 ]  CFL: 0.5      CPUTime: 2291.9503 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 978     Res: [    4.1243948 2.1316356 1.9467991 1.9743061 ]  CFL: 0.5      CPUTime: 2295.6348 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 979     Res: [    4.1238151 2.1303259 1.9460922 1.973486 ]  CFL: 0.5      CPUTime: 2299.6603 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 980     Res: [    4.1230816 2.1287846 1.9451518 1.9721504 ]  CFL: 0.5      CPUTime: 2303.6829 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 981     Res: [    4.122337 2.1271419 1.9441329 1.9710969 ]  CFL: 0.5      CPUTime: 2307.7048 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 982     Res: [    4.1216738 2.1254234 1.9430438 1.9706951 ]  CFL: 0.5      CPUTime: 2311.7272 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 983     Res: [    4.1208489 2.1236558 1.9418773 1.9699654 ]  CFL: 0.5      CPUTime: 2315.7493 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 984     Res: [    4.120011 2.1218676 1.9406454 1.968802 ]  CFL: 0.5      CPUTime: 2319.7723 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 985     Res: [    4.1192214 2.1201022 1.9393553 1.9685872 ]  CFL: 0.5      CPUTime: 2323.7957 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 986     Res: [    4.1184005 2.1183895 1.9380033 1.9681554 ]  CFL: 0.5      CPUTime: 2327.8186 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 987     Res: [    4.1175629 2.1167817 1.9366173 1.9677392 ]  CFL: 0.5      CPUTime: 2331.8453 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 988     Res: [    4.1167555 2.1152794 1.9352115 1.9672699 ]  CFL: 0.5      CPUTime: 2335.8761 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 989     Res: [    4.1160006 2.1139313 1.9338101 1.9673149 ]  CFL: 0.5      CPUTime: 2339.9009 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 990     Res: [    4.1152142 2.1127719 1.9324225 1.9674179 ]  CFL: 0.5      CPUTime: 2343.9208 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 991     Res: [    4.1144122 2.1118038 1.9310753 1.9672528 ]  CFL: 0.5      CPUTime: 2347.941 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 992     Res: [    4.113695 2.1110629 1.9297861 1.9670479 ]  CFL: 0.5      CPUTime: 2351.9646 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 993     Res: [    4.1130199 2.1105416 1.9285744 1.9672152 ]  CFL: 0.5      CPUTime: 2355.9877 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 994     Res: [    4.1123779 2.1102783 1.9275012 1.9674119 ]  CFL: 0.5      CPUTime: 2360.0196 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 995     Res: [    4.1117988 2.1102392 1.9265192 1.967312 ]  CFL: 0.5      CPUTime: 2364.0579 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 996     Res: [    4.1113016 2.1104644 1.9256777 1.9674649 ]  CFL: 0.5      CPUTime: 2368.0933 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 997     Res: [    4.1108805 2.1109309 1.9249812 1.9675746 ]  CFL: 0.5      CPUTime: 2372.1291 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 998     Res: [    4.1105946 2.1116131 1.9244388 1.9679144 ]  CFL: 0.5      CPUTime: 2376.1619 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 999     Res: [    4.110135 2.1119507 1.9240173 1.9675742 ]  CFL: 0.5      CPUTime: 2380.1989 Mem: 98.4102 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1000    Res: [    4.1097634 2.112448 1.9237613 1.9671649 ]  CFL: 0.5      CPUTime: 2384.2365 Mem: 98.4102 MB
+
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_1000.plt
+Writing solution to ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output-iter_1000.surf.plt
+Writing took 1.36521s
+ParCFmeshFileWriter::writeToFile() => IO rank is 0
+Nodes written 
+States written 
+Writing solution to: ./RESULTS_AUSM_Choice2/LTE_NS_Cone_Output.CFmesh
+Writing took 0.233072s
+KSP convergence reached at iteration: 2
+Iter: 1001    Res: [    4.1094416 2.1130662 1.9236806 1.9667758 ]  CFL: 0.5      CPUTime: 2389.8587 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1002    Res: [    4.1090589 2.1132751 1.9235349 1.9662744 ]  CFL: 0.5      CPUTime: 2393.9039 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1003    Res: [    4.1085924 2.1134683 1.9235201 1.9653894 ]  CFL: 0.5      CPUTime: 2397.0697 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1004    Res: [    4.1082262 2.1135851 1.9235069 1.9646995 ]  CFL: 0.5      CPUTime: 2399.2839 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1005    Res: [    4.1077493 2.113611 1.9235089 1.964123 ]  CFL: 0.5      CPUTime: 2401.4988 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1006    Res: [    4.1072497 2.1135981 1.9236015 1.9633038 ]  CFL: 0.5      CPUTime: 2403.6969 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1007    Res: [    4.1067638 2.113532 1.9237534 1.9623868 ]  CFL: 0.5      CPUTime: 2405.911 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1008    Res: [    4.1062082 2.1134062 1.923881 1.9613251 ]  CFL: 0.5      CPUTime: 2408.1036 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1009    Res: [    4.1057031 2.1132771 1.9240654 1.9608548 ]  CFL: 0.5      CPUTime: 2411.2435 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1010    Res: [    4.1052115 2.1130344 1.9241797 1.9601196 ]  CFL: 0.5      CPUTime: 2414.4615 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1011    Res: [    4.1046931 2.1126485 1.9241756 1.9595486 ]  CFL: 0.5      CPUTime: 2416.6505 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1012    Res: [    4.1041857 2.1123301 1.9241865 1.9587129 ]  CFL: 0.5      CPUTime: 2418.8397 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1013    Res: [    4.1037465 2.1120734 1.9242299 1.9580477 ]  CFL: 0.5      CPUTime: 2421.0287 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1014    Res: [    4.1031825 2.1113356 1.924131 1.9571194 ]  CFL: 0.5      CPUTime: 2423.2191 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1015    Res: [    4.1025733 2.1105901 1.9240068 1.9563056 ]  CFL: 0.5      CPUTime: 2425.4084 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1016    Res: [    4.1019476 2.1098462 1.9238543 1.9553082 ]  CFL: 0.5      CPUTime: 2427.5991 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1017    Res: [    4.1012918 2.1090511 1.923653 1.954366 ]  CFL: 0.5      CPUTime: 2429.7885 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1018    Res: [    4.1006495 2.1082204 1.9234221 1.9540775 ]  CFL: 0.5      CPUTime: 2431.9758 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1019    Res: [    4.0999779 2.1073168 1.9230675 1.953158 ]  CFL: 0.5      CPUTime: 2434.1651 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1020    Res: [    4.0992434 2.1061571 1.9223645 1.9524821 ]  CFL: 0.5      CPUTime: 2436.3547 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1021    Res: [    4.098487 2.1049076 1.921464 1.9517773 ]  CFL: 0.5      CPUTime: 2438.5435 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1022    Res: [    4.0977379 2.1036637 1.9204995 1.9509205 ]  CFL: 0.5      CPUTime: 2440.7343 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1023    Res: [    4.0970497 2.102443 1.9194709 1.9504692 ]  CFL: 0.5      CPUTime: 2442.9253 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1024    Res: [    4.0963089 2.1012508 1.9183683 1.949544 ]  CFL: 0.5      CPUTime: 2445.1337 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1025    Res: [    4.095652 2.1000983 1.9171911 1.9493531 ]  CFL: 0.5      CPUTime: 2447.3245 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1026    Res: [    4.0949941 2.0990392 1.9159568 1.948553 ]  CFL: 0.5      CPUTime: 2449.5281 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1027    Res: [    4.0943285 2.0979003 1.9146599 1.9483615 ]  CFL: 0.5      CPUTime: 2451.7345 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1028    Res: [    4.0936587 2.0967516 1.9133252 1.9483394 ]  CFL: 0.5      CPUTime: 2453.9606 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1029    Res: [    4.0928912 2.0957056 1.9119557 1.9479578 ]  CFL: 0.5      CPUTime: 2456.1855 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1030    Res: [    4.0921629 2.0947505 1.9105663 1.9473982 ]  CFL: 0.5      CPUTime: 2458.4014 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1031    Res: [    4.0914815 2.0938804 1.9091751 1.9471024 ]  CFL: 0.5      CPUTime: 2460.614 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1032    Res: [    4.0907679 2.0931385 1.9078035 1.9468556 ]  CFL: 0.5      CPUTime: 2462.8285 Mem: 98.918 MB
+
+KSP convergence reached at iteration: 2
+Iter: 1033    Res: [    4.0900348 2.0925022 1.9064715 1.9463485 ]  CFL: 0.5      CPUTime: 2465.0767 Mem: 98.918 MB
+
